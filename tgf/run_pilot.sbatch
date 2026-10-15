@@ -2,23 +2,23 @@
 #SBATCH --job-name=tgf_pilot
 #SBATCH --partition=gpu_h200
 #SBATCH --gpus=h200:1
-#SBATCH --mem=128G
+#SBATCH --mem=160G
 #SBATCH --cpus-per-task=8
 #SBATCH --time=06:00:00
 #SBATCH --output=logs/%x_%j.log
 #SBATCH --mail-type=END,FAIL
 # B1, B3, TGF plan -> agent answers (B2 + TGF) -> B2/TGF judge -> metrics.
 # Needs tgf_runs/pilot/traces.jsonl (from tgf/gen_traces.sbatch or `python -m tgf.build`).
-# Usage: sbatch tgf/run_pilot.sbatch     (override: RUN=... MON=Qwen/Qwen3-8B sbatch ...)
+# Usage: RUN=aa_check sbatch tgf/run_pilot.sbatch   (reads tgf_runs/$RUN/traces.jsonl; MON=..., AGENT=... to override)
 set -eo pipefail
 module load miniconda
 conda activate monitorbench
 cd ~/MonitorBench
 mkdir -p logs
 
-RUN=${RUN:-tgf_runs/pilot}
+RUN="tgf_runs/${RUN:-pilot}"
 MON=${MON:-Qwen/Qwen3-32B}
-AGENT=${AGENT:-openai/gpt-oss-20b}
+AGENT=${AGENT:-openai/gpt-oss-120b}
 K=${K:-3}
 B3N=${B3N:-3}
 
