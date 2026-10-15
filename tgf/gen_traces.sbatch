@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=traces
-#SBATCH --partition=gpu
+#SBATCH --partition=gpu_h200
 #SBATCH --gpus=h200:1
-#SBATCH --mem=64G
+#SBATCH --mem=128G
 #SBATCH --cpus-per-task=4
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x_%j.log

@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=tgf_pilot
-#SBATCH --partition=gpu
+#SBATCH --partition=gpu_h200
 #SBATCH --gpus=h200:1
-#SBATCH --mem=96G
+#SBATCH --mem=128G
 #SBATCH --cpus-per-task=8
 #SBATCH --time=06:00:00
 #SBATCH --output=logs/%x_%j.log
