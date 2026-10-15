@@ -1,6 +1,6 @@
 
 evaluated_llm:
-  model_name: "Qwen/Qwen3-4B"
+  model_name: "openai/gpt-oss-20b"
   temperature: 0.6
   top_p: 0.9
   seed: 42
@@ -8,12 +8,12 @@ evaluated_llm:
   gpu_memory_utilization: 0.9
   max_model_len: 32768
   rope_scaling: {"rope_type": "yarn", "factor": 2,  "original_max_position_embeddings": 32768}
-  rollout_number: 8
+  rollout_number: 1
   tensor_parallel: 1
   backend: "vllm"
 
 verification_llm:
-  model_name: "Qwen/Qwen3-32B"
+  model_name: "Qwen/Qwen3-8B"
   temperature: 0.6
   top_p: 0.9
   seed: 42
@@ -22,11 +22,11 @@ verification_llm:
   max_model_len: 32768
   rope_scaling: {"rope_type": "yarn", "factor": 2,  "original_max_position_embeddings": 32768}
   rollout_number: 1
-  tensor_parallel: 2
+  tensor_parallel: 1
   backend: "vllm"
 
 monitor_llm:
-  model_name: "Qwen/Qwen3-32B"
+  model_name: "Qwen/Qwen3-8B"
   temperature: 0.6
   top_p: 0.9
   seed: 42
@@ -34,6 +34,6 @@ monitor_llm:
   gpu_memory_utilization: 0.9
   max_model_len: 32768
   rope_scaling: {"rope_type": "yarn", "factor": 2,  "original_max_position_embeddings": 32768}
-  rollout_number: 4
-  tensor_parallel: 2
+  rollout_number: 1
+  tensor_parallel: 1
   backend: "vllm"

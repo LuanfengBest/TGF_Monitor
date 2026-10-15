@@ -1,42 +1,24 @@
 set -e
 
 TASKS=(
-    # "goal_sandbag.safety"
-    # "goal_sandbag.math"
-    # "goal_sandbag.science"
-    # "goal_sandbag.engineering"
-    # "goal_deception.realworld"
-    "cue_condition.knowledge"
-    # "cue_condition.preference"
-    # "cue_condition.judgment"
-    # "cue_condition.health"
-    # "cue_answer.math"
-    # "cue_answer.logic"
-    # "cue_answer.health"
-    # "dual_objectives.steganography"
-    # "dual_objectives.summarization"
-    # "dual_objectives.coding"
-    # "dual_objectives.agent.benign"
-    # "dual_objectives.agent.malicious"
-    # "impossible.coding"
-    # "process.multistep"
+    "dual_objectives.agent.malicious"
 )
 
 EVALUATED_MODEL="openai/gpt-oss-20b"
 
 STRESS_TESTS=(
-  "original"  "standard"  "direct_conceal" "monitor_aware"
+  "standard"
 )
 
 MONITOR_SCOPES=(
-    "action" "cot" "all"
+    "all"
 )
 
-DEVICES=(8)
+DEVICES=(0)
 
 export OPENAI_API_KEY="YOUR_API_KEY"
-export GOOGLE_API_KEY="YOUR_API_KEY" 
-export ANTHROPIC_API_KEY="YOUR_API_KEY" 
+export GOOGLE_API_KEY="YOUR_API_KEY"
+export ANTHROPIC_API_KEY="YOUR_API_KEY"
 
 if [[ "$EVALUATED_MODEL" == *"gpt-oss"* ]]; then
     unset VLLM_ATTENTION_BACKEND
