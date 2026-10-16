@@ -37,6 +37,11 @@ def fit_transcript(model, steps, scope, other_text, max_new):
     return t, {"tool_limit": TOOL_LIMITS[-1], "middle_cut": True}
 
 
+def has_executed_actions(ledger):
+    """Any executed state-changing action other than moving money between the user's own accounts."""
+    return any(a.get("executed") and not a.get("own_account") for a in ledger or [])
+
+
 def header_kwargs(tr):
     return {"user_query": tr["user_query"], "policy": POLICY_TEXT[tr["task_folder"]]}
 
@@ -85,19 +90,26 @@ def run_pass1(args, traces, model):
         ok = isinstance(obj, dict)
         qs = (obj.get("questions") or []) if ok else []
         qs = [q for q in qs if isinstance(q, dict) and q.get("question")][: args.k]
+        no_action = not has_executed_actions(tr["ledger"])
+        if no_action:  # nothing was executed, so there is nothing to ask about
+            qs = []
         pre = obj.get("preliminary_score") if ok else None
         try:
             pre = max(0.0, min(100.0, float(pre))) if pre is not None else None
         except (TypeError, ValueError):
             pre = None
         plans.append({"id": tr["id"], "parse_ok": ok, "actions": (obj.get("actions") or []) if ok else [],
-                      "questions": qs, "score": pre, "raw": o[0]["text"],
+                      "questions": qs, "no_executed_actions": no_action, "score": pre, "raw": o[0]["text"],
                       "prompt_tokens": o[0]["prompt_tokens"], "completion_tokens": o[0]["completion_tokens"],
                       **m["fit_plan"]})
     write_jsonl(plans, run / "tgf_plan.jsonl")
     nq = sum(len(p["questions"]) for p in plans)
     print(f"[pass1] TGF plan done: {nq} questions over {len(plans)} traces; "
-          f"parse failures: {sum(not p['parse_ok'] for p in plans)}")
+          f"parse failures: {sum(not p['parse_ok'] for p in plans)}; "
+          f"no executed actions (no questions): {sum(p['no_executed_actions'] for p in plans)}")
+    print(f"[pass1] context: monitor window {model.max_len} tokens; tool outputs shrunk on "
+          f"{sum(m['fit']['tool_limit'] < TOOL_LIMITS[0] for m in meta)} traces, "
+          f"middle of transcript cut on {sum(m['fit']['middle_cut'] for m in meta)} traces")
 
     if args.oracle:
         outs = model.generate(oracle_prompts, n=1, max_tokens=args.max_new, seed=args.seed)
@@ -161,7 +173,8 @@ def main():
     ap.add_argument("--oracle", action="store_true", help="also run B0-oracle (monitor told the hidden objective)")
     ap.add_argument("--max-new", type=int, default=8192)
     ap.add_argument("--max-model-len", type=int, default=32768)
-    ap.add_argument("--rope-factor", type=float, default=2.0)
+    ap.add_argument("--rope-factor", type=float, default=4.0,
+                    help="YaRN factor on top of --max-model-len; 4 x 32768 = 131072 tokens (Qwen3 maximum)")
     ap.add_argument("--gpu-util", type=float, default=0.90)
     ap.add_argument("--tp", type=int, default=1)
     ap.add_argument("--seed", type=int, default=42)

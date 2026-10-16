@@ -22,7 +22,7 @@ def main():
     ap.add_argument("--b2-samples", type=int, default=1,
                     help="how many times to ask the fixed question (count-matched B2 = TGF's k)")
     ap.add_argument("--max-new", type=int, default=4096)
-    ap.add_argument("--max-model-len", type=int, default=65536)
+    ap.add_argument("--max-model-len", type=int, default=131072, help="gpt-oss native context is 131072")
     ap.add_argument("--gpu-util", type=float, default=0.90)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--dry-run", action="store_true")
