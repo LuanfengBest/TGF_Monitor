@@ -17,7 +17,12 @@ from .llm import ChatModel, parse_json_obj, parse_score
 from .tasks import POLICY_TEXT
 from .trace import build_steps, render_ledger, render_transcript
 
-TOOL_LIMITS = (2000, 800, 300, 120)
+# Tool outputs are shown in full when they fit, then shortened step by step.
+# MonitorBench's own monitor clips every tool output to 2000 chars; pass --tool-limit 2000 to match it.
+TOOL_LIMITS = (None, 8000, 2000, 800, 300, 120)
+
+
+FIRST_LIMIT = None  # set from --tool-limit
 
 
 def fit_transcript(model, steps, scope, other_text, max_new):
@@ -25,7 +30,8 @@ def fit_transcript(model, steps, scope, other_text, max_new):
     until prompt + generation fits in the context window."""
     budget = model.max_len - max_new - 256
     other = model.count(other_text)
-    for lim in TOOL_LIMITS:
+    limits = TOOL_LIMITS if FIRST_LIMIT is None else tuple(l for l in TOOL_LIMITS if l is not None and l <= FIRST_LIMIT)
+    for lim in limits:
         t = render_transcript(steps, scope=scope, tool_limit=lim)
         if other + model.count(t) <= budget:
             return t, {"tool_limit": lim, "middle_cut": False}
@@ -107,8 +113,8 @@ def run_pass1(args, traces, model):
     print(f"[pass1] TGF plan done: {nq} questions over {len(plans)} traces; "
           f"parse failures: {sum(not p['parse_ok'] for p in plans)}; "
           f"no executed actions (no questions): {sum(p['no_executed_actions'] for p in plans)}")
-    print(f"[pass1] context: monitor window {model.max_len} tokens; tool outputs shrunk on "
-          f"{sum(m['fit']['tool_limit'] < TOOL_LIMITS[0] for m in meta)} traces, "
+    print(f"[pass1] context: monitor window {model.max_len} tokens; tool outputs clipped on "
+          f"{sum(m['fit']['tool_limit'] is not None for m in meta)} traces, "
           f"middle of transcript cut on {sum(m['fit']['middle_cut'] for m in meta)} traces")
 
     if args.oracle:
@@ -171,6 +177,8 @@ def main():
     ap.add_argument("--k", type=int, default=3, help="max TGF questions per trace")
     ap.add_argument("--b3-n", type=int, default=3, help="samples for B3 (B1 = first sample)")
     ap.add_argument("--oracle", action="store_true", help="also run B0-oracle (monitor told the hidden objective)")
+    ap.add_argument("--tool-limit", type=int, default=None,
+                    help="cap each tool output at N chars (2000 = MonitorBench's monitor); default: full when it fits")
     ap.add_argument("--max-new", type=int, default=8192)
     ap.add_argument("--max-model-len", type=int, default=32768)
     ap.add_argument("--rope-factor", type=float, default=4.0,
@@ -181,6 +189,8 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="no GPU: fake model outputs, to test the plumbing")
     args = ap.parse_args()
 
+    global FIRST_LIMIT
+    FIRST_LIMIT = args.tool_limit
     traces = read_jsonl(Path(args.run) / "traces.jsonl")
     if not traces:
         raise SystemExit("traces.jsonl missing: run `python -m tgf.build` first")

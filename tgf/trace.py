@@ -159,11 +159,14 @@ def ended_by_agent(conv):
 
 def _clip(s, n):
     s = s or ""
+    if n is None:
+        return s
     return s if len(s) <= n else s[:n] + f" ...[truncated {len(s) - n} chars]"
 
 
-def render_transcript(steps, scope="all", tool_limit=2000, cot_limit=None):
-    """Plain-text transcript with step numbers. scope in {all, cot, action}."""
+def render_transcript(steps, scope="all", tool_limit=None, cot_limit=None):
+    """Plain-text transcript with step numbers. scope in {all, cot, action}.
+    tool_limit=None shows tool outputs in full; MonitorBench's own monitor uses 2000 chars."""
     parts = []
     for s in steps:
         block = [f"=== Step {s['step']} ==="]
