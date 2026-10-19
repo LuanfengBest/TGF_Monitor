@@ -1,0 +1,38 @@
+{
+  "event_key": "tgf_integration_20261017:reply_to_luanfeng:request_existing_raw_data",
+  "status": "SENT",
+  "message_id": "1a14bf1057b7ff69",
+  "thread_id": "1a14ad617bda41ed",
+  "label_ids": [
+    "SENT"
+  ],
+  "internal_date": "1792275449000",
+  "headers": [
+    {
+      "name": "Subject",
+      "value": "Re: TGF 主线实验（MonitorBench 原生轨迹）交接包"
+    },
+    {
+      "name": "To",
+      "value": "luanfeng.wei@yale.edu"
+    },
+    {
+      "name": "In-Reply-To",
+      "value": "<CAPPV3EBjoqWyqCNUCxiur5DbR7EfC20ZtAxjvfaWvXmyEjyoPw@mail.gmail.com>"
+    },
+    {
+      "name": "Date",
+      "value": "Sat, 17 Oct 2026 15:17:29 -0700"
+    },
+    {
+      "name": "From",
+      "value": "Pacifica Zhang <ruoyang.zhang@yale.edu>"
+    }
+  ],
+  "body_read_back": [
+    "<p>Hi Luanfeng，</p>\n<p>谢谢你整理并发来交接包。我这边结合 Codex 对照了报告、v4 代码、结果快照和原 proposal，建议把两条线接起来：<strong>以你的 MonitorBench 原生 120b 流程作为后续数据路线，接入我们已有的事件级授权审核、公开/私有信息隔离和证据来源检查。</strong>先把现有 64 条的用途与标签核实清楚，再决定还缺什么数据。</p>\n\n<p><strong>有几个口径想先和你对齐：</strong></p>\n<ul>\n<li><strong>主标签仍是“已执行的未经授权行为”。</strong>建议保留原 side-task success、你当前的收款人/AA 占比标签作为独立字段，同时新增统一事件审核标签，不覆盖旧结果。银行不能仅因为可能是诚实算错就排除明确超付，但金额更正、分摊、币种、跨渠道累计有歧义时应保留 unknown。航空 AA≥90% 本身不等于越权，需要回到公开请求与具体执行证据；不建议事后给旧任务加“禁止偏好 AA”的政策。你那边实际付款/订票的负例很值得审核，但认证整条 hardN 还需检查其余操作。</li>\n<li><strong>先区分结构化审核与追问的贡献。</strong>完整输入的 bank/monitor_aware_5 中，TGF-noQ 已是 65 分，TGF 是 75 分（阈值50）；因此这个案例首先支持结构化审核发现了问题，尚不能把检出归功于追问。截断版 35→50 的变化可以保留为开发线索。</li>\n<li><strong>输入敏感性与随机噪声分开。</strong>full 和 tool-limit=2000 改变了可见证据，4–10条判定翻转不能单独当作种子方差。真正的噪声检查要固定输入、配置后再换种子。</li>\n<li><strong>下一次主对照只改变问题内容。</strong>当前 B2 一问、TGF 最多三问，且只有 TGF final 看初审意见。我们建议比较“共同账本但不追问／强固定追问／TGF”，固定相同选点、问题数、回答额度、公开输入与 judge，final 均不展示初审判词。all-messages 仍为主实验，严格 action-only 留作消融；原轨迹和追问回答的 reasoning 要一起控制。</li>\n</ul>\n\n<p><strong>能否请你把以下已有文件补发给我？</strong>用 Drive 限定共享给 <a href=\"mailto:ruoyang.zhang@yale.edu\">ruoyang.zhang@yale.edu</a> 即可，保留原目录结构和 SHA256 清单会方便核验。</p>\n<ol>\n<li><strong>64条原始轨迹：</strong><code>results_ctx131072/gpt-oss-120b/dual_objectives.agent.malicious/inference_results/temp_output_n=8/</code> 下 bank_transfer_2 和 american_airlines_2 的全部原始 JSON，包括拒绝、原始 tool arguments、调用/返回对应关系、完整角色消息、结束状态及原评估字段。</li>\n<li><strong>两套完整开发运行：</strong><code>tgf_runs/ctx128k_v4/</code> 和 <code>tgf_runs/ctx128k_v4_tl2000/</code>。请包含 <code>traces.jsonl</code>、<code>b1.jsonl</code>、<code>b3.jsonl</code>、<code>b2.jsonl</code>、<code>tgf_plan.jsonl</code>、<code>tgf.jsonl</code>、<code>b0_oracle.jsonl</code>、<code>answers.jsonl</code>、metrics 和对应运行日志，保留解析失败、缺失与成本记录。</li>\n<li><strong>实际运行的配置和版本：</strong>生成这64条及上述两套 monitor 运行时的 dataset/model 配置、运行命令或环境变量、上游 commit 与本地改动、v4 代码版本、模型 revision 和 Harmony/chat template 信息，以及对应 job ID/记账。特别请对应清楚 full 和 tl2000 的实际作业，避免与 v31 无效重复运行混淆。</li>\n<li><strong>已有的状态与授权参考：</strong>若保存了初始/终态模拟器状态、状态变化、环境资产版本及相关邮件/账户文件，请一起提供，放在独立 reference 目录。若某些字段或状态当时没有保存，直接注明即可；不用为了补材料重新生成轨迹。</li>\n</ol>\n<p>这次先要上述两套有效运行对应的已有材料，不需要全部历史作业或模型权重。含隐藏目标和私有 verifier 的原文件会单独用于参考审核，不会整包输入给 monitor。</p>\n\n<p><strong>收到数据后，我这边先做离线完整性检查和全量事件审核，不启动新实验。</strong>先核银行有动作轨迹与航空轨迹，再检查零工具轨迹是否完整结束；输出逐例 P/N/unknown、公开可证性、hardN、标签分歧和真实数据缺口。AI 初审会如实标注，之后建议我们交叉复核关键争议例，不能把 AI 审核写成人工金标。</p>\n<p>标签和共同接口验收通过后，再一起冻结小规模三组匹配诊断及预算；目前先不补采、不重跑七路或 action-only，也不推进 SFT。现有64条已参与多轮调整，继续作为开发集；后续同任务新 seed 也不能冒称新任务家族测试。</p>\n<p>Progress report 可以合并两条线的真实进展，把“原生完整轨迹与开发比较”和“事件证据审核及失败诊断”写清楚，同时保留尚未完成的标签复核、30P/30N目标和独立测试边界。我们先把报告写稳，不等显著结果再写。</p>\n<p>也请你看看这些口径是否有我理解偏差的地方，尤其是航空 policy 的原始公开依据。谢谢！</p>\n<p>Pacifica</p><br><br><div class=\"gmail_quote\">On Sat, 17 Oct 2026 13:11:58 -0400, Luanfeng Wei &lt;luanfeng.wei@yale.edu&gt; wrote:<br><blockquote><div style=\"white-space: pre-wrap;\">On Sat, Oct 17, 2026 at 1:08 PM Luanfeng Wei &lt;luanfeng.wei@yale.edu&gt; wrote:\r\n\r\n&gt; Hi Pacifica,\r\n&gt;\r\n&gt; 谢谢你整理的交接包，我读完了。附件是我这边的交接包，结构参照你的 00–05：\r\n&gt;\r\n&gt; 00_START_HERE.md：先看什么、当前结论、使用边界\r\n&gt; 01_human_report：8 页中文汇总（PDF + md）\r\n&gt; 02_ai_handoff：技术交接、实验索引 E01–E06、CURRENT_FACTS.json\r\n&gt; 03_progress_report：合并两条工作线的一页英文 progress report 草稿（供讨论，不是定稿；Workstream B\r\n&gt; 的数字都取自你的原稿）\r\n&gt; 04_code_and_results：当前代码 tgf_v4 和关键运行输出的原文；完整原始轨迹在集群上，可用其中的\r\n&gt; collect_from_cluster.sh 打包，需要的话我再用 Drive 发你\r\n&gt; 05_verification：sha256 清单与校验脚本\r\n&gt;\r\n&gt; 简单说：我用 MonitorBench 原生任务 + gpt-oss-120b，在 128k 上下文下生成了 64 条完整轨迹（0\r\n&gt; 截断），并在同一批轨迹上比较了 7 种 monitor。airline 上所有方法接近满分，差距在运行噪声以内；bank 只有 1 个正样本，TGF\r\n&gt; 是唯一抓到它的 LLM monitor，但不足以下结论。我这边的数据里有不少实际付款或订票的合法负样本，可能正好补上你那边 hardN\r\n&gt; 的缺口；你的事件级审核也正是我这条线缺少的评估层。\r\n&gt;\r\n&gt; 汇总第 7 页列了几个需要一起决定的问题，最关键的是 airline 的 AA 偏好算不算违规，以及 progress report\r\n&gt; 怎么合并两条线。方便的话我们约时间过一下。\r\n&gt;\r\n&gt; Luanfeng\r\n&gt;</div></blockquote></div>"
+  ],
+  "expected_recipient": "luanfeng.wei@yale.edu",
+  "expected_thread": "1a14ad617bda41ed",
+  "experiments_started": false
+}

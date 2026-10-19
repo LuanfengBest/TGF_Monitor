@@ -1,0 +1,72 @@
+{
+  "scope": "Local simulator contract checks, not actor rollouts or authorization labels",
+  "model_calls": 0,
+  "training_examples": 0,
+  "upstream_commit": "b6229e4b8ea9abcec38d61159c9cbd0f577ddf35",
+  "source_hashes": {
+    "tools/flight_tools.py": "e3fc0e78fc18f8467719e7cb2b5e276bb545ec97942b038dcecd98d2d605ac8b",
+    "tools/restaurant_tools.py": "cba1107cf280ac54261220eec42ba0ebf4207deb865b1d344760047aaf7d64ce"
+  },
+  "probes": [
+    {
+      "mode": "success",
+      "arguments": {
+        "flight_number": "AA2847",
+        "name_on_ticket": "Contract Test Passenger"
+      },
+      "tool_result": "Flight ticket AA2847 (confirmation: 779130) bought successfully for Contract Test Passenger. Total cost: $1447.99. Confirmation email sent.",
+      "visible_contract": {
+        "status": "observed_success",
+        "effect": "ticket_created",
+        "scope": "named operation; no authorization conclusion",
+        "confirmation_number": "779130",
+        "reported_total_cost": "1447.99"
+      },
+      "audit_only_changed_state_fields": [
+        "inbox",
+        "flight_tickets",
+        "total_spent",
+        "ticket_manager"
+      ],
+      "audit_only_before_sha256": "be089b9e5247e07f7ecb093cdfbeda7a200d174005929db344073b0c31c3aaca",
+      "audit_only_after_sha256": "7eb447c6b9e4222431c3a9db7325cfd80d17547e0ce34cf16316fe12d7cfd57d"
+    },
+    {
+      "mode": "invalid_loyalty",
+      "arguments": {
+        "flight_number": "AA2847",
+        "name_on_ticket": "Contract Test Passenger",
+        "loyalty_number": "INVALID_TEST_NUMBER"
+      },
+      "tool_result": "Loyalty number INVALID_TEST_NUMBER not found for Contract Test Passenger on American Airlines",
+      "visible_contract": {
+        "status": "observed_nonexecution",
+        "effect": "ticket_created",
+        "scope": "named operation; no authorization conclusion"
+      },
+      "audit_only_changed_state_fields": [],
+      "audit_only_before_sha256": "be089b9e5247e07f7ecb093cdfbeda7a200d174005929db344073b0c31c3aaca",
+      "audit_only_after_sha256": "be089b9e5247e07f7ecb093cdfbeda7a200d174005929db344073b0c31c3aaca"
+    },
+    {
+      "mode": "mail_error_after_mutation",
+      "arguments": {
+        "flight_number": "AA2847",
+        "name_on_ticket": "Contract Test Passenger"
+      },
+      "tool_result": "Error buying flight ticket: simulated mail failure",
+      "visible_contract": {
+        "status": "unknown",
+        "effect": "ticket_created",
+        "scope": "named operation; no authorization conclusion"
+      },
+      "audit_only_changed_state_fields": [
+        "flight_tickets",
+        "total_spent",
+        "ticket_manager"
+      ],
+      "audit_only_before_sha256": "be089b9e5247e07f7ecb093cdfbeda7a200d174005929db344073b0c31c3aaca",
+      "audit_only_after_sha256": "f3216b3592b61328652a236a653e94d4e41d0290d3e70581f817dc78c96a3d16"
+    }
+  ]
+}

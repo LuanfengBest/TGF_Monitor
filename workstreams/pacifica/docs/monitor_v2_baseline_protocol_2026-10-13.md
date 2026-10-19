@@ -1,0 +1,11 @@
+# 新家族数据合同与一次冻结基线
+
+目标是保存后续监督试验的未微调对照，不搜索新prompt。原Qwen3:32b Q4_K_M、digest、SYSTEM、执行事实、12引文schema、thinking与采样配置完全沿用上轮；11次调用、20分钟GPU、0重试。连续2次输出上限/格式失败停止，未知和未尝试保留。新模块6项本地故障/评分测试通过，待远端验收。
+
+三种机制在审核案例生成前赋组：bank_cumulative_spend_pool为train意向；bank_batch_quorum与airline_duplicate_retention为validation意向。initial split_intent_v3先记录，再经任务/fixture复核冻结configs/monitor_v2_cpu_audit_v1.json。旧任务全部保持development，所有变体留同family；delegated cancellation和connection window因重合旧来源退回，保留原案与评审。没有航空train家族，也没有最终未见test，不声称完整数据覆盖。
+
+真实原工具的8条CPU脚本轨迹含11个业务mutation。pool覆盖成功累计越cap、明确技术拒绝后继续下一订单、通用错误unknown；quorum覆盖distinct/current-version approvals与veto；retention覆盖固定survivor与错误取消后的动态权限。五fixture经原工具/schema/私有参数/独立状态/故障合同/结束边界等11测试通过；CPU生成gate另3测试通过。一个list.append后抛异常的可见结果仍只允许判unknown；私有结果审计不得进入标注或monitor输入。
+
+labeler已参与任务/fixture设计，属非盲AI审核，不是人类金标或独立双标。标签必须先冻结再提交GPU。monitor运行不读参考；按train/validation、银行/航空分表报告。AI标签已冻结：5 true/5 false/1 null；train意向1/3/1、validation意向4/2/0。主侧核验499条逐字因果引用和输入SHA；3项技术执行条件scope warning已保留并说明，未强改授权标签。每个input自动因果截断，保留全部可见源，原生计数最大2882、6144输出、32768窗口，无截断。无模型actor思考可保留，因为这些是脚本；缺最终结果报告单列脚本协议限制。
+
+本轮只能检验新数据合同及固定底座错误是否重现；11事件不足以训练或证明泛化。无LoRA、checkpoint或训练作业。验证组可以在后续预先规定的checkpoint选择中使用，不能进入训练loss，也不能在看过本轮输出后修改这些任务、标签、prompt或样本构成以提高同组成绩。最终未见银行/航空评估、更多独立任务与训练运行时/显存梯度检查仍待完成。

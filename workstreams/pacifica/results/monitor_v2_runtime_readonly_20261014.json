@@ -1,0 +1,84 @@
+{
+  "checked_at": "2026-10-14T00:36:02.170569-04:00",
+  "job_id": "29493425",
+  "read_only_system_checks": true,
+  "checks": [
+    {
+      "argv": [
+        "getquota"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Error: No quota groups found for user 'hpcllm_rz377'. Specify a group with -g.\n"
+    },
+    {
+      "argv": [
+        "sinfo",
+        "-p",
+        "education",
+        "-o",
+        "%P|%a|%l|%G|%m"
+      ],
+      "returncode": 0,
+      "stdout": "PARTITION|AVAIL|TIMELIMIT|GRES|MEMORY\neducation|up|1-00:00:00|(null)|376832\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "scontrol",
+        "show",
+        "partition",
+        "education"
+      ],
+      "returncode": 0,
+      "stdout": "PartitionName=education\n   AllowGroups=ALL AllowAccounts=admins,education AllowQos=normal,interactive\n   AllocNodes=ALL Default=NO QoS=part_education\n   DefaultTime=01:00:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=30 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=1-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED\n   Nodes=c1102u03n[01-04],c1104u03n[01-04]\n   PriorityJobFactor=1 PriorityTier=5 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=OFF\n   State=UP TotalCPUs=384 TotalNodes=8 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   DefMemPerCPU=5120 MaxMemPerNode=UNLIMITED\n   TRES=cpu=384,mem=2944G,node=8,billing=384\n   TRESBillingWeights=CPU=1,Mem=0.067G,GRES/gpu=15,GRES/gpu:a5000=15,GRES/gpu:rtx_5000_ada=35,GRES/gpu:a40=35,GRES/gpu:l40s=40,GRES/gpu:h100=150,GRES/gpu:h200=240,GRES/gpu:rtx_pro_6000_blackwell=65,GRES/gpu:b200=300\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "squeue",
+        "--me",
+        "-o",
+        "%i|%j|%T|%M|%l"
+      ],
+      "returncode": 0,
+      "stdout": "JOBID|NAME|STATE|TIME|TIME_LIMIT\n29493425|monitor-v2-runtime-readonly|RUNNING|0:06|5:00\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sacct",
+        "-j",
+        "29490480",
+        "--parsable2",
+        "--noheader",
+        "--format=JobIDRaw,State,ExitCode,ElapsedRaw,AllocTRES,Start,End"
+      ],
+      "returncode": 0,
+      "stdout": "29490480|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n29490480.batch|COMPLETED|0:0|7|cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n29490480.extern|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n",
+      "stderr": ""
+    }
+  ],
+  "installed_distributions": {
+    "torch": null,
+    "transformers": null,
+    "peft": null,
+    "trl": null,
+    "bitsandbytes": null,
+    "datasets": null,
+    "accelerate": null
+  },
+  "qwen_hf_cache_presence": [
+    {
+      "path": "/home/hpcllm_rz377/.cache/huggingface/hub/models--Qwen--Qwen3-32B",
+      "exists": false,
+      "scope": "Only explicitly configured or default HF model cache; not exhaustive filesystem search."
+    }
+  ],
+  "training_runs": 0,
+  "model_calls": 0,
+  "gpu_allocated": false,
+  "weights_downloaded": false,
+  "training_memory_or_gradients_verified": false,
+  "training_eligible": false
+}

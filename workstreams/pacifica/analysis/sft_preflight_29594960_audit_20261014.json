@@ -1,0 +1,86 @@
+{
+  "status": "technical_checks_passed_frozen_time_gate_failed",
+  "job_id": "29594960",
+  "original_receipt_unchanged": true,
+  "training_eligible": false,
+  "effect_training_runs": 0,
+  "gradient_preflight_steps": 2,
+  "technical_generation_calls": 2,
+  "technical_input_tokens": 4708,
+  "technical_output_tokens": 1610,
+  "known_gpu_job_seconds": 575,
+  "technical_checks": {
+    "finite_loss_gradient": true,
+    "only_lora_trainable": true,
+    "same_initialization_sha": true,
+    "loss_mask": true,
+    "adapter_save_reload_logits_identical": true
+  },
+  "arms": [
+    {
+      "arm": "ordinary_sft",
+      "example_id": "q017__e0002",
+      "sequence_tokens": 2417,
+      "trainable_parameters": 67108864,
+      "finite_loss": 2.072918653488159,
+      "gradient_norm": 1.5977064371109009,
+      "initialization_sha256": "76d245cb763ea9b8cbacb5211494ff7d25772f32114908fefe5b49a31fc3ae65",
+      "peak_allocated_bytes": 32549179904,
+      "peak_reserved_bytes": 34567356416,
+      "load_seconds": 184.1412955080159,
+      "one_step_seconds": 28.133681011851877,
+      "save_reload_max_abs_logit_diff": 0.0,
+      "conservative_128_microbatch_seconds": 3905.252465025056,
+      "generated_tokens": 1024
+    },
+    {
+      "arm": "evidence_sft",
+      "example_id": "q017__e0002",
+      "sequence_tokens": 2618,
+      "trainable_parameters": 67108864,
+      "finite_loss": 1.3966481685638428,
+      "gradient_norm": 0.8336517810821533,
+      "initialization_sha256": "76d245cb763ea9b8cbacb5211494ff7d25772f32114908fefe5b49a31fc3ae65",
+      "peak_allocated_bytes": 33250581504,
+      "peak_reserved_bytes": 35490103296,
+      "load_seconds": 31.865435450337827,
+      "one_step_seconds": 13.885191195178777,
+      "save_reload_max_abs_logit_diff": 0.0,
+      "conservative_128_microbatch_seconds": 1929.1699084332213,
+      "generated_tokens": 586
+    }
+  ],
+  "generations": [
+    {
+      "input_tokens": 2354,
+      "output_tokens": 1024,
+      "seconds": 106.7047903300263,
+      "finished_with_eos": false
+    },
+    {
+      "input_tokens": 2354,
+      "output_tokens": 586,
+      "seconds": 59.583927150815725,
+      "finished_with_eos": true
+    }
+  ],
+  "final_evaluation_input_tokens_max": 2565,
+  "evaluation_estimate_seconds_using_slowest_1024_token_probe": 11828.258651150856,
+  "caveat": "First cold microbatch is not steady-state throughput. 65.1/32.2min estimates are conservative, not actual training times; technical train-example generations are not quality measurements or final eval.",
+  "proposal_not_authorized": {
+    "training_jobs": 2,
+    "minutes_each": 75,
+    "evaluation_jobs": 1,
+    "evaluation_minutes": 210,
+    "preflight_cap_already_used": 20,
+    "total_cap_minutes_including_original_preflight": 380,
+    "remaining_cap_minutes": 360,
+    "CPU_RAM_GiB_each": 96,
+    "GPU": "same single A40",
+    "new_generations": 108,
+    "new_effect_training_runs": 2,
+    "automatic_retry": 0,
+    "new_preflight_steps": 0,
+    "model_data_recipe_unchanged": true
+  }
+}

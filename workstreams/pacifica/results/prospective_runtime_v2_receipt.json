@@ -1,0 +1,63 @@
+{
+  "status": "failed",
+  "job_id": "29560911",
+  "plan_sha256": "07208965edb16304fee9e4b3ab9d52f00173847384db06a1442da035225087d7",
+  "target": "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/runtime/prospective_actor_v2_deps",
+  "model_calls": 0,
+  "gpu_jobs": 0,
+  "training_runs": 0,
+  "checks": [
+    {
+      "command": [
+        "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--target",
+        "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/runtime/prospective_actor_v2_deps",
+        "--no-deps",
+        "--require-hashes",
+        "--only-binary=:all:",
+        "--no-cache-dir",
+        "--retries",
+        "0",
+        "--timeout",
+        "45",
+        "--report",
+        "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/results/prospective_runtime_v2_pip_report.json",
+        "-r",
+        "configs/prospective_actor_v2_requirements.lock"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/.venv/bin/python",
+        "-c",
+        "import pandas,numpy,openpyxl,dateutil,pytz,tzdata,et_xmlfile,six; print(\"all overlay imports passed\")"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/.venv/bin/python",
+        "scripts/prospective_actor_v2.py",
+        "verify"
+      ],
+      "returncode": 1
+    }
+  ],
+  "elapsed_seconds": 456.8046934399754,
+  "versions": {
+    "et-xmlfile": "2.0.0",
+    "numpy": "2.2.6",
+    "openpyxl": "3.1.5",
+    "pandas": "2.2.3",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.5",
+    "six": "1.17.0",
+    "tzdata": "2026.5"
+  },
+  "installed_bytes": 145076412,
+  "error": "CalledProcessError(1, ['/nfs/roberts/project/hpcllm/hpcllm_rz377/monitorability_tgf/.venv/bin/python', 'scripts/prospective_actor_v2.py', 'verify'], None, None)"
+}

@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-15T21:24:44.141254-04:00",
+  "purpose": "Feasibility arithmetic before seeing batch2 outputs; not a power analysis or success guarantee",
+  "fixed_task_instances": 2,
+  "target_per_environment": {
+    "P": 30,
+    "N": 30,
+    "public_P": 15,
+    "sensitive_N": 15
+  },
+  "remaining_attempts_per_environment_before_b02": 105,
+  "observed": {
+    "bank": {
+      "planned": 15,
+      "P": 13,
+      "N": 0,
+      "public_P": 5,
+      "sensitive_N": 0,
+      "guard_failed": 2
+    },
+    "air": {
+      "planned": 15,
+      "P": 8,
+      "N": 4,
+      "unknown": 1,
+      "public_P": 8,
+      "sensitive_N": 2,
+      "guard_failed": 2
+    }
+  },
+  "needed_over_remaining": {
+    "bank": {
+      "N": 30,
+      "N_rate": 0.2857142857142857,
+      "sensitive_N": 15,
+      "sensitive_N_rate": 0.14285714285714285,
+      "public_P": 10
+    },
+    "air": {
+      "N": 26,
+      "N_rate": 0.24761904761904763,
+      "sensitive_N": 13,
+      "sensitive_N_rate": 0.12380952380952381,
+      "public_P": 7
+    }
+  },
+  "interpretation": "Bank negative yield is the binding problem. Another unchanged batch tests whether seed variation supplies any eligible negatives; it does not justify consuming all remaining budget if the pattern persists. Neither success nor a statistical effect is guaranteed."
+}

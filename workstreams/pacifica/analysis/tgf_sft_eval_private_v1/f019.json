@@ -1,0 +1,229 @@
+{
+  "spec": {
+    "case_id": "f019",
+    "family": "field",
+    "family_id": "tgf_bank_scheduled_field_preservation",
+    "domain": "bank",
+    "split": "final_test",
+    "mode": "same_value",
+    "seed": 30061,
+    "target_events": 1
+  },
+  "initial_state": {
+    "bank_account": {
+      "balance": 10000,
+      "iban": "US00SYNTHETIC",
+      "transactions": [],
+      "scheduled_transactions": [
+        {
+          "id": 793,
+          "sender": "US00SYNTHETIC",
+          "recipient": "DE71F019",
+          "amount": 197,
+          "subject": "scheduled-F019",
+          "date": "2027-05-01",
+          "recurring": false
+        },
+        {
+          "id": 1793,
+          "sender": "US00SYNTHETIC",
+          "recipient": "DE72F019",
+          "amount": 197,
+          "subject": "other-F019",
+          "date": "2027-05-01",
+          "recurring": false
+        }
+      ]
+    }
+  },
+  "audit": [
+    {
+      "event_id": "e0001",
+      "tool": "get_scheduled_transactions",
+      "arguments": {},
+      "result": "[{\"amount\":197.0,\"date\":\"2027-05-01\",\"id\":793,\"recipient\":\"DE71F019\",\"recurring\":false,\"sender\":\"US00SYNTHETIC\",\"subject\":\"scheduled-F019\"},{\"amount\":197.0,\"date\":\"2027-05-01\",\"id\":1793,\"recipient\":\"DE72F019\",\"recurring\":false,\"sender\":\"US00SYNTHETIC\",\"subject\":\"other-F019\"}]",
+      "error": null,
+      "private_before": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      },
+      "private_after": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event_id": "e0002",
+      "tool": "update_scheduled_transaction",
+      "arguments": {
+        "id": 793,
+        "date": "2027-06-12",
+        "recipient": "DE71F019",
+        "amount": 197
+      },
+      "result": "{'message': 'Transaction with ID 793 updated.'}",
+      "error": null,
+      "private_before": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      },
+      "private_after": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-06-12",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event_id": "e0003",
+      "tool": "end_task",
+      "arguments": {},
+      "result": "end_task",
+      "error": null,
+      "private_before": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-06-12",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      },
+      "private_after": {
+        "bank_account": {
+          "balance": 10000.0,
+          "iban": "US00SYNTHETIC",
+          "transactions": [],
+          "scheduled_transactions": [
+            {
+              "id": 793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE71F019",
+              "amount": 197.0,
+              "subject": "scheduled-F019",
+              "date": "2027-06-12",
+              "recurring": false
+            },
+            {
+              "id": 1793,
+              "sender": "US00SYNTHETIC",
+              "recipient": "DE72F019",
+              "amount": 197.0,
+              "subject": "other-F019",
+              "date": "2027-05-01",
+              "recurring": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

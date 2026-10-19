@@ -1,0 +1,93 @@
+{
+  "completed_at": "2026-10-14T00:49:54.977937-04:00",
+  "job_id": "29494474",
+  "status": "completed",
+  "archive_sha256": "a1ff8356359229806b35e36db75db1122477198fd1d76db109a95639427291d4",
+  "manifest_sha256": "3ef7d4b81e99affd848a2963e65f0f38eec1c52cde93c1ced7c43ade9918e1c3",
+  "files_verified": 38,
+  "new_files": [
+    "analysis/monitor_contract_v2_review_20261014.json",
+    "analysis/monitor_contract_v2_tests_20261014.json",
+    "analysis/monitor_v2_feasibility_parent_review_20261014.json",
+    "analysis/monitor_v2_feasibility_queue_empty_20261014.jpg",
+    "analysis/monitor_v2_feasibility_queue_empty_20261014.txt",
+    "analysis/monitor_v2_runtime_readiness_20261014.json",
+    "analysis/monitor_v2_train_length_readiness_20261014.json",
+    "data/model_manifests/qwen3_32b_train_candidate_v1/config.json",
+    "data/model_manifests/qwen3_32b_train_candidate_v1/manifest.json",
+    "data/model_manifests/qwen3_32b_train_candidate_v1/model.safetensors.index.json",
+    "data/training/monitor_v2/family_proposals_v4/README.md",
+    "data/training/monitor_v2/family_proposals_v4/airline_atomic_ticket_bundle.json",
+    "data/training/monitor_v2/family_proposals_v4/bank_scheduled_field_preservation.json",
+    "data/training/monitor_v2/family_proposals_v4/manifest.json",
+    "data/training/monitor_v2/family_proposals_v4/split_intent.json",
+    "data/training/monitor_v2/family_proposals_v4/travel_calendar_interval_exclusion.json",
+    "data/training/monitor_v2/family_proposals_v4/travel_itinerary_field_projection.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/README.md",
+    "data/training/monitor_v2/family_proposals_v4_revision1/airline_atomic_ticket_bundle.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/bank_scheduled_field_preservation.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/conditional_next_cpu_plan.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/manifest.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/split_intent.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/travel_calendar_interval_exclusion.json",
+    "data/training/monitor_v2/family_proposals_v4_revision1/travel_itinerary_field_projection.json",
+    "docs/monitor_v2_feasibility_results_2026-10-14.md",
+    "results/monitor_v2_runtime_check_submission_20261014.json",
+    "results/monitor_v2_runtime_supplement_submission_20261014.json",
+    "scripts/monitor_contract_v2.py",
+    "scripts/monitor_v2_runtime_check_ood_20261014.sh",
+    "scripts/monitor_v2_runtime_supplement_ood_20261014.sh",
+    "tests/test_monitor_contract_v2.py",
+    "configs/monitor_v2_feasibility_upload_20261014_manifest.json"
+  ],
+  "backed_up_and_changed": [
+    "AI_use_log.md",
+    "PROJECT_LOG.md",
+    "STATUS.md",
+    "docs/team_handoff_2026-10-13.md"
+  ],
+  "checks": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/monitor_v2_baseline_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Frozen monitor sources and all inputs verified\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_monitor_contract_v2.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_duplicate_call_identity_and_return_are_rejected (test_monitor_contract_v2.ContractTests.test_duplicate_call_identity_and_return_are_rejected) ... ok\ntest_future_and_private_fields_rejected (test_monitor_contract_v2.ContractTests.test_future_and_private_fields_rejected) ... ok\ntest_json_ambiguity_and_nonfinite_values_rejected (test_monitor_contract_v2.ContractTests.test_json_ambiguity_and_nonfinite_values_rejected) ... ok\ntest_retrieves_original_and_offsets_without_generated_quote (test_monitor_contract_v2.ContractTests.test_retrieves_original_and_offsets_without_generated_quote) ... ok\ntest_same_success_string_cannot_bind_wrong_object (test_monitor_contract_v2.ContractTests.test_same_success_string_cannot_bind_wrong_object) ... ok\ntest_success_still_requires_separate_authorization (test_monitor_contract_v2.ContractTests.test_success_still_requires_separate_authorization) ... ok\ntest_technical_rejection_does_not_remove_authorization (test_monitor_contract_v2.ContractTests.test_technical_rejection_does_not_remove_authorization) ... ok\ntest_thinking_cannot_be_fact_or_permission (test_monitor_contract_v2.ContractTests.test_thinking_cannot_be_fact_or_permission) ... ok\ntest_unknown_effect_is_not_safe_under_frozen_contract (test_monitor_contract_v2.ContractTests.test_unknown_effect_is_not_safe_under_frozen_contract) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.004s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "sacct",
+        "-j",
+        "29490480,29493425,29493455",
+        "--parsable2",
+        "--noheader",
+        "--format=JobIDRaw,State,ExitCode,ElapsedRaw,AllocTRES,Start,End"
+      ],
+      "returncode": 0,
+      "stdout": "29490480|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n29490480.batch|COMPLETED|0:0|7|cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n29490480.extern|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:06:06|2026-10-14T00:06:13\n29493425|COMPLETED|0:0|6|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:35:56|2026-10-14T00:36:02\n29493425.batch|COMPLETED|0:0|6|cpu=2,mem=4G,node=1|2026-10-14T00:35:56|2026-10-14T00:36:02\n29493425.extern|COMPLETED|0:0|6|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:35:56|2026-10-14T00:36:02\n29493455|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:38:12|2026-10-14T00:38:19\n29493455.batch|COMPLETED|0:0|7|cpu=2,mem=4G,node=1|2026-10-14T00:38:12|2026-10-14T00:38:19\n29493455.extern|COMPLETED|0:0|7|billing=2,cpu=2,mem=4G,node=1|2026-10-14T00:38:12|2026-10-14T00:38:19\n",
+      "stderr": ""
+    }
+  ],
+  "closeout_script_sha256": "aca72ededb3e9b139d5b6f026db8c1b93753602796ae95585cb9b71d3dc5478b",
+  "training_runs": 0,
+  "model_calls": 0
+}

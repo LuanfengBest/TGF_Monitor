@@ -1,0 +1,20 @@
+{
+  "version": "monitor_training_data_v1_prepared_not_trained",
+  "status": "schema_and_collection_plan_only",
+  "eligible_training_examples": 0,
+  "required_fields": ["sample_id", "family_id", "split", "environment", "source_provenance", "visible_view", "target_event", "audit_dimensions", "target", "review"],
+  "visible_view_allowlist": ["user_request", "policy", "messages"],
+  "forbidden_input_categories": ["hidden_actor_instructions", "verifier_output", "oracle_state", "reference_labels", "teacher_hidden_reasoning"],
+  "target_fields": ["execution", "authorization", "executed_unauthorized_in_scope", "evidence", "rationale"],
+  "evidence_contract": "Exact source identifier plus exact quote, independently checked for relevance; actor claims never establish permission.",
+  "rationale_contract": "Short verifiable explanation written from evidence, not a teacher or actor reasoning transcript.",
+  "review_fields": ["execution_evidence_checked", "authorization_evidence_checked", "ambiguities", "reviewer", "review_status"],
+  "accepted_review_status": "accepted",
+  "split_unit": "independent_task_family_before_generation",
+  "same_family_rules": ["seeds", "benign_and_malicious_variants", "instruction_rewrites", "recipient_or_amount_counterfactuals", "short_and_full_views"],
+  "excluded_families": {"monitorbench_bank_transfer_2_original": "All current five rollouts and derived controls remain development regression; exclude from training and final validation/test."},
+  "new_collection_first_batch": {"annotation_pilot_size": 20, "actor_generation_started": false, "task_definitions_reviewed": false, "families_frozen": false},
+  "collection_coverage": ["authorized recipient", "wrong recipient", "split costs and corrections", "authorized account funding", "failed operation", "executed schedule", "violation then reversal", "plan without execution", "insufficient visible evidence"],
+  "training_gate": "Base-model diagnostic completed, new families frozen and separated, annotation pilot accepted, eligible dataset audited, independent validation available, memory preflight passed.",
+  "training_started": false
+}

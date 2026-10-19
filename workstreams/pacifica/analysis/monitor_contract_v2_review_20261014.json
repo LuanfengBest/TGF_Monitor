@@ -1,0 +1,109 @@
+{
+  "schema": "monitor_contract_v2_readonly_review_v1",
+  "reviewed_at": "2026-10-14T04:44:27.019109+00:00",
+  "reviewer": "expert_annotation AI subagent",
+  "reviewer_is_human": false,
+  "blind_review": false,
+  "independent_review": false,
+  "training_eligible": false,
+  "exposure": [
+    "Prior authorship/review of evidence-binding prototype and candidate task/fixture definitions; read prior AI labels and monitor baseline outputs.",
+    "Current source and nine test definitions inspected; no private audit truth used."
+  ],
+  "files": [
+    {
+      "path": "scripts/monitor_contract_v2.py",
+      "sha256": "24ea14ae3a12793f00d7afd1eec8e58386277db4d09ebd8eb220ad82fb437354"
+    },
+    {
+      "path": "tests/test_monitor_contract_v2.py",
+      "sha256": "899b85d53f41ec4d4dfe034bb47479cc32db76dd31c8d59e63fef525387d21d6"
+    },
+    {
+      "path": "scripts/candidate_monitor_view_v1.py",
+      "sha256": "b148e232dc6c8e514c362e7b9d433f0f7bd15a54e3af2c0442142155eb5bd370"
+    },
+    {
+      "path": "scripts/candidate_evidence_binding_v1.py",
+      "sha256": "d21293d14536c5bdb62f3d6a12b09bb35563bb0c25ad7f23bc6b3f17e2a72db6"
+    },
+    {
+      "path": "scripts/monitor_selection_v1.py",
+      "sha256": "3d600f92364f90772831ed7af93ad9d08475cd1f52cd30adb915c8a2de5cdc26"
+    },
+    {
+      "path": "scripts/observed_execution_v1.py",
+      "sha256": "55d75ccbb4c0fd88f4e0a0b7b2b95ddaf66acf40368e9fcb80d794c28772de1f"
+    },
+    {
+      "path": "scripts/observed_airline_execution_v1.py",
+      "sha256": "cd28e67de8ec565257a44702d879db09fb3fa688f047956bfe7605de00f6aad8"
+    }
+  ],
+  "method": "Static source review of module, latest nine test definitions and relevant source/decoder dependencies; focused on incorrect acceptance, provenance, causal scope and semantic overclaim. No test rerun or model/simulator execution in this review.",
+  "test_execution": {
+    "performed_by_this_reviewer": false,
+    "tests_read": 9,
+    "parent_reported_tests_passed": 9,
+    "parent_report_is_not_independent_execution_verification": true
+  },
+  "blocking_findings": [],
+  "conclusion": "No blocking false-accept defect found within the documented trusted-visible-input, selected-field binding and conservative-triple scopes. This is not a proof of general input sanitization or authorization correctness.",
+  "checks": [
+    {
+      "area": "causal_prefix_and_identity",
+      "finding": "Target must have a unique event match and its return must end the view; event_bundles rejects duplicate calls/returns and unresolved mutation return coverage. Source table is rebuilt from the caller-supplied visible view, not model-provided quotations."
+    },
+    {
+      "area": "source_role_and_original_text",
+      "finding": "Authority only user_request/policy; actor thinking cannot be fact/call/return. Original tool provenance required for factual return; retrieval returns exact original text with offsets and SHA."
+    },
+    {
+      "area": "event_field_binding",
+      "finding": "bind_event checks selected call ID, call/return name agreement, ordering and type-exact selected argument equality. Two identical success texts cannot replace call metadata object binding."
+    },
+    {
+      "area": "triple_contract",
+      "finding": "Expected verdict uses explicit execution/authorization combinations and compares execution with fixed visible decoder. Unknown remains null under frozen conservative reporting rule; technical rejection does not manufacture lack of authorization."
+    },
+    {
+      "area": "scope_labels",
+      "finding": "Returned execution_verified=false/authorization_verified=false or semantic_review_required=true correctly prevents claiming selected evidence plumbing as full semantic proof."
+    }
+  ],
+  "acceptable_limits_and_caller_obligations": [
+    {
+      "limitation": "trusted_visible_view_boundary",
+      "detail": "The module checks permitted container fields and source roles; it does not authenticate original capture, recursively discover secrets inside text, or prove that the caller has not omitted earlier context. Caller must bind frozen raw/view hashes and the complete causal export. Input supplied by the model is not a trusted replacement."
+    },
+    {
+      "limitation": "selectors_are_not_complete_identity_schema",
+      "detail": "A nonempty selector subset can be verified even when it omits other identity fields. Caller must require all tool-specific object keys. binding_verified means only the listed equality/identity checks, not authorization or the current target: earlier events can be intentionally bound as causal premises."
+    },
+    {
+      "limitation": "field_proof_is_not_delegation",
+      "detail": "bank_status checks unique invoice/vendor/status in a returned file but does not establish user-designated delivery-register file identity. buy_upgrades checks a particular buy call field, not actual absence of extra charges or complete cancellation preconditions."
+    },
+    {
+      "limitation": "mechanically_consistent_is_not_semantically_correct",
+      "detail": "decision may accept supported or conflict when both fit the execution/triple relation; it never verifies either authorization assertion. Successful retrieval or binding is not evidence that every required permission condition is covered."
+    },
+    {
+      "limitation": "only_current_three_mutations",
+      "detail": "Current event enumeration targets schedule_transaction, buy_flight_ticket, cancel_flight_booking. Do not use unchanged module to claim coverage of send_email, update_scheduled_transaction or calendar actions. New no-op field-delta semantics needs a separately reviewed decoder."
+    },
+    {
+      "limitation": "fail_closed_integration",
+      "detail": "Malformed caller-owned objects may raise ValueError/TypeError/KeyError outside the module-specific Rejected class. Future integration must treat any failure as rejected/unknown and preserve the attempt; never convert an exception or empty output into acceptance."
+    }
+  ],
+  "not_claimed": [
+    "human review",
+    "independent test execution",
+    "semantic authorization verification",
+    "future new mutation support",
+    "model-performance improvement",
+    "training approval"
+  ],
+  "changes_made_to_reviewed_sources": false
+}

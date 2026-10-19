@@ -1,0 +1,121 @@
+{
+  "protocol": "candidate_family_registry_v1",
+  "frozen_at": "2026-10-13T22:03:04.158434-04:00",
+  "family_review": {
+    "path": "analysis/candidate_family_review_20261013.json",
+    "sha256": "6191c667a26d525a424f40e5c53cadaf3a361c7d70720831c0bf8596fea0bd96"
+  },
+  "semantics_review": {
+    "path": "data/annotation_review/candidate_task_review_20261013/review_astra_v2.json",
+    "sha256": "64bdc64766d7bf351a79a4c428d759e5719ae52a17f6e9462bf11f34f8488032"
+  },
+  "family_independence_verified_scope": {
+    "kind": "authorization_mechanism_grouping_relative_to_reviewed_task_definitions",
+    "comparison_set": [
+      "monitorbench_bank_transfer_2_original",
+      "monitorbench_american_airlines_2_original",
+      "tgf_bank_invoice_release",
+      "tgf_airline_single_passenger_rebooking"
+    ],
+    "definition": "在已列明且哈希固定的任务定义之间，核实候选需要实质不同的授权条件关系、证据连接或动作先后依赖，不是只替换名称、金额、日期、种子或授权句子的同模板派生；这是任务机制分组核验。",
+    "does_not_mean": [
+      "statistical_independence",
+      "unseen_by_designers_or_reviewers",
+      "held_out_validation_or_test_eligibility",
+      "new_simulator_or_tool_implementation",
+      "independent_data_collection",
+      "all_future_family_variants_approved",
+      "human_gold_labels",
+      "training_eligibility"
+    ],
+    "shared_dependencies": "同父级环境共享模拟工具、运行时、执行合同，候选v1/v2及探针共享开发过程；跨家族可能共享授权原语和错误机制。",
+    "registry_rule": "只有registry同时保存本scope、family_id、development split、当前task/fixture hashes、冻结时间及本报告路径/hash时，family_independence_verified=true才有这里的限定含义。若调用方把该字段理解为统计独立或未见测试资格，则本报告不支持赋true。"
+  },
+  "candidates": {
+    "bank_invoice_release": {
+      "family_id": "tgf_bank_invoice_release",
+      "parent_environment_group": "monitorbench_banking_shared_simulator",
+      "family_independence_verified": true,
+      "verification_scope": "authorization_mechanism_grouping_relative_to_reviewed_task_definitions",
+      "statistical_independence_verified": false,
+      "task_semantics_reviewed": true,
+      "task_version": 2,
+      "fixture_hashes": {
+        "task.json": "551f921a0b1467b6af8b62de201afb34595b4fadf729da4c77fd1c824106711e",
+        "simulator_initial_state.json": "55d9591c760f99c7d814efd846fb576eab1f638d3797498d6bce1fc0748b8cd9"
+      },
+      "frozen_at": "2026-10-13T22:03:04.158434-04:00",
+      "split": "development",
+      "same_family_members": [
+        "bank_invoice_release draft",
+        "bank_invoice_release_v1",
+        "bank_invoice_release_v2",
+        "全部姓名/vendor/账号/invoice/金额/日期/seed改写",
+        "授权反事实、benign/malicious派生、失败探针",
+        "短/全视图及同一轨迹的所有目标事件"
+      ],
+      "training_eligible": false,
+      "validation_eligible": false,
+      "final_unseen_test_eligible": false
+    },
+    "airline_single_passenger_rebooking": {
+      "family_id": "tgf_airline_single_passenger_rebooking",
+      "parent_environment_group": "monitorbench_travel_shared_simulator",
+      "family_independence_verified": true,
+      "verification_scope": "authorization_mechanism_grouping_relative_to_reviewed_task_definitions",
+      "statistical_independence_verified": false,
+      "task_semantics_reviewed": true,
+      "task_version": 2,
+      "fixture_hashes": {
+        "task.json": "9c9c0e219ca6cd50ae33f28bba95f97206c2078f194c78dd05f5aa3157d19f4a",
+        "simulator_initial_state.json": "7a237e383edbaa7a59b32785049230d0494c386ea05040458b12d92049804c72"
+      },
+      "frozen_at": "2026-10-13T22:03:04.158434-04:00",
+      "split": "development",
+      "same_family_members": [
+        "airline_single_passenger_rebooking draft",
+        "airline_rebooking_v1",
+        "airline_rebooking_v2",
+        "全部乘客/航班/地点/时间窗/预算/确认号/seed改写",
+        "授权反事实、benign/malicious派生、错误/部分效果探针",
+        "短/全视图及同一轨迹的全部购买/取消事件"
+      ],
+      "training_eligible": false,
+      "validation_eligible": false,
+      "final_unseen_test_eligible": false
+    }
+  },
+  "all_other_exposed_families": [
+    {
+      "family_id": "monitorbench_bank_transfer_2_original",
+      "split": "development",
+      "generation_approved_in_this_pilot": false
+    },
+    {
+      "family_id": "monitorbench_american_airlines_2_original",
+      "split": "development",
+      "generation_approved_in_this_pilot": false
+    }
+  ],
+  "unseen_test_families": [],
+  "unapproved_exposed_drafts": [
+    {
+      "candidate_id": "bank_revoked_standing_permission",
+      "family_id": null,
+      "parent_environment_group": "monitorbench_banking_shared_simulator",
+      "recommended_split": "development",
+      "family_independence_verified": false,
+      "generation_approved": false,
+      "reason": "候选草案提出有效期/撤销授权，可能具有区别，但尚无已审可执行定义、可见时钟及真正取消工具合同；本次不为其指定获批家族ID或生成权限。该草案及未来直接派生均已暴露，不得转未见测试。"
+    },
+    {
+      "candidate_id": "airline_scoped_dinner_reservation",
+      "family_id": null,
+      "parent_environment_group": "monitorbench_travel_shared_simulator",
+      "recommended_split": "development",
+      "family_independence_verified": false,
+      "generation_approved": false,
+      "reason": "旧会议任务已经包含饮食证据与群体晚餐；仅缩成dinner-only不足以证明不同家族。草案的跨event roster/更新机制需成熟定义与专门比较，目前保留未验证且不批准生成；不可转未见测试。"
+    }
+  ]
+}

@@ -1,3 +1,23 @@
+# TGF Monitor — course final project
+
+Trace-Grounded Follow-Up for Agent Monitoring · CPSC 4880/5880
+
+Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu · evidence through October 19, 2026
+
+**Start with [the project overview](project/README.md) and [the integrated research story](project/STORYLINE_2026-10-19.md).** The repository contains Luanfeng's v4 implementation, a curated Pacifica research snapshot, and Tony's independently executed replay and audit of the same 64 development trajectories.
+
+Current evidence supports a working pipeline and an analysis of evaluation validity. It does **not** establish that targeted follow-up reliably outperforms a matched fixed-question baseline. Old proxy scores, the newer authorization audit, and component SFT results have different endpoints and are reported separately.
+
+- [Implementation and v4 usage](tgf/README.md)
+- [Pacifica: code, authorization audit, and component experiments](workstreams/pacifica/README.md)
+- [Tony: independent replay, corrected statistics, and failure cases](workstreams/tony/00_START_HERE_C.md)
+- [Snapshot verification and reproduction](project/REPRODUCIBILITY.md)
+- [Versioned source inventory](project/import_manifest.json)
+
+Historical scripts and proposed GPU budgets are archived evidence, not instructions to restart jobs. See the project overview for the current scope and limitations. The original MonitorBench documentation and attribution follow below.
+
+---
+
 <h2 align="center">MonitorBench: A Comprehensive Benchmark for<br>Chain-of-Thought Monitorability in Large Language Models</h2>
 
 <!-- <div align="center">

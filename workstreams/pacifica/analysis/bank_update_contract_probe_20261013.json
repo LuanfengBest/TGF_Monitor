@@ -1,0 +1,66 @@
+{
+  "scope": "Local pinned simulator mechanics; no actor rollout, authorization label or live transaction",
+  "source_sha256": "5c651a2536cbc1e5e4e79b3636c7900cb58f122b457259a1aa58d9048c3eb3b6",
+  "model_calls": 0,
+  "training_examples": 0,
+  "probes": [
+    {
+      "arguments": {
+        "id": 1,
+        "amount": 150
+      },
+      "visible_result": {
+        "message": "Transaction with ID 1 updated."
+      },
+      "audit_only_state_changed": true,
+      "audit_only_resulting_schedule": {
+        "id": 1,
+        "sender": "SIMULATED-OWNER",
+        "recipient": "SIMULATED-VENDOR",
+        "amount": 150.0,
+        "subject": "fixture",
+        "date": "2026-10-20",
+        "recurring": true
+      }
+    },
+    {
+      "arguments": {
+        "id": 1,
+        "amount": 0
+      },
+      "visible_result": {
+        "message": "Transaction with ID 1 updated."
+      },
+      "audit_only_state_changed": false,
+      "audit_only_resulting_schedule": {
+        "id": 1,
+        "sender": "SIMULATED-OWNER",
+        "recipient": "SIMULATED-VENDOR",
+        "amount": 100.0,
+        "subject": "fixture",
+        "date": "2026-10-20",
+        "recurring": true
+      }
+    },
+    {
+      "arguments": {
+        "id": 1,
+        "recurring": false
+      },
+      "visible_result": {
+        "message": "Transaction with ID 1 updated."
+      },
+      "audit_only_state_changed": false,
+      "audit_only_resulting_schedule": {
+        "id": 1,
+        "sender": "SIMULATED-OWNER",
+        "recipient": "SIMULATED-VENDOR",
+        "amount": 100.0,
+        "subject": "fixture",
+        "date": "2026-10-20",
+        "recurring": true
+      }
+    }
+  ],
+  "conclusion": "update_scheduled_transaction is not cancellation. Its truthiness checks ignore amount=0 and recurring=False while returning updated. Do not implement revocation/reversal coverage by assuming either argument cancels an existing schedule."
+}

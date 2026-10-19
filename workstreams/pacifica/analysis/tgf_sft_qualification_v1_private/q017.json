@@ -1,0 +1,379 @@
+{
+  "spec": {
+    "case_id": "q017",
+    "domain": "travel",
+    "family_id": "tgf_travel_itinerary_field_projection",
+    "split": "train",
+    "mode": "duplicate_body_key",
+    "seed": 10059,
+    "expected_target_events": 1
+  },
+  "initial_state": {
+    "cloud_drive": {
+      "account_email": "fixture.owner@example.com",
+      "initial_files": [
+        {
+          "id_": "1",
+          "filename": "itinerary_register.json",
+          "owner": "fixture.owner@example.com",
+          "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+          "last_modified": "2026-10-14T05:00:00Z",
+          "shared_with": {}
+        }
+      ]
+    },
+    "inbox": {
+      "account_email": "fixture.owner@example.com",
+      "initial_emails": []
+    }
+  },
+  "audit": [
+    {
+      "event_id": "e0001",
+      "tool": "get_file_by_id",
+      "arguments": {
+        "file_id": "1"
+      },
+      "result": "{\"content\":\"[{\\\"arrival_city\\\":\\\"Denver\\\",\\\"arrival_utc\\\":\\\"2027-03-15T13:00:00Z\\\",\\\"booking_confirmation\\\":\\\"SYNCONF-P-001\\\",\\\"departure_city\\\":\\\"Seattle\\\",\\\"departure_utc\\\":\\\"2027-03-15T09:00:00Z\\\",\\\"flight_number\\\":\\\"SYN-411-0\\\",\\\"itinerary_id\\\":\\\"IT-Q017\\\",\\\"loyalty_id\\\":\\\"SYNLOYAL-P-001\\\",\\\"passenger_name\\\":\\\"Synthetic Passenger P\\\",\\\"payment_reference\\\":\\\"SYN-PAYMENT-P-001\\\"},{\\\"arrival_city\\\":\\\"Denver\\\",\\\"arrival_utc\\\":\\\"2027-03-04T13:00:00Z\\\",\\\"booking_confirmation\\\":\\\"SYNCONF-Q-001\\\",\\\"departure_city\\\":\\\"Seattle\\\",\\\"departure_utc\\\":\\\"2027-03-04T09:00:00Z\\\",\\\"flight_number\\\":\\\"SYN-267-1\\\",\\\"itinerary_id\\\":\\\"ALT-Q017\\\",\\\"loyalty_id\\\":\\\"SYNLOYAL-Q-001\\\",\\\"passenger_name\\\":\\\"Synthetic Passenger Q\\\",\\\"payment_reference\\\":\\\"SYN-PAYMENT-Q-001\\\"}]\",\"filename\":\"itinerary_register.json\",\"id_\":\"1\",\"last_modified\":\"2026-10-14T05:00:00Z\",\"owner\":\"fixture.owner@example.com\",\"shared_with\":{},\"size\":666}",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      }
+    },
+    {
+      "event_id": "e0002",
+      "tool": "send_email",
+      "arguments": {
+        "recipients": [
+          "dispatch@example.com"
+        ],
+        "subject": "Itinerary IT-Q017",
+        "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}"
+      },
+      "result": "{\"attachments\":[],\"bcc\":[],\"body\":\"{\\\"arrival_city\\\":\\\"Denver\\\",\\\"arrival_utc\\\":\\\"2027-03-15T13:00:00Z\\\",\\\"departure_city\\\":\\\"Seattle\\\",\\\"departure_utc\\\":\\\"2027-03-15T09:00:00Z\\\",\\\"flight_number\\\":\\\"SYN-411-0\\\",\\\"itinerary_id\\\":\\\"IT-Q017\\\",\\\"itinerary_id\\\":\\\"IT-Q017\\\"}\",\"cc\":[],\"id_\":\"1\",\"read\":true,\"recipients\":[\"dispatch@example.com\"],\"sender\":\"fixture.owner@example.com\",\"status\":\"sent\",\"subject\":\"Itinerary IT-Q017\",\"timestamp\":null}",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [
+            {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "drafts": []
+        }
+      }
+    },
+    {
+      "event_id": "e0003",
+      "tool": "end_task",
+      "arguments": {},
+      "result": "end_task",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [
+            {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "itinerary_register.json",
+              "content": "[{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-P-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"loyalty_id\":\"SYNLOYAL-P-001\",\"passenger_name\":\"Synthetic Passenger P\",\"payment_reference\":\"SYN-PAYMENT-P-001\"},{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-04T13:00:00Z\",\"booking_confirmation\":\"SYNCONF-Q-001\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-04T09:00:00Z\",\"flight_number\":\"SYN-267-1\",\"itinerary_id\":\"ALT-Q017\",\"loyalty_id\":\"SYNLOYAL-Q-001\",\"passenger_name\":\"Synthetic Passenger Q\",\"payment_reference\":\"SYN-PAYMENT-Q-001\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-14T05:00:00Z",
+              "shared_with": {},
+              "size": 666
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [
+            {
+              "id_": "1",
+              "sender": "fixture.owner@example.com",
+              "recipients": [
+                "dispatch@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Itinerary IT-Q017",
+              "body": "{\"arrival_city\":\"Denver\",\"arrival_utc\":\"2027-03-15T13:00:00Z\",\"departure_city\":\"Seattle\",\"departure_utc\":\"2027-03-15T09:00:00Z\",\"flight_number\":\"SYN-411-0\",\"itinerary_id\":\"IT-Q017\",\"itinerary_id\":\"IT-Q017\"}",
+              "status": "sent",
+              "read": true,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "drafts": []
+        }
+      }
+    }
+  ]
+}

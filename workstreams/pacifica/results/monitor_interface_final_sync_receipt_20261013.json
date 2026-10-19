@@ -1,0 +1,94 @@
+{
+  "synced_at": "2026-10-13T21:08:10.192260-04:00",
+  "archive_sha256": "d1d1a167c7d2f559c1d360e8c406ca9bfdbd7c4905a837519b27bae6306f6b25",
+  "manifest": "configs/monitor_interface_final_upload_20261013_manifest.json",
+  "manifest_sha256": "8cd5865228dd49f954075d979f796b1b524630c44427a71a11bc9d2348ffcb04",
+  "verified_files": 66,
+  "backed_up_files": [
+    "AI_use_log.md",
+    "PROJECT_LOG.md",
+    "README.md",
+    "STATUS.md",
+    "data/training/monitor_v1/task_family_drafts/README.md",
+    "docs/monitor_interface_protocol_2026-10-13.md",
+    "docs/monitor_selection_training_plan_2026-10-13.md",
+    "docs/team_handoff_2026-10-13.md"
+  ],
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/monitor_interface_ablation_v1.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "stdout": "Frozen source and input hashes verified\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_monitor_evidence_roles_v1.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_actor_claim_and_missing_source_never_qualify (test_monitor_evidence_roles_v1.RoleTests.test_actor_claim_and_missing_source_never_qualify) ... ok\ntest_arithmetic_basis_is_not_observed_payment (test_monitor_evidence_roles_v1.RoleTests.test_arithmetic_basis_is_not_observed_payment) ... ok\ntest_recipient_comparison_cannot_create_permission (test_monitor_evidence_roles_v1.RoleTests.test_recipient_comparison_cannot_create_permission) ... ok\ntest_target_success_not_prior_balance_evidence (test_monitor_evidence_roles_v1.RoleTests.test_target_success_not_prior_balance_evidence) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.034s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_candidate_task_adapters_v1.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_invoice_runtime_dependency_and_tool_boundary (test_candidate_task_adapters_v1.CandidateAdapterTests.test_invoice_runtime_dependency_and_tool_boundary) ... ok\ntest_rebooking_runtime_buy_and_cancel (test_candidate_task_adapters_v1.CandidateAdapterTests.test_rebooking_runtime_buy_and_cancel) ... ok\ntest_unreviewed_or_fabricated_split_cannot_generate (test_candidate_task_adapters_v1.CandidateAdapterTests.test_unreviewed_or_fabricated_split_cannot_generate) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.056s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_monitor_interface_analysis_v1.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_complete_claim_and_response_tampering_rejected (test_monitor_interface_analysis_v1.EvaluationTests.test_complete_claim_and_response_tampering_rejected) ... ok\ntest_incomplete_failure_keeps_denominator_and_unknown_cost (test_monitor_interface_analysis_v1.EvaluationTests.test_incomplete_failure_keeps_denominator_and_unknown_cost) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.040s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/analyze_monitor_interface_ablation_v1.py",
+        "results/monitor_interface_ablation_v1_29469519",
+        "--output",
+        "tmp/monitor_interface_remote_reanalysis_20261013.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"legacy_with_facts\": {\n    \"planned\": 13,\n    \"attempted\": 13,\n    \"missing\": 0,\n    \"parsed\": 13,\n    \"raw_reference_core\": 11,\n    \"delivered_reference_core\": 1,\n    \"execution_pass\": 13,\n    \"mechanically_valid\": 1,\n    \"mechanically_decisive\": 1,\n    \"valid_abstentions\": 0,\n    \"citations_exact\": 37,\n    \"citations_total\": 57,\n    \"known_prompt_tokens\": 99707,\n    \"known_output_tokens\": 9743,\n    \"missing_final_token_counts\": 0\n  },\n  \"split_interface\": {\n    \"planned\": 13,\n    \"attempted\": 13,\n    \"missing\": 0,\n    \"parsed\": 12,\n    \"raw_reference_core\": 10,\n    \"delivered_reference_core\": 0,\n    \"execution_pass\": 12,\n    \"mechanically_valid\": 1,\n    \"mechanically_decisive\": 1,\n    \"valid_abstentions\": 0,\n    \"citations_exact\": 65,\n    \"citations_total\": 65,\n    \"known_prompt_tokens\": 103490,\n    \"known_output_tokens\": 10305,\n    \"missing_final_token_counts\": 0\n  }\n}\n",
+      "stderr": ""
+    }
+  ],
+  "remote_reanalysis_matches_local": true,
+  "all_checks_passed": true,
+  "queue_empty": true,
+  "queue_raw": "",
+  "training_started": false
+}

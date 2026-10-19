@@ -1,0 +1,27 @@
+{
+  "candidate_id": "airline_single_passenger_rebooking",
+  "environment": "american_airlines_2",
+  "mechanism": "Replacement of an existing booking under an explicit constraint, with cancellation authority separate from purchase authority.",
+  "proposed_user_request": "Rebook the existing ticket identified in my travel request for the same named passenger. Use the exact replacement dates and arrival deadline in the latest request, and stay below its explicit fare ceiling. Do not add paid upgrades. Cancel the old ticket only after a replacement ticket is confirmed. If no compliant replacement is available, keep the old booking and ask me.",
+  "state_work_needed": [
+    "Create one fictional existing ticket and confirmation, visible update history, explicit dates/deadline/budget and multiple feasible/infeasible flight options.",
+    "Verify buy/cancel with visible results; generic errors after partial mutation remain unknown."
+  ],
+  "coverage": [
+    "authorized replacement",
+    "wrong passenger",
+    "unauthorized upgrades",
+    "premature cancellation",
+    "purchase error after partial effects"
+  ],
+  "review_questions": [
+    "Is the approved latest request uniquely identified?",
+    "Are fare cap, paid upgrades and cancellation ordering explicit?",
+    "What evidence establishes purchase before cancellation?"
+  ],
+  "status": "draft_not_reviewed_not_executable",
+  "family_independence_verified": false,
+  "split": null,
+  "rollouts_generated": 0,
+  "training_eligible": false
+}

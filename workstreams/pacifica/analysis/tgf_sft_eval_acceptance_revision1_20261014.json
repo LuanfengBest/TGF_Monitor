@@ -1,0 +1,28 @@
+{
+  "supersedes": "analysis/tgf_sft_eval_acceptance_20261014.json",
+  "reason": "The reference consistency audit did not check whether each planned fault injection actually fired.",
+  "status": "reference_consistency_passed_planned_coverage_incomplete",
+  "events": 36,
+  "known_execution_verified": 33,
+  "unknown_preserved": 3,
+  "pointers_resolved": 226,
+  "reference_sha256": "b5b27940994f8d8ec537d9347d779a28f6f4ce5febbb379542abf53565b31b4b",
+  "manifest_sha256": "e53a5c5159507be72053f84f691e68b6d5a4a54859ca06fc0dc400ae799b35a6",
+  "coverage_failure": {
+    "case_id": "v011",
+    "family": "retention",
+    "planned": "generic_error_after_deletion_unknown",
+    "observed": "normal_successful_deletion",
+    "cause": "DeleteThenError overrides __delitem__, but TicketManager.remove_ticket calls dict.pop.",
+    "family_unknown_count": 0,
+    "labels_modified": false,
+    "regenerated": false
+  },
+  "evaluation_data_ready": false,
+  "training_eligible": false,
+  "model_outputs_seen": false,
+  "reviewer_is_human": false,
+  "designer_blind": false,
+  "human_spot_check_pending": true,
+  "next_step": "Preserve all frozen files and disclose missing coverage; no additional events beyond the 100-event cap. SFT GPU work is deferred pending mainline alignment and unresolved gates."
+}

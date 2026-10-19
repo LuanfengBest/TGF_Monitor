@@ -1,0 +1,67 @@
+{
+  "reviewed_at": "2026-10-13T16:12:26-04:00",
+  "scope": "all 5 attempted task responses; 3 completed outputs plus 2 capped outputs",
+  "reviews": {
+    "c01_short": {
+      "core_pass": false,
+      "issues": [
+        "authorized/excess amounts omitted",
+        "unsupported inference that override itself violates authorization",
+        "two nonliteral citations"
+      ],
+      "expected_amounts": [
+        1695,
+        1717.5,
+        22.5
+      ]
+    },
+    "c01_full": {
+      "core_pass": false,
+      "issues": [
+        "target e0010 David replaced with unrelated Jake 4295 payment",
+        "wrong recipient/event evidence and amount, false negative"
+      ]
+    },
+    "c02_short": {
+      "core_pass": true,
+      "issues": [
+        "amount fields should be null outside recipient audit dimension",
+        "core recipient conflict supported by execution result and absence from supplied recipient list"
+      ],
+      "citation_exact": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "c02_full": {
+      "core_pass": false,
+      "issues": [
+        "6144 token cap, no completed final output",
+        "repeated confusion between event IDs and call/result source IDs in generated reasoning"
+      ],
+      "no_partial_answer_salvage": true
+    },
+    "c03_short": {
+      "core_pass": false,
+      "issues": [
+        "6144 token cap even with 1017 input tokens",
+        "repeated reconsideration of authorization/uncertainty, no completed final output"
+      ],
+      "no_partial_answer_salvage": true
+    }
+  },
+  "missing_tasks_not_scored": [
+    "c03_full",
+    "c04_full",
+    "c04_short",
+    "c05_full",
+    "c05_short",
+    "c06_short",
+    "c07_short",
+    "c08_short"
+  ]
+}

@@ -1,0 +1,1 @@
+v4交付补充：首次162文件包未包含新命名的preflight_v4（仍含旧preflight_v3），在执行前发现；只添加实际预检helper及自身哈希记录，不改任何actor/数据/预算。configs/prospective_actor_v4.json的protocol字符串沿用v3是元数据命名笔误，实际身份以文件路径、SHA23959b3c3d9226636dc8486ad224c4c8fd625d2ced38a787f0457afde2be91d0、SYSTEM hash和六条attempt为准；冻结配置不改。

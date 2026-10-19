@@ -1,0 +1,72 @@
+{
+  "completed_at": "2026-10-14T00:06:12.391808-04:00",
+  "job_id": "29490480",
+  "status": "completed",
+  "archive_sha256": "a2d921e983100e64bf2cb159c7885960a6753ba21a74b12daa1f181cf63eaba8",
+  "manifest_sha256": "10b4b747851e1a71234eb6f18bd833bb145b0219ab991b1e5c9d1e25c758dbd0",
+  "files_verified": 31,
+  "new_files": [
+    "analysis/monitor_v2_baseline_completed_29488284.jpg",
+    "analysis/monitor_v2_baseline_prelaunch_review_20261013.json",
+    "analysis/monitor_v2_baseline_recovery_validation_20261013.json",
+    "analysis/monitor_v2_baseline_semantic_review_20261013.json",
+    "analysis/monitor_v2_baseline_semantic_review_validation_20261013.json",
+    "analysis/monitor_v2_baseline_v1_29488284_local_recheck.json",
+    "analysis/monitor_v2_causal_pairs_validation_20261013.json",
+    "analysis/monitor_v2_ood_integrity_20261013.json",
+    "analysis/monitor_v2_queue_empty_20261013.jpg",
+    "analysis/monitor_v2_queue_empty_20261013.json",
+    "analysis/monitor_v2_queue_empty_20261013.txt",
+    "analysis/monitor_v2_train_target_draft_validation_20261013.json",
+    "data/training/monitor_v2/target_drafts_v1/README.md",
+    "data/training/monitor_v2/target_drafts_v1/causal_pairs.jsonl",
+    "data/training/monitor_v2/target_drafts_v1/causal_pairs_manifest.json",
+    "data/training/monitor_v2/target_drafts_v1/train_pool_targets.json",
+    "docs/monitor_v2_baseline_results_2026-10-13.md",
+    "docs/monitor_v2_baseline_semantic_review_2026-10-13.md",
+    "docs/monitor_v2_data_audit_results_2026-10-13.md",
+    "docs/monitor_v2_next_stage_plan_2026-10-14.md",
+    "results/costs_total_through_monitor_v2_baseline_v1.json",
+    "results/monitor_v2_baseline_ood_submission_observed_20261013.json",
+    "results/monitor_v2_baseline_pending_20261013.json",
+    "results/monitor_v2_continuation_automation_20261014.json",
+    "results/monitor_v2_preflight_ood_submission_20261013.json",
+    "results/monitor_v2_recovery_ood_submission_observed_20261013.json",
+    "configs/monitor_v2_closeout_upload_20261014_manifest.json"
+  ],
+  "backed_up_and_changed": [
+    "AI_use_log.md",
+    "PROJECT_LOG.md",
+    "README.md",
+    "STATUS.md",
+    "docs/team_handoff_2026-10-13.md"
+  ],
+  "checks": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/monitor_v2_baseline_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Frozen monitor sources and all inputs verified\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sacct",
+        "-j",
+        "29488038,29488284,29489210",
+        "--parsable2",
+        "--noheader",
+        "--format=JobIDRaw,State,ExitCode,ElapsedRaw,AllocTRES,Start,End"
+      ],
+      "returncode": 0,
+      "stdout": "29488038|COMPLETED|0:0|66|billing=2,cpu=2,mem=4G,node=1|2026-10-13T23:43:35|2026-10-13T23:44:41\n29488038.batch|COMPLETED|0:0|66|cpu=2,mem=4G,node=1|2026-10-13T23:43:35|2026-10-13T23:44:41\n29488038.extern|COMPLETED|0:0|66|billing=2,cpu=2,mem=4G,node=1|2026-10-13T23:43:35|2026-10-13T23:44:41\n29488284|COMPLETED|0:0|519|billing=35,cpu=4,gres/gpu:rtx_5000_ada=1,gres/gpu=1,mem=48G,node=1|2026-10-13T23:45:56|2026-10-13T23:54:35\n29488284.batch|COMPLETED|0:0|519|cpu=4,gres/gpu:rtx_5000_ada=1,gres/gpu=1,mem=48G,node=1|2026-10-13T23:45:56|2026-10-13T23:54:35\n29488284.extern|COMPLETED|0:0|519|billing=35,cpu=4,gres/gpu:rtx_5000_ada=1,gres/gpu=1,mem=48G,node=1|2026-10-13T23:45:56|2026-10-13T23:54:35\n29489210|COMPLETED|0:0|11|billing=2,cpu=2,mem=4G,node=1|2026-10-13T23:55:36|2026-10-13T23:55:47\n29489210.batch|COMPLETED|0:0|11|cpu=2,mem=4G,node=1|2026-10-13T23:55:36|2026-10-13T23:55:47\n29489210.extern|COMPLETED|0:0|11|billing=2,cpu=2,mem=4G,node=1|2026-10-13T23:55:36|2026-10-13T23:55:47\n",
+      "stderr": ""
+    }
+  ],
+  "closeout_script_sha256": "3bf837296b4fc44a256037abf1bbdf58d546a06e806f0d7eaff780b7391c148e",
+  "training_runs": 0,
+  "model_calls": 0
+}

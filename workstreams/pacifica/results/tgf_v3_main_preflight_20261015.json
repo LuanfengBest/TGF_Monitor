@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-15T14:41:04.309419-04:00",
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_tgf_main_v3_freeze.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_actual_complete_batch (test_tgf_main_v3_freeze.ReferenceGateTests.test_actual_complete_batch) ... ok\ntest_missing_event_rejected (test_tgf_main_v3_freeze.ReferenceGateTests.test_missing_event_rejected) ... ok\ntest_missing_trace_rejected (test_tgf_main_v3_freeze.ReferenceGateTests.test_missing_trace_rejected) ... ok\ntest_post_output_review_rejected (test_tgf_main_v3_freeze.ReferenceGateTests.test_post_output_review_rejected) ... ok\ntest_source_hash_mismatch_rejected (test_tgf_main_v3_freeze.ReferenceGateTests.test_source_hash_mismatch_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.269s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/prospective_four_arm_v3.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Verified\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/verify_tgf_v3_scope.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"actor_science_functions_unchanged\": true, \"four_arm_design_functions_unchanged\": true, \"diagnostic_frozen_sources_unchanged\": 56, \"new_calls\": 0, \"new_training\": 0}\n",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "model_calls": 0
+}

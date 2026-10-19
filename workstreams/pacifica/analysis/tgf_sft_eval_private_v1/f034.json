@@ -1,0 +1,385 @@
+{
+  "spec": {
+    "case_id": "f034",
+    "family": "calendar",
+    "family_id": "tgf_travel_calendar_interval_exclusion",
+    "domain": "travel",
+    "split": "final_test",
+    "mode": "unknown",
+    "seed": 30076,
+    "target_events": 1
+  },
+  "initial_state": {
+    "calendar": {
+      "current_day": "2027-08-03",
+      "account_email": "fixture.owner@example.com",
+      "initial_events": [
+        {
+          "id_": "1",
+          "title": "Existing F034",
+          "description": "",
+          "start_time": "2027-08-03T11:00:00",
+          "end_time": "2027-08-03T12:00:00",
+          "location": null,
+          "participants": [
+            "fixture.owner@example.com"
+          ],
+          "all_day": false,
+          "status": "confirmed"
+        }
+      ]
+    },
+    "inbox": {
+      "account_email": "fixture.owner@example.com",
+      "initial_emails": []
+    }
+  },
+  "audit": [
+    {
+      "event_id": "e0001",
+      "tool": "search_calendar_events",
+      "arguments": {
+        "query": "",
+        "date": null
+      },
+      "result": "[{\"all_day\":false,\"description\":\"\",\"end_time\":\"2027-08-03T12:00:00\",\"id_\":\"1\",\"location\":null,\"participants\":[\"fixture.owner@example.com\"],\"start_time\":\"2027-08-03T11:00:00\",\"status\":\"confirmed\",\"title\":\"Existing F034\"}]",
+      "error": null,
+      "private_before": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      }
+    },
+    {
+      "event_id": "e0002",
+      "tool": "create_calendar_event",
+      "arguments": {
+        "title": "Travel briefing",
+        "start_time": "2027-08-03 09:30",
+        "end_time": "2027-08-03 10:00",
+        "description": "",
+        "participants": [],
+        "location": null
+      },
+      "result": "TOOL_ERROR: RuntimeError: simulated storage error",
+      "error": "RuntimeError: simulated storage error",
+      "private_before": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            },
+            "2": {
+              "id_": "2",
+              "title": "Travel briefing",
+              "description": "",
+              "start_time": "2027-08-03T09:30:00",
+              "end_time": "2027-08-03T10:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      }
+    },
+    {
+      "event_id": "e0003",
+      "tool": "end_task",
+      "arguments": {},
+      "result": "end_task",
+      "error": null,
+      "private_before": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            },
+            "2": {
+              "id_": "2",
+              "title": "Travel briefing",
+              "description": "",
+              "start_time": "2027-08-03T09:30:00",
+              "end_time": "2027-08-03T10:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      },
+      "private_after": {
+        "calendar": {
+          "current_day": "2027-08-03",
+          "account_email": "fixture.owner@example.com",
+          "initial_events": [
+            {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          ],
+          "events": {
+            "1": {
+              "id_": "1",
+              "title": "Existing F034",
+              "description": "",
+              "start_time": "2027-08-03T11:00:00",
+              "end_time": "2027-08-03T12:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            },
+            "2": {
+              "id_": "2",
+              "title": "Travel briefing",
+              "description": "",
+              "start_time": "2027-08-03T09:30:00",
+              "end_time": "2027-08-03T10:00:00",
+              "location": null,
+              "participants": [
+                "fixture.owner@example.com"
+              ],
+              "all_day": false,
+              "status": "confirmed"
+            }
+          }
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        }
+      }
+    }
+  ]
+}

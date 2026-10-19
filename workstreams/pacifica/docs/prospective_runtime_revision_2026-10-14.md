@@ -1,0 +1,9 @@
+# 原任务 pilot 的运行时修订 v2
+
+v1尚未提交GPU，远端预检发生两项技术失败：原任务初始状态存了spam_email.spam_file的机器绝对路径；航空完整环境导入需要pandas，而现有集群venv没有该依赖。失败与v1包/config均保留，不覆盖。
+
+银行request、policy、schemas、secondary与除spam_email外的各状态字段一致。只把严格校验位于原agent目录内的universe_related_stuff/spam/spam.yaml定位符转为agent://相对表示后，两端完整初始状态digest都为5aafa988bf63267f07aa050f0ee92183c018c787c1f93d3f7180d5eede50aca5。此规范化只用于身份比较，不改变运行状态、文件内容或任何任务数据。v2新增测试保证非白名单路径拒绝、原状态不被修改、资金字段变化仍能检出。航空身份在补齐依赖后另行核验。
+
+本修订增加唯一一个独立CPU准备作业：education分区、1 CPU、8GiB、10分钟，无GPU/模型/权重/训练。8个官方PyPI二进制wheel按URL和SHA锁定，总下载30,631,312字节、安装上限1GB；包版本与本地任务环境一致。安装到runtime/prospective_actor_v2_deps，原venv不改。安装器和提交都有排他记录，0自动重试；失败保留部分目录与回执，停止本准备批。这不是恢复已耗尽的旧SFT CPU预算。
+
+CPU须完成固定依赖导入、两域任务身份、9项actor边界tests和12项评价tests，成功回执必须绑定v2 plan hash。GPU脚本须先验此回执再启动模型。六个attempt及seed、actor、提示词、采样参数、40调用/300秒每条和总1GPU35分钟/240调用与v1不变；v1没有消耗GPU额度。预算在任何新作业前冻结；不把准备当成生成或训练结果。

@@ -1,0 +1,109 @@
+{
+  "stage": "fixture_preparation_CPU_contract_check_not_generated_audit_data",
+  "recorded_at": "2026-10-14T03:26:32.827156+00:00",
+  "reviewer_is_human": false,
+  "training_eligible": false,
+  "generation_approved": false,
+  "command": ".venv/bin/python -m unittest discover -s tests -p test_monitor_v2_task_adapters.py -v",
+  "observed_tests_passed": 11,
+  "observed_tests_failed": 0,
+  "saved_fixtures_hash_checked_and_loaded": 5,
+  "fixtures": [
+    {
+      "candidate_id": "bank_cumulative_spend_pool",
+      "variant": "base",
+      "directory": "data/task_design/monitor_v2_bank_cumulative_spend_pool",
+      "manifest_sha256": "bdd4df5c01e0e0ca55ab5cc84fd6e351a943ee4e756335ae9b15ba6ccbdf43be",
+      "asset_hashes": {
+        "simulator_initial_state.json": "925cdd89b13760304c7e44a98ae8b7bdea6bd0eb24523f4bc30ed880bc6c9587",
+        "task.json": "46a85bf994f446a23af96272f25985a1ae6db19f8cc26935a070e335c96bedbd",
+        "tool_schemas.json": "620108f64cce9f91a4ffb8e96c6d46a014f52be62517e0fe3b0842ce2ec31be6"
+      },
+      "public_tool_names": [
+        "get_file_by_id",
+        "get_scheduled_transactions",
+        "schedule_transaction",
+        "end_task"
+      ]
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "base",
+      "directory": "data/task_design/monitor_v2_bank_batch_quorum",
+      "manifest_sha256": "3bd506db8acd3526557bd99fae5ccf6462e2db49a015d897988890df584efeb2",
+      "asset_hashes": {
+        "simulator_initial_state.json": "9fd45958df9b13409f13cfb9e94b70680442be6ee8520fbb0d45d62d25e77e24",
+        "task.json": "43e2fb0a0a055ee3d87307826aba00851d786a631fd4a0974fa8fb3188e56c4e",
+        "tool_schemas.json": "620108f64cce9f91a4ffb8e96c6d46a014f52be62517e0fe3b0842ce2ec31be6"
+      },
+      "public_tool_names": [
+        "get_file_by_id",
+        "get_scheduled_transactions",
+        "schedule_transaction",
+        "end_task"
+      ]
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "review_set_b",
+      "directory": "data/task_design/monitor_v2_bank_batch_quorum__review_set_b",
+      "manifest_sha256": "3f80af336c93ceef2adf40d34520c3fc3fc5c82a02771ec636f409fbc008b741",
+      "asset_hashes": {
+        "simulator_initial_state.json": "0ebf9758aeb3288edc5970d4311eae015af31be6a6910cf44bac43a046163565",
+        "task.json": "43e2fb0a0a055ee3d87307826aba00851d786a631fd4a0974fa8fb3188e56c4e",
+        "tool_schemas.json": "620108f64cce9f91a4ffb8e96c6d46a014f52be62517e0fe3b0842ce2ec31be6"
+      },
+      "public_tool_names": [
+        "get_file_by_id",
+        "get_scheduled_transactions",
+        "schedule_transaction",
+        "end_task"
+      ]
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "review_set_c",
+      "directory": "data/task_design/monitor_v2_bank_batch_quorum__review_set_c",
+      "manifest_sha256": "b8c589a4ff69582876fd6d8584b41053389a5f5be1534b21aad229ba4bcff305",
+      "asset_hashes": {
+        "simulator_initial_state.json": "0ab8f272e83d454883968c15e446f8cad7e117cfc8f8a67103347a3a53e31926",
+        "task.json": "43e2fb0a0a055ee3d87307826aba00851d786a631fd4a0974fa8fb3188e56c4e",
+        "tool_schemas.json": "620108f64cce9f91a4ffb8e96c6d46a014f52be62517e0fe3b0842ce2ec31be6"
+      },
+      "public_tool_names": [
+        "get_file_by_id",
+        "get_scheduled_transactions",
+        "schedule_transaction",
+        "end_task"
+      ]
+    },
+    {
+      "candidate_id": "airline_duplicate_retention",
+      "variant": "base",
+      "directory": "data/task_design/monitor_v2_airline_duplicate_retention",
+      "manifest_sha256": "ddfc8df6096db3edc7c44910406200325b113071d05351fe03b82265f31d24af",
+      "asset_hashes": {
+        "simulator_initial_state.json": "8b3634647c049f6b76a4edef814597d2fcf54c6a3b5f8a64b9ff8be2a22063ff",
+        "task.json": "e255b024586fb437f2501bc5b707e08859dc0ea79e09f420b8805730b8d56841",
+        "tool_schemas.json": "ecb103e196a4cda037748e93cbaa956a72a84dbfaa8595a9801ac54e5ae5a280"
+      },
+      "public_tool_names": [
+        "get_file_by_id",
+        "cancel_flight_booking",
+        "end_task"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "scripts/monitor_v2_task_adapters.py": "971eecd45ae79c0c8c0c67909998cf6c1b08fbe4557a5085d8c68b9cf7bda72a",
+    "scripts/prepare_monitor_v2_tasks.py": "1d87b8e287970d8de0929ab0ebfaf2e901c522307ca0fe0042af0317ad53a08c",
+    "tests/test_monitor_v2_task_adapters.py": "0dc6d314115cbe9d882ae1653b58430c0b053fb4a67849c1ed875b83e542daf7"
+  },
+  "limitations": [
+    "Only bank intended train; no dual-environment training coverage",
+    "AI authorship and self-review, not independent human review",
+    "Original FunctionsRuntime preserved; generation runner must use run_tool or its own end_task guard",
+    "No labels/actor trajectories/model calls/training produced",
+    "Fixture author now knows new fixture details and cannot later claim blind event review"
+  ]
+}

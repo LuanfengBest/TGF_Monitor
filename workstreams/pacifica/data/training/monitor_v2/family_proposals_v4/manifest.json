@@ -1,0 +1,142 @@
+{
+  "schema": "monitor_v2_family_proposals_v4_manifest",
+  "author": "expert_annotation AI subagent",
+  "reviewer_is_human": false,
+  "independent_review": false,
+  "training_eligible": false,
+  "old_mechanism_comparison_set": {
+    "upstream_bank": "monitorbench_bank_transfer_2_original: expense corrections, split/currency arithmetic, payment recipient matching and confirmation email",
+    "upstream_airline": "monitorbench_american_airlines_2_original: group flight choice, connecting flights, prices/reviews/discounts/upgrades and dietary dinner",
+    "invoice": "tgf_bank_invoice_release: delegated approval + invoice/vendor/delivery joins + exact payment and no duplicate",
+    "rebooking": "tgf_airline_single_passenger_rebooking: constrained replacement success before old-ticket cancellation",
+    "revocation": "bank_revoked_standing_permission: exposed development draft, effective-time revocation",
+    "dinner": "airline_scoped_dinner_reservation: exposed development draft, roster/dietary event joins",
+    "pool": "bank_cumulative_spend_pool: preassigned train, cumulative successful commitments across orders",
+    "quorum": "bank_batch_quorum: preassigned validation, distinct reviewer threshold + exact version veto",
+    "retention": "airline_duplicate_retention: preassigned validation, fixed initial survivor + evolving active-ticket set",
+    "delegation_rejected": "airline_delegated_cancellation: rejected train candidate, delegated owner/consent join",
+    "connection_rejected": "airline_connection_window: rejected train candidate, exact incoming-booking relative connection window already present upstream"
+  },
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "fdb5b0e2a0f6b7480a4f24bbef8aee9129ead630692e80ffcb10bc2e722545b0"
+    },
+    {
+      "path": "docs/monitor_v2_next_stage_plan_2026-10-14.md",
+      "sha256": "99ce18ec60232fe0943030d01abf4a7c3d7390c65e4a593cd8058707cc8c98f4"
+    },
+    {
+      "path": "configs/candidate_family_registry_v1.json",
+      "sha256": "d388198937df675e51c62833f6d4e0bca0ff83ff90aa7da0fac13de77aa9a2d0"
+    },
+    {
+      "path": "data/training/monitor_v2/split_intent_v3.json",
+      "sha256": "0e9b4f101f8de3826165fc3f86e25a816625b2d4c22b976d9c45704792398883"
+    },
+    {
+      "path": "data/training/monitor_v1/task_family_drafts/bank_revoked_standing_permission.json",
+      "sha256": "574db154a4daca5375842456bfd1a9bf0ce613fdef7793734d3846a00dafff48"
+    },
+    {
+      "path": "data/training/monitor_v1/task_family_drafts/airline_scoped_dinner_reservation.json",
+      "sha256": "72013bb08b27a16af039c487f782033e04efa2eff85e3fcc0b9764513e5872d7"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v2/bank_cumulative_spend_pool.json",
+      "sha256": "035a67e1e73b2afe16761a12ae25cc547fd0c1554b752496be3845512e9687f9"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v2/bank_batch_quorum.json",
+      "sha256": "25146b3be2e2e36bf44e4383d2b09425df7764e4c00a0fc298c2b56e94e858c4"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v2/airline_duplicate_retention.json",
+      "sha256": "9fa4a78cdaec1a1e187888db283cb7f668be4fa0611b97b988e5fab28b146d1e"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals/airline_delegated_cancellation.json",
+      "sha256": "3d68679474767533e8be7c14697d075fd9205b8137300adf54aa13fbf98160b7"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v2/airline_connection_window.json",
+      "sha256": "4639015d46e9e13a1f4e03c18af0abd15841704d85b0425f53b5b17a32aaf5da"
+    },
+    {
+      "path": "data/task_design/bank_invoice_release_v2/task.json",
+      "sha256": "551f921a0b1467b6af8b62de201afb34595b4fadf729da4c77fd1c824106711e"
+    },
+    {
+      "path": "data/task_design/airline_rebooking_v2/task.json",
+      "sha256": "9c9c0e219ca6cd50ae33f28bba95f97206c2078f194c78dd05f5aa3157d19f4a"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/task_pairs/bank_transfer_2/task_definition.py",
+      "sha256": "48c207c5195b4181bc753b678363b2b392843ac2076d9ebbfd5b747cee46ce47"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/task_pairs/american_airlines_2/task_definition.py",
+      "sha256": "1f7f2bfa9c581c4c58cfcff5911b1adfb7f85d88fe30931790bb40b0f1c45faf"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/environments/banking_environment.py",
+      "sha256": "12bc29f1ed9302b9b65134b09f35b1a8d6cc6f235a36765e21f96740bd803a5a"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/environments/travel_environment.py",
+      "sha256": "e843fcae5b115caa740425e6618822916e35f09b90879ded80a49e23d99fc821"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/tools/financial_transfer.py",
+      "sha256": "5c651a2536cbc1e5e4e79b3636c7900cb58f122b457259a1aa58d9048c3eb3b6"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/tools/flight_tools.py",
+      "sha256": "e3fc0e78fc18f8467719e7cb2b5e276bb545ec97942b038dcecd98d2d605ac8b"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/tools/calendar_tools.py",
+      "sha256": "49bcc763f014c821994e6fa3170c9e6cee145a4db8f59b1beba71f9892fd10d7"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/tools/email_tools.py",
+      "sha256": "46d3bd63350f0910fef0495a23f607672c403862886ba385c8d933026f8180a5"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/calendar_client.py",
+      "sha256": "cba0ded1c12a37613701761c9d5273c714e63ff84d915c8ade125c02dbe58742"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/shared_models.py",
+      "sha256": "e71d32229255470d8b279b776228b015db3cfbb0578abaaa77139164d144249f"
+    },
+    {
+      "path": "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/inbox.py",
+      "sha256": "7893e5c311db642a7540ec17aeff6657b958fb50e33c66186933aba045ce84ec"
+    }
+  ],
+  "proposal_files": [
+    {
+      "path": "data/training/monitor_v2/family_proposals_v4/airline_atomic_ticket_bundle.json",
+      "sha256": "979b7c7bef06042e9f508dee601e4a2ed1381f4c09d548d302d3dc5d58a95a5d"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v4/bank_scheduled_field_preservation.json",
+      "sha256": "e3fe73ed1b5b4e8f564a75f3ba0a5f34135fbddc61fa553c8619960fcfa3a062"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v4/split_intent.json",
+      "sha256": "182c7b86df65682b4dac5be8e597fae0aa128674586d3d90cec164122e7d0c51"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v4/travel_calendar_interval_exclusion.json",
+      "sha256": "8ee94f525e2096d4a9705f2dca9eb8b92314b164b3e5b23e2a99dffe5425022c"
+    },
+    {
+      "path": "data/training/monitor_v2/family_proposals_v4/travel_itinerary_field_projection.json",
+      "sha256": "d3cabe59c3b9eeb4bb054b1e78321bd1c95d052376c3db25edfa64395109add2"
+    }
+  ],
+  "conclusion": "No new family accepted inside the current frozen mutation scope. Three scope-extension options and one unsupported-mechanism rejection are preserved for parent/user decision. Static code review only; no fixture or runtime verification is claimed.",
+  "exposure": "AI nonblind design/self-review; previously exposed upstream hints and all v2 designs/labels/baseline. Current task did not read private audit truth. No human gold or statistical independence claim."
+}

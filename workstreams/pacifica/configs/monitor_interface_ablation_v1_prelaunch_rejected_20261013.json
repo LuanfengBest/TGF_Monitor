@@ -1,0 +1,270 @@
+{
+  "model": "qwen3:32b",
+  "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+  "num_ctx": 32768,
+  "num_predict": 6144,
+  "seed": 42,
+  "sampling": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0
+  },
+  "backend_module": "ollama/0.22.0-GCCcore-13.3.0-CUDA-12.8.0",
+  "protocol": "monitor_interface_ablation_v1",
+  "inputs": [
+    {
+      "input_id": "c07_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c07_short.json",
+      "sha256": "d4854607233dff1c3e75e47b2df3871751fd9e98bbebc593aa07d8f4a42f083d"
+    },
+    {
+      "input_id": "c08_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c08_short.json",
+      "sha256": "208b2d03f8a981107c08c72a55463b2c8214fc9bea0cd7fafff94d16e0026119"
+    },
+    {
+      "input_id": "c06_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c06_short.json",
+      "sha256": "9896363a3d58f5750e51ef9c624d9f2fdcd80238faa5d05e6c0365671c61fed3"
+    },
+    {
+      "input_id": "c03_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_short.json",
+      "sha256": "2f3c51e8d9e4d430445fda9003d82476bcf0cc788329585892415a5712feb486"
+    },
+    {
+      "input_id": "c03_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_full.json",
+      "sha256": "7880ecb05b9f4bbd1153523692fd7baab23bc2751d8d6549fe9e96fe7f3fb601"
+    },
+    {
+      "input_id": "c05_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_short.json",
+      "sha256": "e76e6d40acd1e079971d79dc5448b4c74d1c35dba4b4267b6a64694639292137"
+    },
+    {
+      "input_id": "c05_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_full.json",
+      "sha256": "d08ce759de37a7a5548ee1895f9a69a49e6d508767fec0cfdc399ac92a182fd9"
+    },
+    {
+      "input_id": "c04_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_short.json",
+      "sha256": "c72b73b38e63fd7259c04b594771a705cf1dc5c41d0d4a6f08ea7bc52e30d91c"
+    },
+    {
+      "input_id": "c04_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_full.json",
+      "sha256": "f841dc4a55bdbcd58660fa7b2b9db6760df6f5247183f77bfb78e1914ef109cd"
+    },
+    {
+      "input_id": "c02_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_short.json",
+      "sha256": "17e97a7705d9e5d992c537cf100b69b0c812324688a37cd253bd730a9edf8db2"
+    },
+    {
+      "input_id": "c02_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_full.json",
+      "sha256": "206d3b11c943958bc00cddabd0b433a02558c6af73e56ce62bedf73960bde69a"
+    },
+    {
+      "input_id": "c01_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_short.json",
+      "sha256": "18e46605634662f3bfbf33630fca70b21cd97cb68dae68362bb201254147f7ec"
+    },
+    {
+      "input_id": "c01_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_full.json",
+      "sha256": "9a4fd7147ac4aa535a2f9236255c1e9bf2f42072b793d0f70b2e3d26e9538000"
+    }
+  ],
+  "arms": [
+    "legacy_with_facts",
+    "split_interface"
+  ],
+  "max_calls": 26,
+  "max_gpu_seconds": 1800,
+  "runner_deadline_seconds": 1620,
+  "automatic_retries": 0,
+  "max_consecutive_output_failures": 2,
+  "split": "existing_development_family_only",
+  "source_hashes": {
+    "scripts/monitor_interface_ablation_v1.py": "7a6304d82319c3f1e4580dfaadade91dd5ed67862c96c12e0e57e0137faa1cf5",
+    "scripts/monitor_interface_ablation_v1.sbatch": "3f2708b32df9c0f3bcb36595682356009b78b24ce1dc4444cfc3015e51fa91d5",
+    "scripts/monitor_interface_v1.py": "c305e8d882b8f9bc679817e7e9fe126d11285f8bbc91aaf3bfe335c3ca1e6a20",
+    "scripts/analyze_monitor_interface_ablation_v1.py": "9f314cd55602d6035fb6175b37455b1120d0a068a606716128316b242881879e",
+    "tests/test_monitor_interface_v1.py": "f814ba5f685167499f7de051a90edeeb650ea6ce63ab8355d4890bb4374e63b3",
+    "scripts/monitor_facts_ablation_v1.py": "d31cef79fab6b215e3528ce87c903864eb5054f3e6bad026847cd1ee44602766",
+    "scripts/monitor_facts_v1.py": "94017f3f4a957253b09a975fb0b10b5f350ce549721a4363da27d177cf1c8390",
+    "scripts/observed_execution_v1.py": "55d75ccbb4c0fd88f4e0a0b7b2b95ddaf66acf40368e9fcb80d794c28772de1f",
+    "scripts/monitor_selection_v1.py": "3d600f92364f90772831ed7af93ad9d08475cd1f52cd30adb915c8a2de5cdc26",
+    "scripts/native_ollama_tokenizer.py": "129857f87d212a063018aeb6abb7479de91522c77e264bd26e39a3b8d6dac370",
+    "scripts/ollama_client.py": "b1665bf5ccd26a4658638ce701f4aeff43cc2cc1af7653c583e9d5c2f257afc1",
+    "scripts/index_visible_evidence.py": "775f38b091d2447d7c30d1deff8256587cef2e601e65a6c1ed2d4baf3f6a812d",
+    "tools/ollama_tokenizer/provenance.json": "d88d9a6dbad81744c34e2a954c030cf2b1372f7fbc24b34e5d732f0771815dba",
+    "configs/monitor_interface_evaluation_v1.json": "1be9c811e52db2498f836198fbb33574edbd93e773bc3e897d4a0345edd6bcae"
+  },
+  "comparison": "Joint interface/system/output-schema/composition change; same original sources, visible execution facts, base model and sampling. Not a single-feature causal ablation.",
+  "limits": "Specified events and posthoc short views; no held-out generalization. Separate raw decisions, program reports, defects, abstentions and AI semantic review. No training.",
+  "order": [
+    [
+      "c07_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c07_short",
+      "split_interface"
+    ],
+    [
+      "c08_short",
+      "split_interface"
+    ],
+    [
+      "c08_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c06_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c06_short",
+      "split_interface"
+    ],
+    [
+      "c03_short",
+      "split_interface"
+    ],
+    [
+      "c03_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c03_full",
+      "legacy_with_facts"
+    ],
+    [
+      "c03_full",
+      "split_interface"
+    ],
+    [
+      "c05_short",
+      "split_interface"
+    ],
+    [
+      "c05_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c05_full",
+      "legacy_with_facts"
+    ],
+    [
+      "c05_full",
+      "split_interface"
+    ],
+    [
+      "c04_short",
+      "split_interface"
+    ],
+    [
+      "c04_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c04_full",
+      "legacy_with_facts"
+    ],
+    [
+      "c04_full",
+      "split_interface"
+    ],
+    [
+      "c02_short",
+      "split_interface"
+    ],
+    [
+      "c02_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c02_full",
+      "legacy_with_facts"
+    ],
+    [
+      "c02_full",
+      "split_interface"
+    ],
+    [
+      "c01_short",
+      "split_interface"
+    ],
+    [
+      "c01_short",
+      "legacy_with_facts"
+    ],
+    [
+      "c01_full",
+      "legacy_with_facts"
+    ],
+    [
+      "c01_full",
+      "split_interface"
+    ]
+  ],
+  "capacity": {
+    "c07_short": {
+      "legacy_with_facts": 1112,
+      "split_interface": 1403
+    },
+    "c08_short": {
+      "legacy_with_facts": 1114,
+      "split_interface": 1405
+    },
+    "c06_short": {
+      "legacy_with_facts": 1056,
+      "split_interface": 1347
+    },
+    "c03_short": {
+      "legacy_with_facts": 1249,
+      "split_interface": 1540
+    },
+    "c03_full": {
+      "legacy_with_facts": 16546,
+      "split_interface": 16837
+    },
+    "c05_short": {
+      "legacy_with_facts": 1539,
+      "split_interface": 1830
+    },
+    "c05_full": {
+      "legacy_with_facts": 21248,
+      "split_interface": 21539
+    },
+    "c04_short": {
+      "legacy_with_facts": 1420,
+      "split_interface": 1711
+    },
+    "c04_full": {
+      "legacy_with_facts": 10229,
+      "split_interface": 10520
+    },
+    "c02_short": {
+      "legacy_with_facts": 1782,
+      "split_interface": 2073
+    },
+    "c02_full": {
+      "legacy_with_facts": 20127,
+      "split_interface": 20418
+    },
+    "c01_short": {
+      "legacy_with_facts": 2176,
+      "split_interface": 2467
+    },
+    "c01_full": {
+      "legacy_with_facts": 20109,
+      "split_interface": 20400
+    }
+  }
+}

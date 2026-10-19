@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-15T16:59:08.962510-04:00",
+  "passed": true,
+  "model_calls": 0,
+  "elapsed_seconds": 14.643724596127868,
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/pilot_collection_recovery_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Recovery verified; zero model calls\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_pilot_collection_recovery_v1.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_ambiguous_existing_submission_never_repeated (test_pilot_collection_recovery_v1.RecoveryTests.test_ambiguous_existing_submission_never_repeated) ... ok\ntest_context_mismatch_or_other_error_stops (test_pilot_collection_recovery_v1.RecoveryTests.test_context_mismatch_or_other_error_stops) ... ok\ntest_exact_unattempted_twenty_and_same_rollout (test_pilot_collection_recovery_v1.RecoveryTests.test_exact_unattempted_twenty_and_same_rollout) ... ok\ntest_failed_or_reordered_candidates_not_recovered (test_pilot_collection_recovery_v1.RecoveryTests.test_failed_or_reordered_candidates_not_recovered) ... ok\ntest_real_archived_guard_failures_reproduce (test_pilot_collection_recovery_v1.RecoveryTests.test_real_archived_guard_failures_reproduce) ... ok\ntest_submitted_api_failure_cannot_be_length_exclusion (test_pilot_collection_recovery_v1.RecoveryTests.test_submitted_api_failure_cannot_be_length_exclusion) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.042s\n\nOK\n"
+    },
+    {
+      "command": [
+        "bash",
+        "-n",
+        "scripts/pilot_collection_recovery_v1.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

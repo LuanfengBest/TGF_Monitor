@@ -1,0 +1,16 @@
+# 行程邮件 monitor：固定底座诊断准备
+
+本地准备已完成，尚未运行模型。用户已授权从六次CPU阶段继续一次固定底座诊断。
+
+- 6份原始因果输入及离线AI参考已冻结，49份源文件有SHA；input tokens分别3243、3243、3277、3258、3081、3064。完整保留无需截断。
+- 新输入allowlist排除旧execution_facts程序答案、AI标签、条件评分、私有故障信息和未来消息；六例共用原send_email效果说明。旧诊断带程序事实，因此跨任务分数不构成prompt优劣对照。
+- 15项本地tests通过，覆盖泄漏、JSON错误、unknown逻辑、证据角色、中断/transport/计数失败持久化、重复reservation与成本分母。旧baseline、前轮CPU数据和45保护文件核验通过。
+- 沿用Qwen3:32b同digest/采样/raw模板，预算6调用、1 GPU作业、15分钟、0重试；CPU预检与结果回收各最多5分钟。未新增数据、最终test或训练。
+
+目前getState/getTab浏览器控制均超时，不能确认Bouchet队列、登录状态或上传成功。已请用户在Chrome打开项目页并确认正常显示。本地同步包合并此前未上传的CPU产物，连接恢复后只用新的delivery_pending入口；不要另外跑旧travel_projection_sync或任何generate。
+
+本轮0实验模型调用、0GPU作业、0训练；历史658调用/18588主要GPU秒不变。AI服务费用未知。子agent只完成关键风险反馈后因用量限制中断，主侧完成其余审核，不称独立双审。15项tests不是模型分数；此前3true/2false/1null也只是AI参考。
+
+当前计划SHA：d0cb072b647ce86569f50a13f4fa7ebab56085c6e98fa2d6236549abb6febe04。运行协议docs/travel_monitor_baseline_protocol_2026-10-14.md；本地测试analysis/travel_monitor_local_tests_20261014.json；预检审核analysis/travel_monitor_prelaunch_review_20261014.json。自动续办仍PAUSED，使用当前对话接续，不能让旧计划重复运行。
+
+准备及访问阻塞邮件已发本人，Gmail SENT1a13af74d353171c，receipt保存在results/travel_monitor_readiness_email_receipt_20261014.json。下一结论必须基于实际模型响应；在连接恢复和CPU验收之前不声称提交或训练成功。

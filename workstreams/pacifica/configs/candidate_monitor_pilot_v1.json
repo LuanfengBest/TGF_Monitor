@@ -1,0 +1,451 @@
+{
+  "protocol": "candidate_monitor_pilot_v1",
+  "split": "development",
+  "model": "qwen3:32b",
+  "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+  "num_ctx": 32768,
+  "num_predict": 6144,
+  "seed": 42,
+  "sampling": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0
+  },
+  "automatic_retries": 0,
+  "max_calls": 64,
+  "max_gpu_seconds": 3600,
+  "runner_deadline_seconds": 3460,
+  "max_consecutive_output_failures": 2,
+  "max_http_seconds": 240,
+  "system_sha256": "debafb33810ab61e8cb2216b99d205f78d940a438b2fdd1fd5bdb1cc9f7f38f4",
+  "source_hashes": {
+    "scripts/candidate_monitor_pilot_v1.py": "f0ea78807dd11d19190d3e476b3e37cfbf978882f7807b19577a19f9d4a7386f",
+    "scripts/candidate_monitor_pilot_v1.sbatch": "8f2b387fd9d73833c48ed027a4e21fb47f74458a144e0990e208392b46e0832c",
+    "scripts/analyze_candidate_monitor_pilot_v1.py": "9a85f6e17172e3ca90e1bda7548869593172e19f89c2f39dc5499892b3be768a",
+    "scripts/candidate_monitor_view_v1.py": "b148e232dc6c8e514c362e7b9d433f0f7bd15a54e3af2c0442142155eb5bd370",
+    "scripts/candidate_monitor_schema_v1.py": "a65b37055d7403e89d051c8f99d8cbecb2b57637395c4d3db42175de4dbb9b61",
+    "scripts/monitor_selection_v1.py": "3d600f92364f90772831ed7af93ad9d08475cd1f52cd30adb915c8a2de5cdc26",
+    "scripts/observed_execution_v1.py": "55d75ccbb4c0fd88f4e0a0b7b2b95ddaf66acf40368e9fcb80d794c28772de1f",
+    "scripts/observed_airline_execution_v1.py": "cd28e67de8ec565257a44702d879db09fb3fa688f047956bfe7605de00f6aad8",
+    "scripts/native_ollama_tokenizer.py": "129857f87d212a063018aeb6abb7479de91522c77e264bd26e39a3b8d6dac370",
+    "scripts/ollama_client.py": "b1665bf5ccd26a4658638ce701f4aeff43cc2cc1af7653c583e9d5c2f257afc1",
+    "scripts/index_visible_evidence.py": "775f38b091d2447d7c30d1deff8256587cef2e601e65a6c1ed2d4baf3f6a812d",
+    "tools/ollama_tokenizer/provenance.json": "d88d9a6dbad81744c34e2a954c030cf2b1372f7fbc24b34e5d732f0771815dba"
+  },
+  "inputs": [
+    {
+      "input_id": "v001_e0006",
+      "attempt_id": "bank_01",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v001_e0006.json",
+      "expected_prompt_tokens": 3682,
+      "sha256": "1466d8efe73fc3341a7539e4f6986955241926c311ae8faeebb32488b2dc2b3a"
+    },
+    {
+      "input_id": "v002_e0002",
+      "attempt_id": "airline_01",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v002_e0002.json",
+      "expected_prompt_tokens": 1952,
+      "sha256": "8d79e5da755584db598704d486e9dd2056c0ab1fab97d5dadc99133bfdfdba58"
+    },
+    {
+      "input_id": "v002_e0003",
+      "attempt_id": "airline_01",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v002_e0003.json",
+      "expected_prompt_tokens": 2167,
+      "sha256": "f6816aa8a533bffa4743bcc000b91f3f010ded9db36b7b4fe7171efbbe18729c"
+    },
+    {
+      "input_id": "v003_e0006",
+      "attempt_id": "bank_02",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v003_e0006.json",
+      "expected_prompt_tokens": 3512,
+      "sha256": "7ce7e326223653a1659992a5f92af8abb99877d9edd97d75e46d211931521647"
+    },
+    {
+      "input_id": "v004_e0002",
+      "attempt_id": "airline_02",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v004_e0002.json",
+      "expected_prompt_tokens": 1940,
+      "sha256": "b8e7dbd0371bd5b8ad8e3e8ad0d00d20c1bb0780b7655bc572ce31848c6892d7"
+    },
+    {
+      "input_id": "v004_e0003",
+      "attempt_id": "airline_02",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v004_e0003.json",
+      "expected_prompt_tokens": 2148,
+      "sha256": "0444fc13c21b9de6038f809c964c9c1d2a11d0f8cce70bfcecd341076468a3d4"
+    },
+    {
+      "input_id": "v005_e0006",
+      "attempt_id": "bank_03",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v005_e0006.json",
+      "expected_prompt_tokens": 3751,
+      "sha256": "362e110c2ea2db5b8e4fe0654fb80e07e258f83cbc586a62da80089c8c99dc75"
+    },
+    {
+      "input_id": "v006_e0002",
+      "attempt_id": "airline_03",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v006_e0002.json",
+      "expected_prompt_tokens": 1912,
+      "sha256": "553ad5dff804bc9f6480b0002757708045e7ea412a8e892cdc7c1410cfa0e309"
+    },
+    {
+      "input_id": "v006_e0003",
+      "attempt_id": "airline_03",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v006_e0003.json",
+      "expected_prompt_tokens": 2126,
+      "sha256": "6d42da545152605ec68b52bee1ed2d2b9bc00753bfed43f32d2e5f97b3ffd762"
+    },
+    {
+      "input_id": "v007_e0006",
+      "attempt_id": "bank_04",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v007_e0006.json",
+      "expected_prompt_tokens": 3568,
+      "sha256": "b2d7c74f13246d7b5e6d356970d2772e330c1bd9f63c358ece4d7079ff5b688d"
+    },
+    {
+      "input_id": "v008_e0002",
+      "attempt_id": "airline_04",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v008_e0002.json",
+      "expected_prompt_tokens": 1952,
+      "sha256": "ce4d4667bed61f14a39c1ca1acb287449c2190def15fbda8cb4c6ce13c753246"
+    },
+    {
+      "input_id": "v008_e0003",
+      "attempt_id": "airline_04",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v008_e0003.json",
+      "expected_prompt_tokens": 2166,
+      "sha256": "d5531beb1d3509881bb5dd15faea0aa7457aa6d5105aa9070834f13f2ecae3ce"
+    },
+    {
+      "input_id": "v009_e0006",
+      "attempt_id": "bank_05",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v009_e0006.json",
+      "expected_prompt_tokens": 3601,
+      "sha256": "61a0030833245d97d707ae9d7facc4282f475b04f9d6c2edfcc13a770782e5c9"
+    },
+    {
+      "input_id": "v010_e0002",
+      "attempt_id": "airline_05",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v010_e0002.json",
+      "expected_prompt_tokens": 1968,
+      "sha256": "3a9a7058dfbd1f09bdaecab9a253b37688bcb3d2ccf14c48687114c9cba711a9"
+    },
+    {
+      "input_id": "v010_e0003",
+      "attempt_id": "airline_05",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v010_e0003.json",
+      "expected_prompt_tokens": 2183,
+      "sha256": "3fab0f907119ecfe59f503fb9993643b3635b37fbd142849d9507276c6e295ff"
+    },
+    {
+      "input_id": "v011_e0006",
+      "attempt_id": "bank_06",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v011_e0006.json",
+      "expected_prompt_tokens": 3553,
+      "sha256": "236c95f2dd7b09424f496d18410e7cd790e123642bea19aef2c80570d58a2841"
+    },
+    {
+      "input_id": "v012_e0002",
+      "attempt_id": "airline_06",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v012_e0002.json",
+      "expected_prompt_tokens": 1917,
+      "sha256": "160340c3af9ecb3749dedfed5d4d234cc231947826e3eeb1e8dca82ef86f315e"
+    },
+    {
+      "input_id": "v012_e0003",
+      "attempt_id": "airline_06",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v012_e0003.json",
+      "expected_prompt_tokens": 2125,
+      "sha256": "2e4724bf5efbdd39686f7f039ef0e2faeef9d8aa767117484e948e893232f5a4"
+    },
+    {
+      "input_id": "v013_e0006",
+      "attempt_id": "bank_07",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v013_e0006.json",
+      "expected_prompt_tokens": 3673,
+      "sha256": "c5989d61f40276b39ceca918ab04c22ae00a857e72b2b6b2dec52e45fef269d5"
+    },
+    {
+      "input_id": "v014_e0002",
+      "attempt_id": "airline_07",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v014_e0002.json",
+      "expected_prompt_tokens": 1932,
+      "sha256": "48546d3556cbc59b48c51a962828d19f47affa89af6a74e58ce98bd417b09624"
+    },
+    {
+      "input_id": "v014_e0003",
+      "attempt_id": "airline_07",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v014_e0003.json",
+      "expected_prompt_tokens": 2134,
+      "sha256": "dfa6a42a333c196ed5641f69f91fed838158a9be8e4fac882768867638ae959e"
+    },
+    {
+      "input_id": "v015_e0006",
+      "attempt_id": "bank_08",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v015_e0006.json",
+      "expected_prompt_tokens": 3625,
+      "sha256": "76909a4d4cc8719a0f708dfc8a328394e4b0e698487fa82181e7490c0216d8e9"
+    },
+    {
+      "input_id": "v016_e0002",
+      "attempt_id": "airline_08",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v016_e0002.json",
+      "expected_prompt_tokens": 1930,
+      "sha256": "5d078a0aec742039ee673000c9490a0646b08a9ec2d941f3fea25ff451ddec1b"
+    },
+    {
+      "input_id": "v016_e0003",
+      "attempt_id": "airline_08",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v016_e0003.json",
+      "expected_prompt_tokens": 2131,
+      "sha256": "08b1243d88be79886db85b005466bc2f13157b57e6c4add86d8567a7039e4aed"
+    },
+    {
+      "input_id": "v017_e0006",
+      "attempt_id": "bank_09",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v017_e0006.json",
+      "expected_prompt_tokens": 3650,
+      "sha256": "eaef22b1e1d303b4e4b5255b5d9fa4b076aebbd6873337dc9cde4d702b3af5d7"
+    },
+    {
+      "input_id": "v018_e0002",
+      "attempt_id": "airline_09",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v018_e0002.json",
+      "expected_prompt_tokens": 1934,
+      "sha256": "48ead6049458b791d5f0b714d1d0d471921e9703816bb9b5635812a12b6012bf"
+    },
+    {
+      "input_id": "v018_e0003",
+      "attempt_id": "airline_09",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v018_e0003.json",
+      "expected_prompt_tokens": 2148,
+      "sha256": "a3064ef06429e3a7427d1edbc84402bdbe8c4fc8cc354e7af9588e993992e418"
+    },
+    {
+      "input_id": "v019_e0006",
+      "attempt_id": "bank_10",
+      "event_id": "e0006",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v019_e0006.json",
+      "expected_prompt_tokens": 3652,
+      "sha256": "f4f5f09bdcaecb02e4a32f45f3e003ac563310c01b41509b88ea01d54f86f6e9"
+    },
+    {
+      "input_id": "v020_e0002",
+      "attempt_id": "airline_10",
+      "event_id": "e0002",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v020_e0002.json",
+      "expected_prompt_tokens": 1972,
+      "sha256": "77cd5935e8ac0f1591f95ef4f888c4e275db0b1c18d77a01a842994cd4f2b6e1"
+    },
+    {
+      "input_id": "v020_e0003",
+      "attempt_id": "airline_10",
+      "event_id": "e0003",
+      "path": "data/diagnostics/candidate_monitor_pilot_v1/v020_e0003.json",
+      "expected_prompt_tokens": 2187,
+      "sha256": "cc541be9ac5a84ebfe50dab7ae0cbcc02f7a88dcda0508c7d61e918b87fa7349"
+    }
+  ],
+  "trajectories": [
+    {
+      "attempt_id": "bank_01",
+      "view_path": "results/candidate_actor_pilot_v1_smoke_29479301/bank_01/rollout/monitor_view.json",
+      "view_sha256": "14e64a709b6749e375434da308168b219209d43d802194dfa670d5ff82eeae40",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_01",
+      "view_path": "results/candidate_actor_pilot_v1_smoke_29479301/airline_01/rollout/monitor_view.json",
+      "view_sha256": "bef0b00ac7fde91e91b8adcdd442326c0a0a008aa78ee7914dddef1787503dfb",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_02",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/bank_02/rollout/monitor_view.json",
+      "view_sha256": "71de3feeece0c1d46dca86bb1c29151c0a335d9a439679d0a9ad624c62c98ab0",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_02",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/airline_02/rollout/monitor_view.json",
+      "view_sha256": "11a7e427c7932bad9db068bff5ffe1dcf4785af2c0b5d79f83865b2902ae03bc",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_03",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/bank_03/rollout/monitor_view.json",
+      "view_sha256": "0777e759b2e51d25050f4fb2d38d53fec62a407e394bd1c11c6fbe6e749eaae1",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_03",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/airline_03/rollout/monitor_view.json",
+      "view_sha256": "99b535a6e49519b14b92a93ff7ec9a4867b11f825d54a204fd20dfcd9f3450ba",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_04",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/bank_04/rollout/monitor_view.json",
+      "view_sha256": "514401aa21ccae928d07687abf40decbeeb5fbd64f6bb135d9acd0a637204736",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_04",
+      "view_path": "results/candidate_actor_pilot_v1_batch1_29480022/airline_04/rollout/monitor_view.json",
+      "view_sha256": "98f87d00f28112486f7c3edeea29254da1195e9c38f08244974bb9398cf6a09c",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_05",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/bank_05/rollout/monitor_view.json",
+      "view_sha256": "e7423787c13883be96eecbc0ada6673447c3a1fad4400bae66551641e34bb335",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_05",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/airline_05/rollout/monitor_view.json",
+      "view_sha256": "36833e10ad42b3a7bd3087381ae3a29ec97b937dabc6de488da56bf32d0b2cde",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_06",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/bank_06/rollout/monitor_view.json",
+      "view_sha256": "fbe4624eeb65e592429118390fed86bfc992e6964772ace8275674d42f687f80",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_06",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/airline_06/rollout/monitor_view.json",
+      "view_sha256": "29bb61c9b42c70f618ddf9ab90d74d8d099c16f55a3a3046f218c4ead86b5755",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_07",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/bank_07/rollout/monitor_view.json",
+      "view_sha256": "b79e8cc8365cff53fe394264360098d421dffece06d19e4180f9ff84ac0b34c0",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_07",
+      "view_path": "results/candidate_actor_pilot_v1_batch2_29480674/airline_07/rollout/monitor_view.json",
+      "view_sha256": "c4a5292956f80a5e2496c5cdd7c7b36f47e440a4ae7d58de6f3b8ee06e577ac4",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_08",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/bank_08/rollout/monitor_view.json",
+      "view_sha256": "d70eb38f7436c2c544937463d9dffb71235d137807a0ac60030933b1dbb5ed4e",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_08",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/airline_08/rollout/monitor_view.json",
+      "view_sha256": "80b95fa2d963635822e0e0090c4a9a6bd7cda36ab7a303da1f2857889c8232af",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_09",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/bank_09/rollout/monitor_view.json",
+      "view_sha256": "96c2804ea0b83012564e38d5e7f612cbe470a2946ad20d7ae39bbc78a0fdf1dd",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_09",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/airline_09/rollout/monitor_view.json",
+      "view_sha256": "1662c0c37f26c0cd262f878ad80d81332f8325ae9fd4ec7b86aab585145c6765",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "bank_10",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/bank_10/rollout/monitor_view.json",
+      "view_sha256": "1b02a1fd11b7329c33a93537385b3fa0c3152f4b60372498a0061042eb0d2890",
+      "mutation_count": 1,
+      "status": "actor_stopped_without_end_task"
+    },
+    {
+      "attempt_id": "airline_10",
+      "view_path": "results/candidate_actor_pilot_v1_batch3_29481137/airline_10/rollout/monitor_view.json",
+      "view_sha256": "0f2c23052f560bed1346787b05fb1bcf3d5640b8f7f695b4506521b8df9769c2",
+      "mutation_count": 2,
+      "status": "actor_stopped_without_end_task"
+    }
+  ],
+  "backend_installation_hashes": {
+    "/apps/software/2024a/software/ollama/0.22.0-GCCcore-13.3.0-CUDA-12.8.0/bin/ollama": "81985c2201837c4f688447d0178b17db955725d66e9a7ab5a351c046d8a542fa",
+    "/apps/software/2024a/software/ollama/0.22.0-GCCcore-13.3.0-CUDA-12.8.0/bin/ollama.real": "90f50cb6e73e0f2b3023ff39699b7eacf2cb4d6b44830c084be18e05665954f0",
+    "/apps/software/2024a/software/ollama/0.22.0-GCCcore-13.3.0-CUDA-12.8.0/bin/ollama-serve-daemon": "0344ff5c42d539f2a6547ba9652823c0e03b38b47781a6d18124837119cb161b",
+    "/apps/software/2024a/software/ollama/0.22.0-GCCcore-13.3.0-CUDA-12.8.0/bin/ollama-down": "f2b25a408d53dd7cd071c59e2eacc7961861913dfb483b1bbe181eddf2d196c8"
+  },
+  "limits": "AI development diagnostic only; automatic mutation enumeration with complete causal prefix, original reasoning included. Not held-out, human gold, full-operation coverage or deployment proof.",
+  "actor_plan_sha256": "4a3586c314e9357983d3a698ad399dd765a031567d6a820248e6124acead8491",
+  "planned_attempts": [
+    "bank_01",
+    "airline_01",
+    "bank_02",
+    "airline_02",
+    "bank_03",
+    "airline_03",
+    "bank_04",
+    "airline_04",
+    "bank_05",
+    "airline_05",
+    "bank_06",
+    "airline_06",
+    "bank_07",
+    "airline_07",
+    "bank_08",
+    "airline_08",
+    "bank_09",
+    "airline_09",
+    "bank_10",
+    "airline_10"
+  ],
+  "not_available": []
+}

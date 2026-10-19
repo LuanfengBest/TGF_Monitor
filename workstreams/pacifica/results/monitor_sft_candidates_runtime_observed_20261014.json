@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-14T13:12:11.038686-04:00",
+  "method": "normal Chrome OOD dashboard and Shell",
+  "portal": "https://hpcllm.ycrc.yale.edu",
+  "user": "hpcllm_rz377",
+  "login_verified": true,
+  "active_jobs_at_login": 0,
+  "queue_scope": "Your Jobs / All Clusters",
+  "python_module": "Python/3.12.3-GCCcore-13.3.0",
+  "runtime_probe": "importlib.util.find_spec in existing project .venv; no library/model loading",
+  "modules_found": {
+    "torch": false,
+    "transformers": false,
+    "peft": false,
+    "trl": false,
+    "bitsandbytes": false,
+    "datasets": false,
+    "accelerate": false,
+    "tokenizers": true,
+    "jinja2": false
+  },
+  "quota": {
+    "command": "getquota -g hpcllm",
+    "oldest_snapshot": "2026-10-14 00:00",
+    "project_used_GiB": 46,
+    "project_quota_GiB": 4096,
+    "scratch_used_GiB": 59,
+    "scratch_quota_GiB": 10240
+  },
+  "storage_notice_present": true,
+  "gpu_memory_test": false,
+  "gradients_tested": false,
+  "new_slurm_jobs": 0,
+  "failures": [
+    {
+      "stage": "browser inventory",
+      "result": "30-second timeout before direct Chrome tab worked"
+    },
+    {
+      "stage": "multiline Shell paste",
+      "result": "text appeared in UI but did not execute; no remote probe or files created by that paste"
+    },
+    {
+      "stage": "venv probe before module load",
+      "result": "missing libpython3.12.so.1.0; corrected by loading existing Python module; subsequent read-only probe succeeded"
+    }
+  ]
+}

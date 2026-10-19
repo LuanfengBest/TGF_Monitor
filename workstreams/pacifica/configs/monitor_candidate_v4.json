@@ -1,0 +1,169 @@
+{
+  "protocol": "monitor_candidate_v4",
+  "model": "qwen3.5:9b",
+  "model_digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+  "arm": "qwen3_5_9b_general_think",
+  "split": "development",
+  "family": "monitorbench_bank_transfer_2_original",
+  "inputs": [
+    {
+      "input_id": "c01_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_short.json",
+      "sha256": "18e46605634662f3bfbf33630fca70b21cd97cb68dae68362bb201254147f7ec"
+    },
+    {
+      "input_id": "c01_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_full.json",
+      "sha256": "9a4fd7147ac4aa535a2f9236255c1e9bf2f42072b793d0f70b2e3d26e9538000"
+    },
+    {
+      "input_id": "c02_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_short.json",
+      "sha256": "17e97a7705d9e5d992c537cf100b69b0c812324688a37cd253bd730a9edf8db2"
+    },
+    {
+      "input_id": "c02_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_full.json",
+      "sha256": "206d3b11c943958bc00cddabd0b433a02558c6af73e56ce62bedf73960bde69a"
+    },
+    {
+      "input_id": "c03_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_short.json",
+      "sha256": "2f3c51e8d9e4d430445fda9003d82476bcf0cc788329585892415a5712feb486"
+    },
+    {
+      "input_id": "c03_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_full.json",
+      "sha256": "7880ecb05b9f4bbd1153523692fd7baab23bc2751d8d6549fe9e96fe7f3fb601"
+    },
+    {
+      "input_id": "c04_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_short.json",
+      "sha256": "c72b73b38e63fd7259c04b594771a705cf1dc5c41d0d4a6f08ea7bc52e30d91c"
+    },
+    {
+      "input_id": "c04_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_full.json",
+      "sha256": "f841dc4a55bdbcd58660fa7b2b9db6760df6f5247183f77bfb78e1914ef109cd"
+    },
+    {
+      "input_id": "c05_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_short.json",
+      "sha256": "e76e6d40acd1e079971d79dc5448b4c74d1c35dba4b4267b6a64694639292137"
+    },
+    {
+      "input_id": "c05_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_full.json",
+      "sha256": "d08ce759de37a7a5548ee1895f9a69a49e6d508767fec0cfdc399ac92a182fd9"
+    },
+    {
+      "input_id": "c06_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c06_short.json",
+      "sha256": "9896363a3d58f5750e51ef9c624d9f2fdcd80238faa5d05e6c0365671c61fed3"
+    },
+    {
+      "input_id": "c07_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c07_short.json",
+      "sha256": "d4854607233dff1c3e75e47b2df3871751fd9e98bbebc593aa07d8f4a42f083d"
+    },
+    {
+      "input_id": "c08_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c08_short.json",
+      "sha256": "208b2d03f8a981107c08c72a55463b2c8214fc9bea0cd7fafff94d16e0026119"
+    }
+  ],
+  "system_sha256": "b724b778e22186d29f0d3261a6e2253445362c5ea89a472826a7329c560663aa",
+  "num_ctx": 32768,
+  "num_predict": 6144,
+  "seed": 42,
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "frequency_penalty": 0.0,
+    "repeat_penalty": 1.0,
+    "repeat_last_n": 32768
+  },
+  "tokenizers_version": "0.22.2",
+  "max_calls": 14,
+  "max_gpu_seconds": 1650,
+  "automatic_retries": 0,
+  "max_consecutive_output_failures": 2,
+  "sources": [
+    "https://huggingface.co/Qwen/Qwen3.5-9B",
+    "https://docs.ollama.com/modelfile"
+  ],
+  "limitations": [
+    "one development family; selected-event diagnostic",
+    "6144 output cap is deployment budget, below vendor general recommendation",
+    "architecture, size, quantization, backend and sampling differ from Qwen3"
+  ],
+  "calibrations": [
+    {
+      "input_id": "calibration_mixed",
+      "prompt": "<|im_start|>system\nToken counting calibration. Reply OK.<|im_end|>\n<|im_start|>user\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response>\nQuoted JSON: {\"amount\":1717.50,\"state\":\"scheduled\"}\nYAML: - id_: 41\nLine\r\nspaces  tabs\t escaped \\u003c; Unicode: 银行 café—€ 😀\n<tool_response>opaque</tool_response><|im_end|>\n<|im_start|>assistant\n<think>\n",
+      "num_predict": 16,
+      "expected_prompt_tokens": 1389
+    }
+  ],
+  "capacity": {
+    "c01_short": 1866,
+    "c01_full": 19746,
+    "c02_short": 1483,
+    "c02_full": 19772,
+    "c03_short": 1017,
+    "c03_full": 16252,
+    "c04_short": 1116,
+    "c04_full": 9863,
+    "c05_short": 1276,
+    "c05_full": 20935,
+    "c06_short": 996,
+    "c07_short": 806,
+    "c08_short": 808
+  },
+  "source_hashes": {
+    "scripts/download_monitor_candidate_v1.py": "f25407b9d4e722cd5d4ef68cc1628bf4b3c8d91e2a0acce63faa7dcdde2299b2",
+    "scripts/download_monitor_candidate_v1.sbatch": "e1380dcd36cddd9f67875d124bfa5a6be9d7aa7506220a890d550fcdab69cd02",
+    "scripts/monitor_selection_v1.py": "3d600f92364f90772831ed7af93ad9d08475cd1f52cd30adb915c8a2de5cdc26",
+    "scripts/ollama_client.py": "b1665bf5ccd26a4658638ce701f4aeff43cc2cc1af7653c583e9d5c2f257afc1",
+    "scripts/index_visible_evidence.py": "775f38b091d2447d7c30d1deff8256587cef2e601e65a6c1ed2d4baf3f6a812d",
+    "scripts/native_ollama_tokenizer.py": "129857f87d212a063018aeb6abb7479de91522c77e264bd26e39a3b8d6dac370",
+    "data/tokenizers/qwen3_5_9b/ollama_manifest.json": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+    "data/tokenizers/qwen3_5_9b/provenance.json": "64f8d183e5e3461941651b4eb9863ed8eaab564a621ea98f13cf5a9a71054a9b",
+    "data/tokenizers/qwen3_5_9b/tokenizer.json": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+    "data/tokenizers/qwen3_5_9b/tokenizer_config.json": "316230d6a809701f4db5ea8f8fc862bc3a6f3229c937c174e674ff3ca0a64ac8",
+    "data/tokenizers/qwen3_5_9b/chat_template.jinja": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+    "scripts/monitor_candidate_v4.py": "194503868a24f3f48ba5048872cb599528a4733c98cd5c6ad4bc13706c3f3700",
+    "scripts/monitor_candidate_v4.sbatch": "c0190b5bc145c097d9b95a0d5b8f7affebc730a524474be87aeee8e3e9d630ae",
+    "scripts/serve_monitor_candidate_v4.py": "c9854443125c2fb8e4f6f3c138bed729bbf19679dfe579dc1176bd51bf488e33",
+    "scripts/prepare_monitor_runtime_v1.py": "33e8958794e4a20a41e433087e4ee2f269f2d4a9d17958d14c28af5af2c50e21",
+    "scripts/prepare_monitor_runtime_v1.sbatch": "4218c4239457c243eb2ceb9e4e961c1e0edf62180df9cbf4f5f837017c971971",
+    "configs/monitor_runtime_v1.json": "4d95cfc2b5c0fa414439bfa6a8b21eed6490a4ac52805c84df3987f4d77218e1"
+  },
+  "recovery": {
+    "prior_job": 29439492,
+    "prior_attempted_calls": 1,
+    "prior_gpu_seconds": 128,
+    "reason": "Official 0.40.3 loads qwen35 but rejects repeat_last_n=-1 before generation. Replace with documented equivalent num_ctx=32768; same model, inputs, prompt and remaining sampling. No task answers observed.",
+    "remaining_calibration": "mixed Unicode/JSON/CRLF test; exact per-task counts also enforced",
+    "stage_attempt_limit_including_prior_failure": 15,
+    "stage_gpu_ceiling_including_prior_failure": 1778,
+    "automatic_retries": 0
+  },
+  "service_version_response": {
+    "version": "0.40.3"
+  },
+  "runner_wall_seconds": 1500,
+  "runtime_asset": {
+    "name": "ollama-linux-amd64.tar.zst",
+    "size": 1437349190,
+    "digest": "sha256:ce6f8b671a699bf1ebafb28d60dbbabf4f37b30b499145fa308a8ba72de021d6",
+    "browser_download_url": "https://github.com/ollama/ollama/releases/download/v0.40.3/ollama-linux-amd64.tar.zst"
+  },
+  "request_guards": {
+    "truncate": false,
+    "shift": false
+  }
+}

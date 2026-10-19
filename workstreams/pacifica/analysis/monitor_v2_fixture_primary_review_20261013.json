@@ -1,0 +1,57 @@
+{
+  "reviewed_at": "2026-10-13T23:28:09.574188-04:00",
+  "reviewer": "primary Codex; AI non-blind fixture/source/contract review",
+  "reviewer_is_human": false,
+  "not_independent_gold": true,
+  "verification_sha256": "a95ed51267459348757ca17ee0c633ff78c15f00dc38b90e51298350a8f96e29",
+  "fixtures": [
+    {
+      "candidate_id": "bank_cumulative_spend_pool",
+      "variant": "base",
+      "manifest_sha256": "bdd4df5c01e0e0ca55ab5cc84fd6e351a943ee4e756335ae9b15ba6ccbdf43be",
+      "original_read_tool_round_trip": true,
+      "task_and_initial_records_consistent": true
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "base",
+      "manifest_sha256": "3bd506db8acd3526557bd99fae5ccf6462e2db49a015d897988890df584efeb2",
+      "original_read_tool_round_trip": true,
+      "task_and_initial_records_consistent": true
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "review_set_b",
+      "manifest_sha256": "3f80af336c93ceef2adf40d34520c3fc3fc5c82a02771ec636f409fbc008b741",
+      "original_read_tool_round_trip": true,
+      "task_and_initial_records_consistent": true
+    },
+    {
+      "candidate_id": "bank_batch_quorum",
+      "variant": "review_set_c",
+      "manifest_sha256": "b8c589a4ff69582876fd6d8584b41053389a5f5be1534b21aad229ba4bcff305",
+      "original_read_tool_round_trip": true,
+      "task_and_initial_records_consistent": true
+    },
+    {
+      "candidate_id": "airline_duplicate_retention",
+      "variant": "base",
+      "manifest_sha256": "ddfc8df6096db3edc7c44910406200325b113071d05351fe03b82265f31d24af",
+      "original_read_tool_round_trip": true,
+      "task_and_initial_records_consistent": true
+    }
+  ],
+  "cpu_audit_only_approved": true,
+  "actor_generation_approved": false,
+  "training_approved": false,
+  "max_audit_events": 12,
+  "prepared_design_events": 11,
+  "family_intent": "data/training/monitor_v2/split_intent_v3.json",
+  "limitations": [
+    "Only bank train family",
+    "Validation source design exposed to author/reviewer; no monitor tuning on these outputs yet",
+    "Final unseen bank/airline test families absent",
+    "Scripted actions are not natural actor trajectories",
+    "Candidate fixture gates remain false for model generation; separate CPU audit permission only"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "travel_projection_code_review_v1",
+  "reviewed_at": "2026-10-14T14:41:37.579970+00:00",
+  "reviewer": "expert_annotation AI subagent",
+  "reviewer_is_human": false,
+  "blind_review": false,
+  "independent_review": false,
+  "training_eligible": false,
+  "exposure": [
+    "Authored projection proposal/task/fixture; reviewed prior task families, AI labels and baseline outputs.",
+    "Read current generator source including planned failure/fault modes. No generated six-case audit or private audit truth read. Future annotation must disclose this exposure."
+  ],
+  "method": "Read-only static review of new adapter/view/decoder, freeze/generation runner, ten test definitions and original tool/storage/formatter/runtime code. No tests or generation executed by this reviewer.",
+  "source_hashes": {
+    "scripts/travel_projection_v1.py": "944da2c369da0af469d4bdfaef54789527360e5f2a7f7187bf62f2e315f66835",
+    "scripts/prepare_travel_projection_v1.py": "da01ebd7211a5140c3593e9a41b9a8bb0dddfb3c9a813c153855bba22b2c1d8b",
+    "tests/test_travel_projection_v1.py": "01c945bb2eae1e8f5d75f88f94282a9c4bc0c2f91c9114a57ee7181ac8f3b133",
+    "scripts/monitor_contract_v2.py": "24ea14ae3a12793f00d7afd1eec8e58386277db4d09ebd8eb220ad82fb437354",
+    "data/task_design/travel_projection_v1/task.json": "8a5807ba60533235f6746f0f99c45336c6f8ab1ad98e22bbfaf71ed4c98ee0c8",
+    "data/task_design/travel_projection_v1/fixture.json": "a8d51a47f32a84581eeb32e21b74537dd3bbeea5fad5f8532cf94a8359752fb8",
+    "data/task_design/travel_projection_v1/design_manifest.json": "6ffed1689191054c053b1446f74264bbbdae893b59be6a1ad62c23bffecb3317",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/email_tools.py": "46d3bd63350f0910fef0495a23f607672c403862886ba385c8d933026f8180a5",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/drive_tools.py": "50cb31252bbc98edb4f0c1b529153010c13db464f72117e93081a8b211913f73",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/inbox.py": "7893e5c311db642a7540ec17aeff6657b958fb50e33c66186933aba045ce84ec",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/cloud_drive.py": "48457e92353763f2804e37dde18f7629506b2d3173e4d3c44957ca79952217ed",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/shared_models.py": "e71d32229255470d8b279b776228b015db3cfbb0578abaaa77139164d144249f",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environments/base_environment.py": "65b25731ec1388564a5946ceff98a1571bbcfe2fe1d09b0d5d6b60ebab6ea98b",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/functions_runtime.py": "01cc34ec3de2597debbc67846e4bd6bb7b553bc4fdd5542e4d0368ec2bcb7bb2",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/pipeline_elements.py": "2db83611e957bd504383b2901c9aaf4ea304872d4e1ea4dd3a7a289f9023b594"
+  },
+  "parent_reported_test_count": 10,
+  "test_execution_independently_verified": false,
+  "new_tests_run": 0,
+  "generated_cases": 0,
+  "model_calls": 0,
+  "gpu_jobs": 0,
+  "approved_for_bounded_cpu_generation": false,
+  "blocking_findings": [
+    {
+      "id": "B1",
+      "severity": "generation_blocker",
+      "path": "scripts/prepare_travel_projection_v1.py",
+      "lines": [
+        82,
+        93,
+        119,
+        124
+      ],
+      "issue": "The 60-second wall budget is checked only at the start of each case. execute_case dispatches read, send and end_task without a common deadline; a slow/hung read can allow a later send after expiry, and an in-progress tool is not bounded.",
+      "evidence": [
+        "if time.monotonic() - started > plan['max_wall_seconds']: raise TimeoutError('CPU time budget')",
+        "view, audit, items = execute_case(mode, capture)",
+        "result, error = task.run_tool(name, arguments)"
+      ],
+      "minimal_fix": "Pass one absolute stage deadline into the dispatch boundary; check before each call and do not start a later call after expiry. Add a bounded CPU interruption mechanism for an in-progress synchronous tool and stop the whole stage, preserving unresolved effects as unknown. Keep no retries or next-case continuation after a budget interruption.",
+      "required_verification": "An already-expired deadline performs zero tool dispatches; expiry while a tool is running stops further dispatch and retains the attempted operation with uncertain effect."
+    },
+    {
+      "id": "B2",
+      "severity": "generation_blocker",
+      "path": "scripts/prepare_travel_projection_v1.py",
+      "lines": [
+        82,
+        92,
+        124,
+        125,
+        135,
+        140
+      ],
+      "issue": "The current call/pending event is captured only in memory, with no durable snapshot before dispatch; full case files are written only after execute_case returns. The Exception handler excludes KeyboardInterrupt and ordinary process termination. Interruption during/after send can therefore lose a real attempted send and any partial effect from the visible record.",
+      "evidence": [
+        "capture['pending'] = {'event_id': eid, 'tool': name, 'arguments': deepcopy(arguments)}",
+        "capture['pending'] = None",
+        "except Exception as error:"
+      ],
+      "minimal_fix": "Persist a visible call/pending snapshot before dispatch and advance it after each returned result, with durable state that survives abrupt termination. Handle normal cancellation/termination and timeout in a finalization path; retain a pending operation as unresolved/unknown, never synthesize an original-tool success or zero-effect return. Distinguish harness records from tool_return and stop the stage. Keep reservation/no-retry protection.",
+      "required_verification": "A controlled interruption after invocation leaves the complete visible prefix plus pending call and an explicit harness unknown outcome or durable unresolved marker. Recovery must not rerun it or silently count it as zero mutation."
+    }
+  ],
+  "nonblocking_checks": [
+    {
+      "area": "visible_isolation_and_causality",
+      "result": "Pass for completed fixed cases. View top level is user_request/policy/messages, private before/after states and mode are held outside view. Causal event export cuts messages at the exact target return. Duplicate or unbound call/return identities and incomplete call coverage fail rather than silently drop an event."
+    },
+    {
+      "area": "event_and_attempt_budget",
+      "result": "SPECS is a fixed six-element list; verify compares exact specs, train/family/budgets and hashes, each case issues one send and there is no retry loop. A new task/environment is loaded per case. Partial interruption handling and deadline enforcement are the separate blockers above."
+    },
+    {
+      "area": "execution_contract",
+      "result": "Normal original Email JSON is schema-validated with all Email fields present and no coercion changes; recipients, subject, body, CC, BCC and attachments are reconstructed from normalized original arguments and compared. Status sent/read true/timestamp null required. No authorization is inferred. The precise missing-type attachment argument plus original ValueError is a narrow pre-storage nonexecution; generic RuntimeError remains unknown."
+    },
+    {
+      "area": "source_authority_and_field_projection",
+      "result": "projection_from_file validates exact file ID/name/owner, unambiguous JSON, unique record IDs, six nonempty strings and valid UTC spelling/date. These are task-specific public requirements, not file-note delegation. The generator deliberately constructs frozen scripted variants; it does not claim to be an actor or semantic authority checker."
+    },
+    {
+      "area": "public_tool_schema",
+      "result": "The adapter exposes exactly original get_file_by_id/send_email plus end_task parameters and rejects nonpublic top-level arguments; private inbox/cloud dependencies are absent from schema. Plain JSON argument round-trip blocks embedded FunctionCall objects; each load constructs independent original data models."
+    },
+    {
+      "area": "actual_sequence_and_end_task",
+      "result": "Each normal case pre-reads the designated original file, sends once, records a neutral outcome and invokes end_task. Task.run_tool blocks later dispatch after end_task. A failed send is reported and followed only by end_task, with no retry. On interruption no complete end report is fabricated."
+    },
+    {
+      "area": "no_external_email_or_model",
+      "result": "Reviewed executable paths invoke original in-memory Inbox.send_email and dictionary insertion only. No SMTP, email connector, HTTP request, cluster submission, actor client, monitor inference or training call is present. Network delivery is explicitly unverified."
+    },
+    {
+      "area": "canonical_serialization",
+      "result": "original_text uses the official tool_result_to_str dump_fn hook plus to_jsonable_python on original typed fields. Original tool and storage behavior is unchanged; this is a new JSON export contract, not a repair of old frozen outputs."
+    }
+  ],
+  "limitations": [
+    "Trusted original export and frozen source hashes remain required. Source-role strings and JSON shape are not cryptographic provenance.",
+    "Execution decoder is not a full permission judge: sender/account identity, authorized file provenance, body projection, no extra channels and action count still need semantic review. Sender and generated email ID are taken from the trusted raw return; they are not independently authenticated by the call arguments.",
+    "Only the precise planned missing-type rejection is recognized as proven nonexecution. Other malformed inputs can remain conservative unknown; do not generalize the message alone to any argument.",
+    "Current event_bundles only accepts tool_return; once interruption/predispatch records are added, distinct harness provenance and unknown/nonexecution semantics must be reviewed.",
+    "Caller controls the provenance of the complete causal input. Public-source shape validation does not itself prove that original messages were not omitted or that arbitrary text lacks sensitive data.",
+    "Tests instantiate fresh in-memory tasks from the fixed task/fixture; only the artifact-write test uses TemporaryDirectory. These CPU unit tests are not the six frozen annotation trajectories, and this reviewer did not rerun them.",
+    "Only train-family synthetic work is reviewed. No bank/calendar final-test fixture or trajectory is approved."
+  ],
+  "conclusion": "Do not freeze/generate the six-case review batch until B1/B2 are resolved and focused regression/source re-review passes. All findings concern finite-run integrity; no additional sampling or unrelated interface expansion is requested.",
+  "files_modified_by_reviewer": [
+    "analysis/travel_projection_code_review_20261014.json"
+  ]
+}

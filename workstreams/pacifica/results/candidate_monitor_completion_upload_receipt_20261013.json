@@ -1,0 +1,99 @@
+{
+  "completed_at": "2026-10-13T23:21:38.122555-04:00",
+  "archive_sha256": "b1389431f9b52ec3367a090e5649b7bef8be433cae5d261290bdcffeca575776",
+  "manifest_sha256": "3c1bb5cb77b8d15349701df19137b07144a5f9fdf5c87df2abb5cab1c3493659",
+  "files_verified": 42,
+  "new_files": [
+    "analysis/candidate_actor_injection_delivery_audit_20261013.json",
+    "analysis/candidate_controls_monitor_semantic_review_20261013.json",
+    "analysis/candidate_controls_monitor_semantic_review_validation_20261013.json",
+    "analysis/candidate_controls_monitor_v1_29482946_local_recheck.json",
+    "analysis/candidate_evidence_binding_probe_20261013.json",
+    "analysis/candidate_monitor_completion_integrity_20261013.json",
+    "analysis/candidate_monitor_integrity_checkpoint_20261013.json",
+    "analysis/candidate_monitor_latency_20261013.json",
+    "analysis/candidate_monitor_pilot_v1_29481466_local_recheck.json",
+    "analysis/candidate_monitor_queue_empty_20261013.json",
+    "analysis/candidate_monitor_semantic_review_20261013.json",
+    "analysis/candidate_monitor_semantic_review_validation_20261013.json",
+    "analysis/monitor_v2_family_proposal_review_20261013.json",
+    "data/training/monitor_v2/family_proposals/airline_delegated_cancellation.json",
+    "data/training/monitor_v2/family_proposals/airline_duplicate_retention.json",
+    "data/training/monitor_v2/family_proposals/bank_batch_quorum.json",
+    "data/training/monitor_v2/family_proposals/bank_cumulative_spend_pool.json",
+    "data/training/monitor_v2/family_proposals/split_intent.json",
+    "data/training/monitor_v2/split_intent_v3.json",
+    "docs/candidate_controls_monitor_results_2026-10-13.md",
+    "docs/candidate_controls_monitor_semantic_review_2026-10-13.md",
+    "docs/candidate_evidence_binding_2026-10-13.md",
+    "docs/candidate_monitor_pilot_results_2026-10-13.md",
+    "docs/candidate_monitor_semantic_review_2026-10-13.md",
+    "docs/monitor_v2_family_proposal_review_2026-10-13.md",
+    "results/costs_total_through_candidate_controls_monitor_v1.json",
+    "results/costs_total_through_candidate_monitor_v1.json",
+    "scripts/candidate_evidence_binding_v1.py",
+    "tests/test_candidate_evidence_binding_v1.py",
+    "configs/candidate_monitor_completion_upload_20261013_manifest.json"
+  ],
+  "backed_up_and_changed": [
+    "AI_use_log.md",
+    "PROJECT_LOG.md",
+    "README.md",
+    "STATUS.md",
+    "docs/annotation_pilot_2026-10-13.md",
+    "docs/candidate_actor_pilot_results_2026-10-13.md",
+    "docs/candidate_controls_monitor_protocol_2026-10-13.md",
+    "docs/candidate_monitor_pilot_protocol_2026-10-13.md",
+    "docs/monitor_selection_training_plan_2026-10-13.md",
+    "docs/team_handoff_2026-10-13.md"
+  ],
+  "checks": [
+    {
+      "argv": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_candidate_evidence_binding_v1.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_actor_fact_role_rejected_and_source_missing_unknown (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_actor_fact_role_rejected_and_source_missing_unknown) ... ok\ntest_bank_selector_not_source_id_controls_value (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_bank_selector_not_source_id_controls_value) ... ok\ntest_buy_call_id_tool_and_flight_constraints (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_buy_call_id_tool_and_flight_constraints) ... ok\ntest_missing_record_field_and_ambiguous_records_are_unknown (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_missing_record_field_and_ambiguous_records_are_unknown) ... ok\ntest_parse_failure_and_duplicate_json_keys_are_unknown (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_parse_failure_and_duplicate_json_keys_are_unknown) ... ok\ntest_provenance_immutability_causal_and_ambiguous_source (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_provenance_immutability_causal_and_ambiguous_source) ... ok\ntest_six_frozen_visible_mappings (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_six_frozen_visible_mappings) ... ok\ntest_upgrades_missing_value_difference_and_ambiguous_call (test_candidate_evidence_binding_v1.EvidenceBindingTests.test_upgrades_missing_value_difference_and_ambiguous_call) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.010s\n\nOK\n"
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/candidate_actor_pilot_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Frozen source, family registry and both generation gates verified\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/candidate_monitor_pilot_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Frozen monitor sources and all inputs verified\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "scripts/candidate_controls_monitor_v1.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "stdout": "Frozen monitor sources and all inputs verified\n",
+      "stderr": ""
+    }
+  ],
+  "training_runs": 0
+}

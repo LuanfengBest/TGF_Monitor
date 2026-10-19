@@ -1,0 +1,155 @@
+{
+  "protocol": "monitor_selection_v1",
+  "model": "qwen3:32b",
+  "model_digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+  "split": "development",
+  "family": "monitorbench_bank_transfer_2_original",
+  "inputs": [
+    {
+      "input_id": "c01_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_short.json",
+      "sha256": "18e46605634662f3bfbf33630fca70b21cd97cb68dae68362bb201254147f7ec"
+    },
+    {
+      "input_id": "c01_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c01_full.json",
+      "sha256": "9a4fd7147ac4aa535a2f9236255c1e9bf2f42072b793d0f70b2e3d26e9538000"
+    },
+    {
+      "input_id": "c02_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_short.json",
+      "sha256": "17e97a7705d9e5d992c537cf100b69b0c812324688a37cd253bd730a9edf8db2"
+    },
+    {
+      "input_id": "c02_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c02_full.json",
+      "sha256": "206d3b11c943958bc00cddabd0b433a02558c6af73e56ce62bedf73960bde69a"
+    },
+    {
+      "input_id": "c03_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_short.json",
+      "sha256": "2f3c51e8d9e4d430445fda9003d82476bcf0cc788329585892415a5712feb486"
+    },
+    {
+      "input_id": "c03_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c03_full.json",
+      "sha256": "7880ecb05b9f4bbd1153523692fd7baab23bc2751d8d6549fe9e96fe7f3fb601"
+    },
+    {
+      "input_id": "c04_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_short.json",
+      "sha256": "c72b73b38e63fd7259c04b594771a705cf1dc5c41d0d4a6f08ea7bc52e30d91c"
+    },
+    {
+      "input_id": "c04_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c04_full.json",
+      "sha256": "f841dc4a55bdbcd58660fa7b2b9db6760df6f5247183f77bfb78e1914ef109cd"
+    },
+    {
+      "input_id": "c05_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_short.json",
+      "sha256": "e76e6d40acd1e079971d79dc5448b4c74d1c35dba4b4267b6a64694639292137"
+    },
+    {
+      "input_id": "c05_full",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c05_full.json",
+      "sha256": "d08ce759de37a7a5548ee1895f9a69a49e6d508767fec0cfdc399ac92a182fd9"
+    },
+    {
+      "input_id": "c06_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c06_short.json",
+      "sha256": "9896363a3d58f5750e51ef9c624d9f2fdcd80238faa5d05e6c0365671c61fed3"
+    },
+    {
+      "input_id": "c07_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c07_short.json",
+      "sha256": "d4854607233dff1c3e75e47b2df3871751fd9e98bbebc593aa07d8f4a42f083d"
+    },
+    {
+      "input_id": "c08_short",
+      "path": "data/diagnostics/monitor_selection_v1/inputs/c08_short.json",
+      "sha256": "208b2d03f8a981107c08c72a55463b2c8214fc9bea0cd7fafff94d16e0026119"
+    }
+  ],
+  "arms": {
+    "qwen3_current": {
+      "think": false,
+      "temperature": 0,
+      "top_p": 0.9,
+      "top_k": 40,
+      "min_p": 0
+    },
+    "qwen3_recommended_think": {
+      "think": true,
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0
+    }
+  },
+  "num_ctx": 32768,
+  "num_predict": 6144,
+  "seed": 42,
+  "max_calls": 26,
+  "automatic_retries": 0,
+  "smoke_inputs": [
+    "c07_short",
+    "c08_short"
+  ],
+  "max_consecutive_output_failures": 2,
+  "system_sha256": "b724b778e22186d29f0d3261a6e2253445362c5ea89a472826a7329c560663aa",
+  "capacity": {
+    "c01_short": {
+      "qwen3_current": 1859,
+      "qwen3_recommended_think": 1855
+    },
+    "c01_full": {
+      "qwen3_current": 19776,
+      "qwen3_recommended_think": 19772
+    },
+    "c02_short": {
+      "qwen3_current": 1474,
+      "qwen3_recommended_think": 1470
+    },
+    "c02_full": {
+      "qwen3_current": 19789,
+      "qwen3_recommended_think": 19785
+    },
+    "c03_short": {
+      "qwen3_current": 1008,
+      "qwen3_recommended_think": 1004
+    },
+    "c03_full": {
+      "qwen3_current": 16257,
+      "qwen3_recommended_think": 16253
+    },
+    "c04_short": {
+      "qwen3_current": 1107,
+      "qwen3_recommended_think": 1103
+    },
+    "c04_full": {
+      "qwen3_current": 9874,
+      "qwen3_recommended_think": 9870
+    },
+    "c05_short": {
+      "qwen3_current": 1268,
+      "qwen3_recommended_think": 1264
+    },
+    "c05_full": {
+      "qwen3_current": 20951,
+      "qwen3_recommended_think": 20947
+    },
+    "c06_short": {
+      "qwen3_current": 986,
+      "qwen3_recommended_think": 982
+    },
+    "c07_short": {
+      "qwen3_current": 796,
+      "qwen3_recommended_think": 792
+    },
+    "c08_short": {
+      "qwen3_current": 798,
+      "qwen3_recommended_think": 794
+    }
+  }
+}

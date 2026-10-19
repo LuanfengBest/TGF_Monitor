@@ -1,0 +1,68 @@
+{
+  "asset_hashes": {
+    "simulator_initial_state.json": "8b3634647c049f6b76a4edef814597d2fcf54c6a3b5f8a64b9ff8be2a22063ff",
+    "task.json": "e255b024586fb437f2501bc5b707e08859dc0ea79e09f420b8805730b8d56841",
+    "tool_schemas.json": "ecb103e196a4cda037748e93cbaa956a72a84dbfaa8595a9801ac54e5ae5a280"
+  },
+  "candidate_id": "airline_duplicate_retention",
+  "generation_approved": false,
+  "limitations": [
+    "No model or trajectory generation permission",
+    "Schema validation is not authorization adjudication",
+    "Original runtime does not stop after end_task; use PreparedTask.run_tool boundary",
+    "Generic errors can follow mutation; decoder must retain unknown",
+    "No independent human review or final test eligibility"
+  ],
+  "public_input_boundary": "PreparedTask.public_input includes only user_request, policy and tool schemas; retrieved files/results become visible only through tools.",
+  "review_source_hashes": {
+    "analysis/monitor_v2_family_proposal_review_v2_20261013.json": "8db678ae439f4f87624b1363e364cee402baa7335e205e1aa22f94fbc0e6d593",
+    "data/training/monitor_v2/family_proposals_v2/airline_duplicate_retention.json": "9fa4a78cdaec1a1e187888db283cb7f668be4fa0611b97b988e5fab28b146d1e",
+    "data/training/monitor_v2/split_intent_v3.json": "0e9b4f101f8de3826165fc3f86e25a816625b2d4c22b976d9c45704792398883"
+  },
+  "runtime_versions": {
+    "PyYAML": "6.0.2",
+    "docstring-parser": "0.16",
+    "pydantic": "2.12.5",
+    "python": "3.10.16"
+  },
+  "source_hashes": {
+    "scripts/monitor_v2_task_adapters.py": "971eecd45ae79c0c8c0c67909998cf6c1b08fbe4557a5085d8c68b9cf7bda72a",
+    "scripts/observed_airline_execution_v1.py": "cd28e67de8ec565257a44702d879db09fb3fa688f047956bfe7605de00f6aad8",
+    "scripts/observed_execution_v1.py": "55d75ccbb4c0fd88f4e0a0b7b2b95ddaf66acf40368e9fcb80d794c28772de1f",
+    "scripts/prepare_monitor_v2_tasks.py": "1d87b8e287970d8de0929ab0ebfaf2e901c522307ca0fe0042af0317ad53a08c",
+    "tests/test_monitor_v2_task_adapters.py": "0dc6d314115cbe9d882ae1653b58430c0b053fb4a67849c1ed875b83e542daf7",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/__init__.py": "22b978b653bc845c8d789d4c6c1fa53dad6d8548c02209928f92ffe400cc54dd",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/bank_accounts.py": "4a6913710482e53b914aa55dd78dbf79bebade649ff17ac79b94cc257ce9c368",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/calendar_client.py": "cba0ded1c12a37613701761c9d5273c714e63ff84d915c8ade125c02dbe58742",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/cloud_drive.py": "48457e92353763f2804e37dde18f7629506b2d3173e4d3c44957ca79952217ed",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/corporate_discounts.py": "4d1f6f02304337d0cd061cc570653d9624083e1ea3f2ee4cad0b1e2ee416f504",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/flight_reviews.py": "5d0ead807986d2115dbd34f2d1d1497eb161982a5b40dc03f5ece469e6d32e15",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/inbox.py": "7893e5c311db642a7540ec17aeff6657b958fb50e33c66186933aba045ce84ec",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/linkedin.py": "7ee7ce7272722d5f96b469e44172eaffbc23ea0d0cba49c8df765cbbddefff0c",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/phone.py": "6ea109bdafd18ce35b80893857c99a2aef7609a489dc8611e68e87f894c8ef5d",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/shared_models.py": "e71d32229255470d8b279b776228b015db3cfbb0578abaaa77139164d144249f",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/spam_email.py": "276c3a45f8ed870588366f23139b75212fb22da60e025ad99aa375a7a20d74bc",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/ticket.py": "5ef8a1611108a06007ff40938b62b45217776705c1d9790d8c11ea931303f658",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/travel_booking.py": "65f6bf906518e1a8a8a2fb952c55ae7d99dde91840e159610f965dc9ee1d347d",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/venmo.py": "58498e35cb4969c03d17b38284c23a895d0df11fdb0069b01a7cb4096349d6ff",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/web.py": "073d262d54437e3165e76de784139be5a546091e1246bfcd66b7eed6dce5617e",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environment_classes/zelle.py": "f0144c2cf8c7e9b28095a2a7759d7b73f2494cc666a8dbd0fe7cd97c1eeb34ba",
+    "third_party/MonitorBench/datasets/dual_objective/agent/environments/base_environment.py": "65b25731ec1388564a5946ceff98a1571bbcfe2fe1d09b0d5d6b60ebab6ea98b",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/drive_tools.py": "50cb31252bbc98edb4f0c1b529153010c13db464f72117e93081a8b211913f73",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/end_task.py": "df2f22d1a2d27bb778b4952381ec69c93a1083aea758927744c3960df72db1a0",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/financial_transfer.py": "5c651a2536cbc1e5e4e79b3636c7900cb58f122b457259a1aa58d9048c3eb3b6",
+    "third_party/MonitorBench/datasets/dual_objective/agent/tools/flight_tools.py": "e3fc0e78fc18f8467719e7cb2b5e276bb545ec97942b038dcecd98d2d605ac8b",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/functions_runtime.py": "01cc34ec3de2597debbc67846e4bd6bb7b553bc4fdd5542e4d0368ec2bcb7bb2",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/logging_utils.py": "e313204b1f9cdb2a385bf4e68cdf72653826d4e14d00923a7a3eda7e2439b40e",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/path_utils.py": "d7326e95f24a33ab332507cfe02cdb170cb3af5bddbd8b269d4db436a9854a41",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/pipeline_elements.py": "2db83611e957bd504383b2901c9aaf4ea304872d4e1ea4dd3a7a289f9023b594",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/strenum.py": "633ac65dd15f99e1e61b2a75333297832d46256788310c82b57b956005f5d4f3",
+    "third_party/MonitorBench/datasets/dual_objective/agent/utils/types.py": "82e8016443b813bff0ad897176af3b3883665128c7e98aa052b831ead8613af9"
+  },
+  "stage": "fixture_preparation_only",
+  "training_eligible": false,
+  "trajectories_generated": 0,
+  "variant": "base"
+}

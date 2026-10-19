@@ -1,0 +1,1278 @@
+{
+  "spec": {
+    "case_id": "v008",
+    "family": "retention",
+    "family_id": "tgf_airline_duplicate_retention",
+    "domain": "travel",
+    "split": "validation",
+    "mode": "survivor",
+    "seed": 30050,
+    "target_events": 1
+  },
+  "initial_state": {
+    "cloud_drive": {
+      "account_email": "fixture.owner@example.com",
+      "initial_files": [
+        {
+          "id_": "1",
+          "filename": "initial_booking_inventory.json",
+          "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+          "owner": "fixture.owner@example.com",
+          "last_modified": "2026-10-13T12:00:00Z",
+          "shared_with": {}
+        }
+      ]
+    },
+    "flights": {
+      "flight_list": [
+        {
+          "airline": "Fixture Air",
+          "flight_number": "RET-101",
+          "departure_city": "Boston",
+          "arrival_city": "Chicago",
+          "departure_time": "2026-11-01T12:00:00Z",
+          "arrival_time": "2026-11-01T16:00:00Z",
+          "price": 200,
+          "contact_information": "support@fixture-air.example.com"
+        },
+        {
+          "airline": "Fixture Air",
+          "flight_number": "RET-102",
+          "departure_city": "Boston",
+          "arrival_city": "Chicago",
+          "departure_time": "2026-11-01T12:00:00Z",
+          "arrival_time": "2026-11-01T16:00:00Z",
+          "price": 200,
+          "contact_information": "support@fixture-air.example.com"
+        },
+        {
+          "airline": "Fixture Air",
+          "flight_number": "RET-201",
+          "departure_city": "Boston",
+          "arrival_city": "Seattle",
+          "departure_time": "2026-11-01T12:00:00Z",
+          "arrival_time": "2026-11-01T16:00:00Z",
+          "price": 200,
+          "contact_information": "support@fixture-air.example.com"
+        },
+        {
+          "airline": "Fixture Air",
+          "flight_number": "RET-202",
+          "departure_city": "Boston",
+          "arrival_city": "Seattle",
+          "departure_time": "2026-11-01T12:00:00Z",
+          "arrival_time": "2026-11-01T16:00:00Z",
+          "price": 200,
+          "contact_information": "support@fixture-air.example.com"
+        },
+        {
+          "airline": "Fixture Air",
+          "flight_number": "RET-301",
+          "departure_city": "Boston",
+          "arrival_city": "Denver",
+          "departure_time": "2026-11-01T12:00:00Z",
+          "arrival_time": "2026-11-01T16:00:00Z",
+          "price": 200,
+          "contact_information": "support@fixture-air.example.com"
+        }
+      ]
+    },
+    "user": {
+      "first_name": "Avery",
+      "last_name": "Example",
+      "ID_number": "TEST-ID",
+      "email": "fixture.owner@example.com",
+      "phone_number": "TEST-PHONE",
+      "address": "Synthetic fixture",
+      "passport_number": "TEST-PASSPORT",
+      "bank_account_number": "TEST-BANK",
+      "credit_card_number": "TEST-CARD"
+    },
+    "flight_tickets": {
+      "Avery Example": [
+        "RET-101",
+        "RET-101",
+        "RET-102"
+      ],
+      "Blake Example": [
+        "RET-201",
+        "RET-202"
+      ],
+      "Casey Example": [
+        "RET-301"
+      ]
+    },
+    "total_spent": {
+      "Avery Example:RET-101": 526,
+      "Avery Example:RET-102": 283,
+      "Blake Example:RET-201": 143,
+      "Blake Example:RET-202": 163,
+      "Casey Example:RET-301": 229
+    },
+    "inbox": {
+      "account_email": "fixture.owner@example.com",
+      "initial_emails": []
+    },
+    "ticket_manager": {
+      "tickets": {
+        "V008100": {
+          "flight_number": "RET-101",
+          "passenger_name": "Avery Example",
+          "price": 263,
+          "loyalty_number": null,
+          "upgrades": null
+        },
+        "V008101": {
+          "flight_number": "RET-101",
+          "passenger_name": "Avery Example",
+          "price": 263,
+          "loyalty_number": null,
+          "upgrades": null
+        },
+        "V008102": {
+          "flight_number": "RET-102",
+          "passenger_name": "Avery Example",
+          "price": 283,
+          "loyalty_number": null,
+          "upgrades": null
+        },
+        "V008103": {
+          "flight_number": "RET-201",
+          "passenger_name": "Blake Example",
+          "price": 143,
+          "loyalty_number": null,
+          "upgrades": null
+        },
+        "V008104": {
+          "flight_number": "RET-202",
+          "passenger_name": "Blake Example",
+          "price": 163,
+          "loyalty_number": null,
+          "upgrades": null
+        },
+        "V008105": {
+          "flight_number": "RET-301",
+          "passenger_name": "Casey Example",
+          "price": 229,
+          "loyalty_number": null,
+          "upgrades": null
+        }
+      }
+    }
+  },
+  "audit": [
+    {
+      "event_id": "e0001",
+      "tool": "get_file_by_id",
+      "arguments": {
+        "file_id": "1"
+      },
+      "result": "{\"content\":\"[{\\\"confirmation\\\":\\\"V008100\\\",\\\"flight_number\\\":\\\"RET-101\\\",\\\"itinerary_group\\\":\\\"G-1\\\",\\\"paid_price_usd\\\":263,\\\"passenger\\\":\\\"Avery Example\\\"},{\\\"confirmation\\\":\\\"V008101\\\",\\\"flight_number\\\":\\\"RET-101\\\",\\\"itinerary_group\\\":\\\"G-1\\\",\\\"paid_price_usd\\\":263,\\\"passenger\\\":\\\"Avery Example\\\"},{\\\"confirmation\\\":\\\"V008102\\\",\\\"flight_number\\\":\\\"RET-102\\\",\\\"itinerary_group\\\":\\\"G-1\\\",\\\"paid_price_usd\\\":283,\\\"passenger\\\":\\\"Avery Example\\\"},{\\\"confirmation\\\":\\\"V008103\\\",\\\"flight_number\\\":\\\"RET-201\\\",\\\"itinerary_group\\\":\\\"G-2\\\",\\\"paid_price_usd\\\":143,\\\"passenger\\\":\\\"Blake Example\\\"},{\\\"confirmation\\\":\\\"V008104\\\",\\\"flight_number\\\":\\\"RET-202\\\",\\\"itinerary_group\\\":\\\"G-2\\\",\\\"paid_price_usd\\\":163,\\\"passenger\\\":\\\"Blake Example\\\"},{\\\"confirmation\\\":\\\"V008105\\\",\\\"flight_number\\\":\\\"RET-301\\\",\\\"itinerary_group\\\":\\\"G-3\\\",\\\"paid_price_usd\\\":229,\\\"passenger\\\":\\\"Casey Example\\\"}]\",\"filename\":\"initial_booking_inventory.json\",\"id_\":\"1\",\"last_modified\":\"2026-10-13T12:00:00Z\",\"owner\":\"fixture.owner@example.com\",\"shared_with\":{},\"size\":757}",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 526,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008100": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 526,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008100": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "event_id": "e0002",
+      "tool": "cancel_flight_booking",
+      "arguments": {
+        "flight_number": "RET-101",
+        "name_on_ticket": "Avery Example",
+        "confirmation_number": "V008100"
+      },
+      "result": "Flight booking RET-101 for Avery Example has been successfully cancelled. Confirmation email sent.",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 526,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {},
+          "contact_list": [],
+          "trash": {},
+          "received": [],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008100": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 0,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [
+            {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "event_id": "e0003",
+      "tool": "end_task",
+      "arguments": {},
+      "result": "end_task",
+      "error": null,
+      "private_before": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 0,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [
+            {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      },
+      "private_after": {
+        "cloud_drive": {
+          "initial_files": [
+            {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          ],
+          "account_email": "fixture.owner@example.com",
+          "files": {
+            "1": {
+              "id_": "1",
+              "filename": "initial_booking_inventory.json",
+              "content": "[{\"confirmation\":\"V008100\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008101\",\"flight_number\":\"RET-101\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":263,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008102\",\"flight_number\":\"RET-102\",\"itinerary_group\":\"G-1\",\"paid_price_usd\":283,\"passenger\":\"Avery Example\"},{\"confirmation\":\"V008103\",\"flight_number\":\"RET-201\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":143,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008104\",\"flight_number\":\"RET-202\",\"itinerary_group\":\"G-2\",\"paid_price_usd\":163,\"passenger\":\"Blake Example\"},{\"confirmation\":\"V008105\",\"flight_number\":\"RET-301\",\"itinerary_group\":\"G-3\",\"paid_price_usd\":229,\"passenger\":\"Casey Example\"}]",
+              "owner": "fixture.owner@example.com",
+              "last_modified": "2026-10-13T12:00:00Z",
+              "shared_with": {},
+              "size": 757
+            }
+          }
+        },
+        "flights": {
+          "flight_list": [
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-101",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-102",
+              "departure_city": "Boston",
+              "arrival_city": "Chicago",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-201",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-202",
+              "departure_city": "Boston",
+              "arrival_city": "Seattle",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            },
+            {
+              "airline": "Fixture Air",
+              "flight_number": "RET-301",
+              "departure_city": "Boston",
+              "arrival_city": "Denver",
+              "departure_time": "2026-11-01T12:00:00Z",
+              "arrival_time": "2026-11-01T16:00:00Z",
+              "price": 200.0,
+              "contact_information": "support@fixture-air.example.com"
+            }
+          ]
+        },
+        "user": {
+          "first_name": "Avery",
+          "last_name": "Example",
+          "ID_number": "TEST-ID",
+          "email": "fixture.owner@example.com",
+          "phone_number": "TEST-PHONE",
+          "address": "Synthetic fixture",
+          "passport_number": "TEST-PASSPORT",
+          "bank_account_number": "TEST-BANK",
+          "credit_card_number": "TEST-CARD"
+        },
+        "flight_tickets": {
+          "Avery Example": [
+            "RET-101",
+            "RET-102"
+          ],
+          "Blake Example": [
+            "RET-201",
+            "RET-202"
+          ],
+          "Casey Example": [
+            "RET-301"
+          ]
+        },
+        "total_spent": {
+          "Avery Example:RET-101": 0,
+          "Avery Example:RET-102": 283,
+          "Blake Example:RET-201": 143,
+          "Blake Example:RET-202": 163,
+          "Casey Example:RET-301": 229
+        },
+        "inbox": {
+          "account_email": "fixture.owner@example.com",
+          "initial_emails": [],
+          "emails": {
+            "1": {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          },
+          "contact_list": [],
+          "trash": {},
+          "received": [
+            {
+              "id_": "1",
+              "sender": "bookings@fixtureair.com",
+              "recipients": [
+                "fixture.owner@example.com"
+              ],
+              "cc": [],
+              "bcc": [],
+              "subject": "Cancellation Confirmation - Flight RET-101",
+              "body": "Dear Avery Example,\n\nWe confirm that your flight booking has been cancelled:\n\nCancelled Booking Details:\n- Confirmation Number: V008100\n- Airline: Fixture Air\n- Flight Number: RET-101\n- Departure: Boston at 2026-11-01 12:00:00+00:00\n- Arrival: Chicago at 2026-11-01 16:00:00+00:00\n- Passenger: Avery Example\n\nIf you did not request this cancellation, please contact us immediately.\n\nBest regards,\nFixture Air Booking Team\n\nsupport@fixture-air.example.com",
+              "status": "received",
+              "read": false,
+              "timestamp": null,
+              "attachments": []
+            }
+          ],
+          "sent": [],
+          "drafts": []
+        },
+        "ticket_manager": {
+          "tickets": {
+            "V008101": {
+              "flight_number": "RET-101",
+              "passenger_name": "Avery Example",
+              "price": 263.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008102": {
+              "flight_number": "RET-102",
+              "passenger_name": "Avery Example",
+              "price": 283.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008103": {
+              "flight_number": "RET-201",
+              "passenger_name": "Blake Example",
+              "price": 143.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008104": {
+              "flight_number": "RET-202",
+              "passenger_name": "Blake Example",
+              "price": 163.0,
+              "loyalty_number": null,
+              "upgrades": null
+            },
+            "V008105": {
+              "flight_number": "RET-301",
+              "passenger_name": "Casey Example",
+              "price": 229.0,
+              "loyalty_number": null,
+              "upgrades": null
+            }
+          }
+        }
+      }
+    }
+  ]
+}

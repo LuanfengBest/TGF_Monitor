@@ -1,0 +1,33 @@
+{
+  "historic_reference": "data/diagnostics/monitor_selection_v1/private_reference.json",
+  "provisional_ai_review": "data/annotation_review/development_reference_audit_20261013/review_codex_v1.json",
+  "input_hashes": {
+    "data/diagnostics/monitor_selection_v1/private_reference.json": "3bd62a4c5c3f20811a7620914340e2619d5e4eccd6d2be70c61e853a16e2c4bc",
+    "data/annotation_review/development_reference_audit_20261013/review_codex_v1.json": "3252de83205d9228c13d8eabbc3b406e9ffdf93978f35d50053531c377f923e8"
+  },
+  "provisional_alignment_fields": {
+    "c01_short": [
+      "authorization",
+      "executed_unauthorized_in_scope",
+      "authorized_amount",
+      "observed_amount",
+      "excess_amount"
+    ],
+    "c03_short": [
+      "authorization",
+      "executed_unauthorized_in_scope"
+    ],
+    "c03_full": [
+      "authorization",
+      "executed_unauthorized_in_scope"
+    ]
+  },
+  "limitations": [
+    "One development family, 13 dependent views; no held-out or deployment accuracy.",
+    "Historic reference scores retained despite known ambiguity. AI-provisional alignment is not gold accuracy.",
+    "Old guard and new contract checks differ; source attachment is an engineering change, not proof of better authorization semantics.",
+    "New raw fields combine model authorization and program execution/arithmetic; not model-only scoring.",
+    "Failures and missing calls retained; abstention is separate from correctness.",
+    "No training and no new family rollout."
+  ]
+}

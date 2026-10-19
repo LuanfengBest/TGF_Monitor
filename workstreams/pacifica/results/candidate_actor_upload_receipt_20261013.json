@@ -1,0 +1,75 @@
+{
+  "synced_at": "2026-10-13T22:04:37.379626-04:00",
+  "archive_sha256": "1a28ba87b29d5131fb85c1be8764c8a2cf6ce91ef1917d750bf4b6c167c9ac34",
+  "verified_files": 61,
+  "backups": [
+    "AI_use_log.md",
+    "PROJECT_LOG.md",
+    "STATUS.md",
+    "docs/annotation_pilot_2026-10-13.md",
+    "docs/monitor_selection_training_plan_2026-10-13.md",
+    "docs/task_family_readiness_2026-10-13.md",
+    "docs/team_handoff_2026-10-13.md"
+  ],
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/candidate_actor_pilot_v1.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "stdout": "Frozen source, family registry and both generation gates verified\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_candidate_actor_pilot_v1.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"attempt_id\": \"test\", \"turn\": 1, \"tool_calls\": [\"schedule_transaction\"], \"status\": \"output_cap_or_incomplete\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 1, \"tool_calls\": [\"cancel_flight_booking\"], \"status\": \"running\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 2, \"tool_calls\": [\"end_task\", \"buy_flight_ticket\"], \"status\": \"ended\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 1, \"tool_calls\": [\"get_file_by_id\"], \"status\": \"running\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 2, \"tool_calls\": [\"schedule_transaction\"], \"status\": \"running\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 3, \"tool_calls\": [\"end_task\"], \"status\": \"ended\", \"seconds\": 0.0}\n{\"attempt_id\": \"test\", \"turn\": 1, \"tool_calls\": [], \"status\": \"running\", \"seconds\": 0.0}\n",
+      "stderr": "test_capped_tool_call_is_preserved_but_never_executed (test_candidate_actor_pilot_v1.RolloutTests.test_capped_tool_call_is_preserved_but_never_executed) ... ok\ntest_expired_deadline_makes_no_request (test_candidate_actor_pilot_v1.RolloutTests.test_expired_deadline_makes_no_request) ... ok\ntest_gate_before_first_request (test_candidate_actor_pilot_v1.RolloutTests.test_gate_before_first_request) ... ok\ntest_interrupted_dispatch_is_preserved_as_unknown (test_candidate_actor_pilot_v1.RolloutTests.test_interrupted_dispatch_is_preserved_as_unknown) ... ok\ntest_malformed_tool_call_preserves_content_and_thinking (test_candidate_actor_pilot_v1.RolloutTests.test_malformed_tool_call_preserves_content_and_thinking) ... ok\ntest_model_policy_violation_remains_visible_and_post_end_not_dispatched (test_candidate_actor_pilot_v1.RolloutTests.test_model_policy_violation_remains_visible_and_post_end_not_dispatched) ... ok\ntest_visible_binding_and_end_task (test_candidate_actor_pilot_v1.RolloutTests.test_visible_binding_and_end_task) ... ok\ntest_zero_mutation_attempt_retained (test_candidate_actor_pilot_v1.RolloutTests.test_zero_mutation_attempt_retained) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.265s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_candidate_task_adapters_v2.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_airline_observable_purchase_then_cancel (test_candidate_task_adapters_v2.RevisedAdapterTests.test_airline_observable_purchase_then_cancel) ... ok\ntest_invoice_visible_join_and_isolation (test_candidate_task_adapters_v2.RevisedAdapterTests.test_invoice_visible_join_and_isolation) ... ok\ntest_review_does_not_bypass_generation_gate (test_candidate_task_adapters_v2.RevisedAdapterTests.test_review_does_not_bypass_generation_gate) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.081s\n\nOK\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_candidate_ai_annotation_validation_v1.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_missing_or_duplicate_mutations_are_rejected (test_candidate_ai_annotation_validation_v1.AnnotationValidationTests.test_missing_or_duplicate_mutations_are_rejected) ... ok\ntest_technical_condition_is_reviewed_not_relabelled (test_candidate_ai_annotation_validation_v1.AnnotationValidationTests.test_technical_condition_is_reviewed_not_relabelled) ... ok\ntest_unknown_does_not_become_safe (test_candidate_ai_annotation_validation_v1.AnnotationValidationTests.test_unknown_does_not_become_safe) ... ok\ntest_wrong_quote_or_input_hash_is_rejected (test_candidate_ai_annotation_validation_v1.AnnotationValidationTests.test_wrong_quote_or_input_hash_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.003s\n\nOK\n"
+    }
+  ],
+  "all_checks_passed": true
+}

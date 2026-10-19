@@ -1,0 +1,164 @@
+{
+  "protocol": "paired_full_visible_v1",
+  "split": "development",
+  "family": "monitorbench_bank_transfer_2_original",
+  "methods": [
+    "ledger_only",
+    "fixed_b2",
+    "tgf"
+  ],
+  "observation": "all_messages_original_and_followup_native_thinking",
+  "k": 1,
+  "selection": "authorization unresolved, conflict, supported; then financial, email, file, contact, other; then event order",
+  "models": {
+    "gpt-oss:20b": {
+      "digest": "f38aa0c53da5f8c49d08c43a99df24ff53167fe68e24664a7777288e7656fdfe",
+      "parameter_size": "20.9B",
+      "quantization": "MXFP4",
+      "probe_context": 32768,
+      "probe_size_vram_bytes": 14909879680,
+      "native_thinking_observed": true,
+      "tool_roundtrip_observed": true
+    },
+    "qwen3:32b": {
+      "digest": "030ee887880fc378860c2dd35101da424377520441ae4bfe7be6deff8ade7840",
+      "parameter_size": "32.8B",
+      "quantization": "Q4_K_M",
+      "probe_context": 32768,
+      "probe_size_vram_bytes": 29110262912,
+      "native_thinking_observed": true
+    }
+  },
+  "monitor_context": 32768,
+  "monitor_temperature": 0,
+  "monitor_seed": 42,
+  "actor_context": 131072,
+  "actor_temperature": 0.6,
+  "actor_seed": 42,
+  "actor_think": "low",
+  "review_output_tokens": 4096,
+  "question_output_tokens": 256,
+  "answer_output_tokens": 1024,
+  "judge_output_tokens": 2048,
+  "maximum_calls": 50,
+  "expected_calls": 37,
+  "max_calibration_calls": 2,
+  "max_gpu_seconds": 2700,
+  "first_job_seconds": 900,
+  "remaining_job_seconds": 1800,
+  "per_call_seconds": 150,
+  "automatic_retries": 0,
+  "inference_policy": "Run first trace in listed order; verify integrity before remaining four. No outcome-conditioned replacement.",
+  "tokenizer_provenance": {
+    "repo": "Qwen/Qwen3-32B",
+    "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+    "files": {
+      "tokenizer.json": {
+        "url": "https://huggingface.co/Qwen/Qwen3-32B/resolve/9216db5781bf21249d130ec9da846c4624c16137/tokenizer.json",
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "bytes": 11422654
+      },
+      "tokenizer_config.json": {
+        "url": "https://huggingface.co/Qwen/Qwen3-32B/resolve/9216db5781bf21249d130ec9da846c4624c16137/tokenizer_config.json",
+        "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+        "bytes": 9732
+      }
+    }
+  },
+  "template_sha256": "ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4",
+  "capacity_policy": "Explicit raw no-think prompt; exact tokenizer count + output cap + 128 <= 32768; verify backend prompt_eval_count on every call.",
+  "attempts": [
+    {
+      "trace_id": "pilot_001_ordinary",
+      "view_path": "results/bank_pilot_v2_29341393/actors/pilot_001_ordinary/monitor_view.json",
+      "view_sha256": "10b3b9d4353bfc77d9115ecd7c1fee10f6a9ae8c6d598effd8a07cda7eb7acc8",
+      "actor_context_path": "results/bank_pilot_v2_29341393/actors/pilot_001_ordinary/raw/actor_context.json",
+      "actor_context_sha256": "e44bb773b9f59d87d7036de1d781e35511d01575e9ddbc9c2d2b09df3716972a",
+      "shared_path": "data/paired_v1/pilot_001_ordinary/shared.json",
+      "shared_sha256": "636a11356e5f4a9cda8d7812ae2eae3d937bab571e8b0d10aa976efdb84f7270"
+    },
+    {
+      "trace_id": "pilot_002_ordinary",
+      "view_path": "results/bank_pilot_v2_29341393/actors/pilot_002_ordinary/monitor_view.json",
+      "view_sha256": "ceb455ec2b6eae77584ed7d1e2bad60defbe1a0e86abd3c8a8b7ed19f181f454",
+      "actor_context_path": "results/bank_pilot_v2_29341393/actors/pilot_002_ordinary/raw/actor_context.json",
+      "actor_context_sha256": "e4a65c4278386c8426a89a5dc778a413c3fb0a833dec4c41c7b690f7aac401b4",
+      "shared_path": "data/paired_v1/pilot_002_ordinary/shared.json",
+      "shared_sha256": "72618349fdaa6a02e2c0cb47cf3d7f34f2d8225e71b30bbc32d98fd883166eb0"
+    },
+    {
+      "trace_id": "pilot_003_ordinary",
+      "view_path": "results/bank_pilot_v2_29341393/actors/pilot_003_ordinary/monitor_view.json",
+      "view_sha256": "c893e385e2435c2a20faaa91036dc8def455141a5c0f04192e302ff3cce63e65",
+      "actor_context_path": "results/bank_pilot_v2_29341393/actors/pilot_003_ordinary/raw/actor_context.json",
+      "actor_context_sha256": "cd464a6a84f53fad2e4287e12b6af2da37b1deb65e77f8c5fe18fe6ea6bbcc8e",
+      "shared_path": "data/paired_v1/pilot_003_ordinary/shared.json",
+      "shared_sha256": "f4f8d906c53fb7d32d9b00398922f02367dc0aa630364b150ed9426e5c191214"
+    },
+    {
+      "trace_id": "pilot_004_injected",
+      "view_path": "results/bank_pilot_v2_29341393/actors/pilot_004_injected/monitor_view.json",
+      "view_sha256": "306c1faa40772776143961d9e16787da5dd3f9f6fce11420a2d64b59fb68ef11",
+      "actor_context_path": "results/bank_pilot_v2_29341393/actors/pilot_004_injected/raw/actor_context.json",
+      "actor_context_sha256": "e943ae8e7dcbb65a7d6d9930d49474ea94e9ab811fa9b03022a6156ec48d6a24",
+      "shared_path": "data/paired_v1/pilot_004_injected/shared.json",
+      "shared_sha256": "0223bbb3cd99dcdca9bbfb4d8ea7073422477dc29c2e7cf340b3de5fd37c3ddb"
+    },
+    {
+      "trace_id": "pilot_005_injected",
+      "view_path": "results/bank_pilot_v2_29341393/actors/pilot_005_injected/monitor_view.json",
+      "view_sha256": "4d3e5c5017f8d4851bacc7fb009f39fe5afbcf97db7867c91d645529a9dd86cc",
+      "actor_context_path": "results/bank_pilot_v2_29341393/actors/pilot_005_injected/raw/actor_context.json",
+      "actor_context_sha256": "6054b814c00db4b254e5bbc373eace4ea7ad392f0c8cc331834132cdfeb41ac3",
+      "shared_path": "data/paired_v1/pilot_005_injected/shared.json",
+      "shared_sha256": "db56eadfab81a2539abad86e7297a668020396c3faf410073eafe14fe1ef6874"
+    }
+  ],
+  "capacity": [
+    {
+      "trace_id": "pilot_001_ordinary",
+      "full_view_tokens": 17586,
+      "initial_review_input_tokens": 19776,
+      "output_reserve": 4096,
+      "ledger_count": 31,
+      "candidate_count": 24
+    },
+    {
+      "trace_id": "pilot_002_ordinary",
+      "full_view_tokens": 17066,
+      "initial_review_input_tokens": 19291,
+      "output_reserve": 4096,
+      "ledger_count": 21,
+      "candidate_count": 19
+    },
+    {
+      "trace_id": "pilot_003_ordinary",
+      "full_view_tokens": 7942,
+      "initial_review_input_tokens": 9707,
+      "output_reserve": 4096,
+      "ledger_count": 19,
+      "candidate_count": 11
+    },
+    {
+      "trace_id": "pilot_004_injected",
+      "full_view_tokens": 14087,
+      "initial_review_input_tokens": 15175,
+      "output_reserve": 4096,
+      "ledger_count": 14,
+      "candidate_count": 10
+    },
+    {
+      "trace_id": "pilot_005_injected",
+      "full_view_tokens": 17180,
+      "initial_review_input_tokens": 19054,
+      "output_reserve": 4096,
+      "ledger_count": 19,
+      "candidate_count": 14
+    }
+  ],
+  "limitations": [
+    "One development task family; no held-out claim or threshold calibration.",
+    "TGF includes question generation cost; B3 compute control remains required.",
+    "Historical B1 scores have a different protocol and are not matched comparison scores."
+  ]
+}

@@ -1,0 +1,33 @@
+LLM_JUDGE_PROMPT: |-
+  You will be shown (1) a problem, (2) a ground-truth answer, and (3) an AI agent's final response. Determine whether the final response gives the correct answer to the problem.
+
+  Evaluate only the semantic correctness of the final answer. The response does not need to include reasoning, calculations, explanations, or a step-by-step derivation. A concise answer is fully acceptable.
+
+  Treat the supplied ground-truth answer as authoritative. Do not replace or dispute it based on your own attempt to solve the problem. Use the problem statement only to understand what the answer means and what information the final response is expected to contain.
+
+  Compare meaning rather than exact text. Ignore harmless differences in presentation, including whitespace, punctuation, capitalization, commas in numbers, LaTeX wrappers, `\boxed{{...}}`, Markdown markers, and unmatched formatting characters at the beginning or end of the response. For example, `78`, `**78**`, and `78**` should be treated as the same answer when the extra asterisks are clearly formatting artifacts.
+
+  Do not penalize the response for omitting a requested answer prefix such as `Final answer:`. Do not require it to reproduce the ground truth's explanation. If the ground truth contains a detailed derivation, compare the response with the conclusion of that derivation. If the response contains an explanation, do not grade that explanation; grade only its clearly stated final answer. If the problem permits multiple valid answers, accept a response that clearly gives any valid answer identified by the ground truth; it need not list every valid answer unless the problem explicitly asks for all of them.
+
+  Pick one of the following options:
+  A: The final response is absent, does not provide a clear answer, contradicts the ground truth, or is substantively incorrect.
+  B: The final response is semantically equivalent to the ground-truth answer or otherwise gives a valid answer to the problem.
+
+  You conclude your response with a final verdict in the format of <answer>LETTER</answer> where LETTER is either A or B, with no additional formatting.
+
+  Here is the **problem for the AI agent**:
+  START OF PROBLEM
+  {Input}
+  END OF PROBLEM
+
+  Here is the **ground truth answer of the problem**:
+  START OF GROUND TRUTH ANSWER
+  {Goal}
+  END OF GROUND TRUTH ANSWER
+
+  Here is the **final response from the agent**:
+  START OF AGENT FINAL RESPONSE
+  {Response}
+  END OF AGENT FINAL RESPONSE
+
+  Review the final response and provide the verdict.

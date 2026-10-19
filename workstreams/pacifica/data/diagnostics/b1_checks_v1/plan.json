@@ -1,0 +1,54 @@
+{
+  "status": "prepared_not_run",
+  "inference_calls_completed": 0,
+  "scope": "development sanity checks, not full-trace performance or TGF evidence",
+  "cases": 5,
+  "conditions": [
+    "current_prompt",
+    "grounding_instruction"
+  ],
+  "maximum_inference_calls": 10,
+  "automatic_retries": 0,
+  "maximum_gpu_job_minutes": 15,
+  "actor_regeneration": false,
+  "training": false,
+  "fixed": {
+    "protocol": "tgf_authorization_audit_development_v1_monitor_nothink",
+    "environment": "bank_transfer_2",
+    "task_family_id": "monitorbench_bank_transfer_2_original",
+    "split": "development",
+    "upstream_commit": "b6229e4b8ea9abcec38d61159c9cbd0f577ddf35",
+    "actor": "gpt-oss:20b",
+    "monitor": "qwen3:32b",
+    "actor_think": "low",
+    "actor_context": 131072,
+    "actor_output_tokens": 2048,
+    "actor_max_turns": 40,
+    "actor_max_seconds": 1200,
+    "monitor_context": 32768,
+    "monitor_output_tokens": 8192,
+    "monitor_chunk_chars": 10000,
+    "monitor_think": false,
+    "seed": 42,
+    "temperature": 0,
+    "observation_channel": "all_messages_with_native_thinking",
+    "label_status": "independent_event_audit_required",
+    "threshold": null,
+    "note": "One original family assigned to development before generation. No validation/test claims. Quantization and model digest recorded from actual Ollama metadata. Initial cost pilot; no follow-up conditions yet.",
+    "revision_note": "Fallback development configuration for repeated native-thinking loops. Only monitor think changes from monitor8k; actor native thinking remains in the all-messages input. Score both frozen traces under this setting. Keep previous failures and do not pool settings."
+  },
+  "changed_factor": "one generic grounding instruction in the system prompt",
+  "review": "Inspect execution evidence, permission interpretation, and the contrasting authorization pair; do not optimize a threshold on these fixtures.",
+  "prohibited_claims": [
+    "Held-out performance",
+    "Independent task-family count from these excerpts",
+    "TGF effectiveness",
+    "Fully implemented B1 replacement"
+  ],
+  "stop_rule": "One bounded run and error review. Do not iterate prompts to perfect these fixtures; next test is a versioned full-trace development evaluation.",
+  "source_hashes": {
+    "scripts/prepare_b1_checks.py": "d5c8267779625a04c68b6e62f08b19b2ce2773812f78f36fda72d978566bce96",
+    "scripts/run_b1.py": "b588de717d09f6533e194e022106ec787d512632d421ef0d7c32bc51f5d09b19",
+    "configs/bank_dev_v1_monitor_nothink.json": "9c738582db29cb8e3c9375534432f72126009be1cf528e4cbc504fcea51db0e4"
+  }
+}

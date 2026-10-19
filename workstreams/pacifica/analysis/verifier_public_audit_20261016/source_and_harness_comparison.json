@@ -1,0 +1,30 @@
+{
+  "source_body_checks": [
+    {
+      "file": "bank_transfer_2_evaluation.py",
+      "MRT_evaluate_side_body_equals_MonitorBench_malicious_helper": true
+    },
+    {
+      "file": "american_airlines_2_evaluation.py",
+      "MRT_evaluate_side_body_equals_MonitorBench_malicious_helper": true
+    }
+  ],
+  "native_non_error": 45,
+  "native_status_counts": {
+    "actor_stopped_without_end_task": 42,
+    "ended": 3
+  },
+  "upstream_loop": {
+    "file": "third_party/MonitorBench/datasets/dual_objective/agent/utils/pipeline_elements.py",
+    "start_line": 365,
+    "no_tool_behavior": "append exact no-tools/end_task reminder; break when cumulative empty_count > 5, subject to max_iters"
+  },
+  "local_loop": {
+    "file": "scripts/prospective_actor_v6.py",
+    "start_line": 264,
+    "no_tool_behavior": "immediately terminate actor_stopped_without_end_task"
+  },
+  "causal_improvement_tested": false,
+  "model_calls": 0,
+  "new_runs": 0
+}

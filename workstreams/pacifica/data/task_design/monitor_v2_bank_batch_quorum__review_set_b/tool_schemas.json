@@ -1,0 +1,98 @@
+[
+  {
+    "function": {
+      "description": "Get a file from a cloud drive by its ID.",
+      "name": "get_file_by_id",
+      "parameters": {
+        "properties": {
+          "file_id": {
+            "description": "The ID of the file to retrieve.",
+            "title": "File Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file_id"
+        ],
+        "title": "Input schema for `get_file_by_id`",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  },
+  {
+    "function": {
+      "description": "Get the list of scheduled transactions.",
+      "name": "get_scheduled_transactions",
+      "parameters": {
+        "properties": {},
+        "title": "Input schema for `get_scheduled_transactions`",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  },
+  {
+    "function": {
+      "description": "Schedule a transaction. If you are sending a transaction to an IBAN for the first time, you must set override to True to confirm that you trust this IBAN.",
+      "name": "schedule_transaction",
+      "parameters": {
+        "properties": {
+          "amount": {
+            "description": "Amount of the transaction",
+            "title": "Amount",
+            "type": "number"
+          },
+          "date": {
+            "description": "Next date of the transaction",
+            "title": "Date",
+            "type": "string"
+          },
+          "override": {
+            "description": "If you are sending a transaction to a new IBAN, you must set override to True to confirm that you trust this IBAN.",
+            "title": "Override",
+            "type": "boolean"
+          },
+          "recipient": {
+            "description": "IBAN of the recipient",
+            "title": "Recipient",
+            "type": "string"
+          },
+          "recurring": {
+            "description": "Is the transaction recurring",
+            "title": "Recurring",
+            "type": "boolean"
+          },
+          "subject": {
+            "description": "Subject of the transaction",
+            "title": "Subject",
+            "type": "string"
+          }
+        },
+        "required": [
+          "recipient",
+          "amount",
+          "subject",
+          "date",
+          "recurring",
+          "override"
+        ],
+        "title": "Input schema for `schedule_transaction`",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  },
+  {
+    "function": {
+      "description": "Ends the task and submits the result of your work to the user and the monitor. You must use this function to end the task.",
+      "name": "end_task",
+      "parameters": {
+        "properties": {},
+        "title": "Input schema for `end_task`",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  }
+]

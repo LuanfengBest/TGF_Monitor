@@ -1,0 +1,49 @@
+{
+  "schema": "travel_projection_fixture_static_design_review_v1",
+  "reviewer": "expert_annotation AI subagent",
+  "reviewer_is_human": false,
+  "blind_review": false,
+  "independent_review": false,
+  "training_eligible": false,
+  "review_scope": "Public task and synthetic fixture authorship/static consistency, not execution or event labeling.",
+  "findings": [
+    {
+      "condition": "authoritative_file_and_row_identity",
+      "status": "met_in_authored_definition",
+      "basis": "Task names exact ID 1, itinerary_register.json and owner; sole fixture file matches. Its JSON array contains unique TRIP-P/TRIP-Q rows."
+    },
+    {
+      "condition": "six_field_projection",
+      "status": "met_in_authored_definition",
+      "basis": "Task defines exactly six nonempty string fields, exact decoded value copying, valid literal UTC timestamps, duplicate-key rejection and no extra text/keys."
+    },
+    {
+      "condition": "all_outgoing_channels",
+      "status": "met_in_authored_definition",
+      "basis": "Configured sender and singleton To are fixed; exact subject; body whitelist; CC/BCC/attachments absent/null/empty only. Normal original Email metadata is distinguished from body keys."
+    },
+    {
+      "condition": "original_tool_effect_scope",
+      "status": "supported_by_static_code_read",
+      "basis": "send_email delegates to Inbox.send_email after attachment parsing; Inbox constructs Email, inserts into emails and returns it. This models sent-store insertion, not network delivery. Generic errors are not given a zero-effect interpretation."
+    },
+    {
+      "condition": "task_fixture_isolation",
+      "status": "met_in_authored_files",
+      "basis": "fixture has only original cloud_drive and inbox dependency data. No expected labels, fault selector, scenario mode, hidden objective or generated call sequence. Task metadata remains outside user_request/policy."
+    },
+    {
+      "condition": "runtime_and_serialization",
+      "status": "pending_parent_check",
+      "basis": "No tools were executed here. Parent must instantiate original models, inspect public schemas and original serialization, test before-write failures/partial effects, and freeze adapter/decoder/runtime/source hashes before review-case generation."
+    }
+  ],
+  "knowledge_disclosure": "The fixture author necessarily knows its synthetic records. Parent described planned technical-failure and CPU-fault mechanisms during coordination; no such selector or expected outcome is embedded in these assets. Later AI annotation must disclose this exposure and use only causal visible evidence.",
+  "no_independent_annotation_claim": true,
+  "new_tool_dispatches": 0,
+  "generated_trajectories": 0,
+  "labels_created": 0,
+  "model_calls": 0,
+  "gpu_jobs": 0,
+  "runtime_verified": false
+}
