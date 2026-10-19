@@ -2,8 +2,6 @@
 
 Updated October 19, 2026. Team names follow the [final proposal](reference/final_proposal_2026-10-07.md).
 
-**Current course report:** [one-page PDF for October 21](../output/pdf/progress_report_2026-10-21.pdf), [editable source](reports/progress_report_2026-10-21.md), and [submission notes](reports/SUBMISSION_NOTES_2026-10-21.md). Evidence is current through October 19; the report has not been submitted to Gradescope.
-
 We study whether questions grounded in an agent's executed actions improve monitoring beyond fixed questions and structured review, at an acceptable false-alarm rate and cost. The actor's explanation is evidence to check against the original record; it cannot create permission or erase an executed action.
 
 ## Three contributions to one research question
