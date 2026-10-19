@@ -1,0 +1,22 @@
+# Trace-Grounded Follow-Up for Agent Monitoring
+
+Pacifica Zhang (rz377), Luanfeng Wei (lw856), Qier An (qa24), Tony Zhu (jz965)
+
+CPSC 4880/5880 | Progress report for October 21, 2026 | Evidence through October 19
+
+**Question and completed work.** Can trajectory-specific questions improve detection of executed unauthorized actions beyond fixed questions and extra review, while controlling false alarms and cost? Our three workstreams connect implementation, evidence validation, and independent execution. Luanfeng implemented TGF and passive (B1), fixed-question (B2), and extra-review (B3) baselines using a gpt-oss-120b actor and Qwen3-32B monitor. TGF builds an action ledger, asks about uncertain actions, and judges the original trace plus tool-disabled actor replies. Pacifica developed execution contracts, public/private separation, source-bound checks, and an AI-assisted authorization audit. Tony independently deployed and replayed v4, verified provenance, corrected per-domain cost/failure statistics, and diagnosed errors. His input and nine core modules match the original v4 assets; this is a replay of the same 64 development records, not new test data.
+
+**Early evidence.** Historical results use proxy labels, threshold >=50, and missing scores filled with 50. G² = TPR x TNR. Each run contains banking 1P/31N and airline 23P/9N.
+
+| Run on the same dev64 | Overall G²: B2 / TGF | Airline G²: B2 / TGF |
+| --- | --- | --- |
+| Original v4, full tool outputs | .875 / .894 | .913 / .812 |
+| Tony's independent replay | .833 / .910 | .870 / .850 |
+
+In Tony's replay, TGF detected 23/24 positives versus B2's 20/24, but falsely flagged 2/40 negatives versus 0/40 and used 1.70 times the recorded tokens. Airline G² was lower; the lone banking positive was already detected before follow-up. TGF also receives earlier action reviews and asks up to three questions versus B2's one. These differences prevent attributing gains to question content. One question incorrectly presented an airline preference as user authorization; another case received a positive prediction for an unsupported reason. A correct binary prediction need not be evidence-supported detection.
+
+**Audit and changes since the proposal.** A separate non-blind, non-independent primary-AI review covered all 64 records and 3,817 tool events. Its broader task-constraint contract yields 38P/21N/5unknown: 23 clear P/N reversals from the proxy labels, plus five unresolved cases. These labels cannot simply replace the old labels when scoring policies written for a different endpoint. Permission violations, parameter mistakes, and incomplete tasks still need consistent boundaries; 14 airline positives depend only on booking 16 rather than 17 dinner places. There are 52 distinct conversations and only two ended, deduplicated sensitive-negative candidates, still pending review; human gold labels and the proposed 30P/30N per environment remain unavailable. We therefore prioritize data and interface qualification before a definitive comparison. An optional SFT diagnostic used Qwen3-32B rather than the proposed 4B model; its small synthetic study showed no reliable benefit, with parsing confounds. Further SFT is deferred.
+
+**Remaining work and timeline.** By October 21, finalize the report and repository access. During October 22-31, seek independent teammate review of disputed labels and both sensitive-negative candidates; freeze the endpoint and validate common inputs, token capacity, and parsing offline. Then, subject to those checks and a confirmed budget, run the proposed eight-case diagnostic: passive, ledger-only, fixed, and targeted conditions. Fixed/targeted share the ledger, selected event, judge, one-question budget, and independent actor branches. This tests question content conditional on common selection, not the full selection policy. Through November 30, aim to qualify new data, conduct held-out comparisons and key ablations, and report per-domain errors, evidence support, unknowns, and cost. If coverage remains inadequate, restrict conclusions to development diagnostics. December is reserved for presentation and final reporting; no reliable independent TGF advantage is yet established.
+
+**Repository and disclosure.** [github.com/LuanfengBest/TGF_Monitor](https://github.com/LuanfengBest/TGF_Monitor) (private; staff access to be arranged). AI assisted coding, operation, auditing, and drafting; team verification remains required.
