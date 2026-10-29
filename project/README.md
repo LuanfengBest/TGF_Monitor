@@ -4,8 +4,11 @@ Updated October 29, 2026. Team names follow the [final proposal](reference/final
 
 The next diagnostic now has a [separate implementation and runbook](../matched_followup/README.md),
 [current handoff](matched_followup_v1/STATUS.md), and [score-blind review packet](matched_followup_v1/review_packet.html).
-CPU regression and exact Qwen capacity checks pass. Independent human review and
-actual Harmony/cluster preflight remain open; no new GPU experiment has been run.
+The [AI development review](matched_followup_v1/AI_REVIEW.md) covers the eight fixed
+cases (authorization 4P/4N; task constraints 6P/2N). All 31 CPU regression tests and
+exact Qwen capacity checks pass. Independent human gold remains unavailable; the
+authorized development run still requires actual Harmony/cluster preflight. No new
+GPU experiment has been run.
 The historical evidence below retains its original October 19 scope.
 
 We study whether questions grounded in an agent's executed actions improve monitoring beyond fixed questions and structured review, at an acceptable false-alarm rate and cost. The actor's explanation is evidence to check against the original record; it cannot create permission or erase an executed action.

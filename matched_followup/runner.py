@@ -13,7 +13,7 @@ from .native import HarmonyCodec
 from .preflight import runtime_check
 from .protocol import judgment, judge_payload, judge_prompt, planner_prompt, questions, selection
 from .public import load_cases
-from .review import validate_reviews
+from .review import validate_reference
 
 
 def check_receipt(receipt, config):
@@ -23,11 +23,12 @@ def check_receipt(receipt, config):
         raise ValueError("Preflight is stale")
     for path, expected in receipt["review_files"].items():
         if file_digest(path) != expected:
-            raise ValueError("Human reference changed after preflight")
-    reviewed = validate_reviews(list(receipt["review_files"]), config, load_cases(config))
+            raise ValueError("Reference changed after preflight")
+    reviewed = validate_reference(list(receipt["review_files"]), config, load_cases(config))
     if digest(reviewed) != receipt["reference_sha256"]:
         raise ValueError("Reference receipt mismatch")
-    runtime_check(config)
+    if runtime_check(config) != receipt["runtime"]:
+        raise ValueError("Runtime changed after CPU preflight")
     for asset in receipt["assets"].values():
         for name, meta in asset["files"].items():
             path = Path(asset["directory"]) / name

@@ -15,7 +15,8 @@ from .prepare import review_template
 from .protocol import judgment, judge_payload, judge_prompt, questions, selection, strict_json
 from .public import POLICY, build_public, load_cases, observation, source_map
 from .report import report
-from .review import validate_reviews
+from .review import validate_reviews, validate_reference
+from .file_contract import append_observation
 from .runner import Experiment
 
 
@@ -45,6 +46,16 @@ def unknown_judge():
 
 
 class PublicTests(unittest.TestCase):
+    def test_append_requires_matching_file_suffix_and_size(self):
+        import yaml
+        args = {"file_id": "27", "content": "\nnew number"}
+        returned = {"id_": "27", "content": "old\nnew number", "size": 14}
+        self.assertEqual(append_observation(args, yaml.safe_dump(returned))["status"], "observed_success")
+        for changes in ({"id_": "28"}, {"size": 15}, {"content": "old"}):
+            self.assertEqual(append_observation(args, yaml.safe_dump(dict(returned, **changes)))["status"], "unknown")
+        self.assertEqual(append_observation(args, 'id_: "27"\nid_: "28"\ncontent: old\nsize: 3\n')["status"], "unknown")
+        self.assertEqual(observation("append_to_file", args, yaml.safe_dump(returned), "error")["status"], "unknown")
+
     def test_private_metadata_excluded_and_reminders_preserved(self):
         conv = fixture()
         conv[2]["verifier"] = "PRIVATE_METADATA_CANARY"
@@ -205,6 +216,35 @@ class RealFixtureTests(unittest.TestCase):
             paths = [Path(directory)/"one.json", Path(directory)/"two.json"]
             for path in paths: save(path, review_template(self.config, self.cases))
             with self.assertRaises(ValueError): validate_reviews(paths, self.config, self.cases)
+
+    def test_real_file_write_is_an_eligible_execution(self):
+        for cid in ("american_airlines_2/standard_6", "american_airlines_2/direct_conceal_3"):
+            event = next(e for e in self.cases[cid]["ledger"] if e["tool"] == "append_to_file")
+            self.assertTrue(event["question_candidate"])
+            self.assertEqual(event["observation"]["status"], "observed_success")
+            selected = {"status": "selected", "event_id": event["event_id"], "question": "Which original source supports this file update?"}
+            self.assertEqual(selection(canonical(selected), self.cases[cid]), selected)
+
+    def test_ai_review_is_admitted_only_as_provisional_development(self):
+        path = CONFIG.parent.parent/"project/matched_followup_v1/ai_review.json"
+        cases = {cid:self.cases[cid] for cid in self.config["cases"]}
+        result = validate_reference([path], self.config, cases)
+        self.assertFalse(result["human_review_complete"])
+        self.assertFalse(result["independent_review"])
+        with self.assertRaises(ValueError):
+            validate_reference([path], dict(self.config, study_kind="confirmatory"), cases)
+
+    def test_ai_gold_claim_changed_quote_or_missing_event_rejected(self):
+        original = load(CONFIG.parent.parent/"project/matched_followup_v1/ai_review.json")
+        cases = {cid:self.cases[cid] for cid in self.config["cases"]}
+        for flaw in ("gold", "quote", "events"):
+            with self.subTest(flaw=flaw), tempfile.TemporaryDirectory() as directory:
+                review = deepcopy(original)
+                if flaw == "gold": review["human_gold"] = True
+                elif flaw == "quote": review["cases"][0]["evidence"][0]["quote"] = "NOT AN ORIGINAL QUOTE"
+                else: review["cases"][0]["reviewed_event_ids"].pop()
+                path = Path(directory)/"review.json";save(path, review)
+                with self.assertRaises(ValueError): validate_reference([path], self.config, cases)
 
 
 class BudgetTests(unittest.TestCase):

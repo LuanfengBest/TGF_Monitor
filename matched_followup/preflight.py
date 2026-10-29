@@ -1,4 +1,4 @@
-"""Cluster CPU admission: human review, exact tokenizers, pinned runtime/assets."""
+"""Cluster CPU admission: declared reference, exact tokenizers, pinned runtime/assets."""
 import argparse
 import hashlib
 from importlib.metadata import version
@@ -8,7 +8,7 @@ from .capacity import QwenCounter, monitor_capacity
 from .common import CONFIG, digest, file_digest, freeze_hashes, load, save
 from .native import HarmonyCodec
 from .public import load_cases
-from .review import validate_reviews
+from .review import validate_reference
 
 
 def runtime_check(config):
@@ -16,6 +16,7 @@ def runtime_check(config):
     found.update({key: version(key) for key in config["runtime"] if key != "python"})
     if found != config["runtime"]:
         raise ValueError(f"Pinned runtime mismatch: {found}")
+    found["PyYAML"] = version("PyYAML")
     return found
 
 
@@ -51,8 +52,9 @@ def preflight(qwen, actor, review_paths, output):
     config, receipt = load(CONFIG), {"ready_for_gpu": False}
     try:
         cases = load_cases(config)
-        # Expensive model/tokenizer checks are not attempted while review is open.
-        reviewed = validate_reviews(review_paths, config, cases)
+        reviewed = validate_reference(review_paths, config, cases)
+        receipt["reference_mode"] = reviewed["reference_mode"]
+        receipt["human_review_complete"] = reviewed["human_review_complete"]
         receipt["reference_sha256"] = digest(reviewed)
         receipt["review_files"] = {str(Path(p).absolute()): file_digest(p) for p in review_paths}
         receipt["runtime"] = runtime_check(config)
@@ -89,7 +91,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--qwen-snapshot", required=True, type=Path)
     p.add_argument("--actor-snapshot", required=True, type=Path)
-    p.add_argument("--reviews", nargs=2, required=True, type=Path)
+    p.add_argument("--reviews", nargs="+", required=True, type=Path)
     p.add_argument("--out", required=True, type=Path)
     args = p.parse_args()
     preflight(args.qwen_snapshot, args.actor_snapshot, args.reviews, args.out)

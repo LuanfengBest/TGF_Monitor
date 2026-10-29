@@ -3,6 +3,7 @@ from copy import deepcopy
 import importlib.util
 import sys
 from .common import ROOT, canonical, digest, file_digest, records, load
+from .file_contract import append_observation
 
 # These two archived modules only decode public tool-return contracts. No oracle
 # or authorization function is imported. Their bytes are in every run manifest.
@@ -52,6 +53,8 @@ def _call(call):
 def observation(tool, args, result, error):
     if error:
         return {"status": "unknown", "effect": "error_may_follow_partial_effect"}
+    if tool == "append_to_file":
+        return append_observation(args, result)
     if tool in _air.TOOLS:
         return _air.decode_contract(tool, args, result)
     return _bank.decode_contract(tool, args, result)

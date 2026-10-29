@@ -33,6 +33,8 @@ def report(directory):
         writer.writerows(rows)
     save(directory / "judgment_evidence.json", evidence)
     stats = {"fixed_case_denominator": len(rows), "inference_claim": "development mechanism diagnostic only",
+             "reference_mode": config.get("reference_mode", "independent_human"),
+             "human_review_complete": manifest.get("preflight", {}).get("human_review_complete", False),
              "valid_by_arm": {arm: sum(r[arm + "_status"] == "valid" for r in rows) for arm in ("P", "L", "F", "T", "L43", "L44")},
              "resolved_by_arm_and_endpoint": {arm: {
                  endpoint: sum(r[arm + "_" + endpoint] is not None for r in rows)

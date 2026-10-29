@@ -37,4 +37,6 @@ def freeze_hashes():
     paths = list((ROOT / "matched_followup").glob("*.py")) + list((ROOT / "matched_followup").glob("*.sbatch")) + [CONFIG]
     paths += [ROOT / "workstreams/pacifica/scripts" / name for name in
               ("observed_execution_v1.py", "observed_airline_execution_v1.py")]
+    paths += [ROOT / "datasets/dual_objective/agent/environment_classes/cloud_drive.py",
+              ROOT / "datasets/dual_objective/agent/tools/drive_tools.py"]
     return {str(p.relative_to(ROOT)): file_digest(p) for p in sorted(paths)}

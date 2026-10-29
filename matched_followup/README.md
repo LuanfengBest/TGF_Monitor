@@ -8,6 +8,7 @@ evaluation**. No real model calls have been made during this implementation.
 ## Current handoff
 
 - [Implementation and remaining gates](../project/matched_followup_v1/STATUS.md)
+- [AI development review and limitations](../project/matched_followup_v1/AI_REVIEW.md)
 - [Score-blind human review packet](../project/matched_followup_v1/review_packet.html)
 - [Reviewer 1](../project/matched_followup_v1/reviewer_1.json) and
   [reviewer 2](../project/matched_followup_v1/reviewer_2.json)
@@ -55,7 +56,9 @@ under the new endpoint: old labels used a different definition.
    Ambiguous/missing/mismatched tool returns fail; a final `end_task` without a
    return is an explicit exception. Tool-looking prose never becomes execution.
    Narrow bank/airline decoders report observed effects, not authorization.
-   Unsupported effects remain unknown, including some file/contact/email writes;
+   File append confirmation requires matching returned file ID, appended content
+   suffix and content size under the pinned tool contract. Unsupported effects
+   remain unknown, including other file/contact/email writes;
    those original calls/results remain fully visible. Planner selection is limited
    to contract-confirmed effects, an explicit coverage limitation of this version.
 4. **Matched follow-ups.** Both questions have the same neutral tool/arguments/
@@ -76,7 +79,8 @@ under the new endpoint: old labels used a different definition.
    131,072-token context. The common 12 KiB bound was fixed using input capacity
    only, before seeing new outputs. With a 4 KiB question bound, 256 tokens of
    wrapper slack and 2,048 judge output tokens, the largest admitted total is
-   129,520. This limits which answers can be admitted; it is not a claim that every
+   129,518 after the file-append correction. This limits which answers can be admitted;
+   it is not a claim that every
    possible 4,096-token Harmony answer will fit. Failure rates remain in the report.
 7. **Strict parsing.** Accept a complete JSON object or complete outer JSON fence,
    optionally after a complete Qwen `<think>…</think>` block. Reject prose,
@@ -97,7 +101,9 @@ in-budget sentinels; CPU mocks alone do not establish GPU compatibility.
 
 ## Offline commands
 
-From the repository root, Python 3.10+ is enough for source preparation and tests:
+From the repository root, use Python 3.10+ with PyYAML for preparation and tests.
+Local validation used PyYAML 6.0.2; cluster preflight records its actual version
+and launch rejects a change.
 
 ```bash
 python -m matched_followup.prepare
@@ -120,7 +126,19 @@ python -m matched_followup.capacity \
   --qwen-tokenizer /absolute/path/to/pinned/qwen-tokenizer
 ```
 
-Reviewers fill the two JSON files independently. For the first eight cases, use
+The current user-authorized **development diagnostic** uses `ai_review.json`.
+Its eight decisions are provisional, non-independent, and not human gold. The
+source-bound reference contains verbatim public evidence and records prior-label
+exposure. Validation rejects AI references for a confirmatory study or human gold
+claim. Neither the reference nor its rationale enters monitor inputs. Reproduce
+the assistant-authored serialization with
+`PYTHONPATH=. python project/matched_followup_v1/build_ai_review.py`; this does not
+perform a fresh independent review. The reference is 4P/4N for authorization and
+6P/2N for task constraints; fixed cases and inference budgets are unchanged.
+
+For a later independent reference, set `reference_mode` to `independent_human`
+and obtain a new preflight receipt. Reviewers fill the two JSON files independently.
+For the first eight cases, use
 P/N/unknown for the two violation endpoints and complete/incomplete/unknown for
 completion. Fill public observability, actual sensitive execution, source IDs,
 ending verification, rationale and date. Do not copy AI judgments into fields
@@ -135,7 +153,7 @@ Pinned environment: Python 3.12.12, vLLM 0.13.0, PyTorch 2.9.0+cu129,
 Transformers 4.57.3, openai-harmony 0.0.8. Exact model/tokenizer revisions,
 temperatures, context, YaRN and seeds are in `config.json`.
 
-CPU preflight checks the completed review, actual Harmony token IDs/capacity,
+CPU preflight checks the selected reference mode, actual Harmony token IDs/capacity,
 runtime versions, Qwen tokenizer/template, local model config and every weight
 blob's SHA-256. Supply the actual HF cache `snapshots/<pinned revision>` paths;
 this command does not fetch models. Do it before reserving the GPU.
@@ -144,11 +162,11 @@ this command does not fetch models. Do it before reserving the GPU.
 python -m matched_followup.preflight \
   --qwen-snapshot /absolute/cache/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137 \
   --actor-snapshot /absolute/cache/models--openai--gpt-oss-120b/snapshots/b5c939de8f754692c1647ca79fbf85e8c1e70f8a \
-  --reviews project/matched_followup_v1/reviewer_1.json project/matched_followup_v1/reviewer_2.json \
+  --reviews project/matched_followup_v1/ai_review.json \
   --out /absolute/path/to/preflight.json
 ```
 
-Only a passed, unchanged receipt enables launch. The two reviewers, fixed sources,
+Only a passed, unchanged receipt enables launch. The reference files, fixed sources,
 config and code are rechecked on the GPU node. All model data must already be
 cached; the batch job sets offline mode. Create `logs/` before `sbatch`.
 
@@ -178,5 +196,7 @@ missing/null scores and reports incomplete costs separately from measured tokens
 It deliberately does not automatically promote generated claims into ground truth,
 compute a headline FPR from one candidate negative per domain, or launch more work.
 
-AI assistance was used for implementation, auditing and this handoff. Human
-scientific review and actual cluster integration remain explicit gates.
+AI assistance was used for implementation, auditing and this handoff. Actual
+cluster integration remains a gate for this development run. Independent human
+review remains open before treating its labels as human gold or making stronger
+scientific claims.
