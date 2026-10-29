@@ -1,6 +1,12 @@
 # TGF final project: current evidence
 
-Updated October 19, 2026. Team names follow the [final proposal](reference/final_proposal_2026-10-07.md).
+Updated October 29, 2026. Team names follow the [final proposal](reference/final_proposal_2026-10-07.md).
+
+The next diagnostic now has a [separate implementation and runbook](../matched_followup/README.md),
+[current handoff](matched_followup_v1/STATUS.md), and [score-blind review packet](matched_followup_v1/review_packet.html).
+CPU regression and exact Qwen capacity checks pass. Independent human review and
+actual Harmony/cluster preflight remain open; no new GPU experiment has been run.
+The historical evidence below retains its original October 19 scope.
 
 We study whether questions grounded in an agent's executed actions improve monitoring beyond fixed questions and structured review, at an acceptable false-alarm rate and cost. The actor's explanation is evidence to check against the original record; it cannot create permission or erase an executed action.
 
@@ -23,7 +29,7 @@ Qier An remains a proposal coauthor. This import does not contain a separately i
 
 ## What remains open
 
-The legacy labels and monitor policy do not consistently measure the proposal's executed-authorization endpoint. The existing B2/TGF comparison also varies question counts and earlier-review information. Human review, sufficient legitimate sensitive negatives, and an untouched test set are incomplete. A matched comparison has been proposed but has not been run in this integration.
+The legacy labels and monitor policy do not consistently measure the proposal's executed-authorization endpoint. The existing B2/TGF comparison also varies question counts and earlier-review information. Human review, sufficient legitimate sensitive negatives, and an untouched test set are incomplete. The matched comparison is implemented separately and remains unrun.
 
 Read [the integrated story](STORYLINE_2026-10-19.md) for the report outline, claim boundaries, concrete cases, and next experiment. Read [reproducibility](REPRODUCIBILITY.md) for CPU-only checks and the snapshot's omissions.
 

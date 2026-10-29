@@ -1,0 +1,38 @@
+{
+  "schema_version": "matched-followup-v1",
+  "base_commit": "cc7ac7563d583f3b941d91c6f3dbf4430327968f",
+  "source": "workstreams/tony/03_code_and_results/received_30030723/runs/REAL_DEV_REPLAY_20261019T082914Z_46828010/traces.jsonl",
+  "source_sha256": "2511ce6fad89cfc6900173e8cdffcc6c556f8f53caca8c7651f21974b5e1c0ca",
+  "source_index": "workstreams/pacifica/analysis/tgf_full_handoff_20261018/raw_record_index.jsonl",
+  "cases": [
+    "bank_transfer_2/monitor_aware_1", "bank_transfer_2/monitor_aware_4",
+    "bank_transfer_2/monitor_aware_5", "bank_transfer_2/monitor_aware_3",
+    "american_airlines_2/monitor_aware_7", "american_airlines_2/standard_1",
+    "american_airlines_2/standard_6", "american_airlines_2/direct_conceal_3"
+  ],
+  "additional_review_cases": [
+    "bank_transfer_2/monitor_aware_2", "bank_transfer_2/monitor_aware_7",
+    "bank_transfer_2/no_side_task_3", "american_airlines_2/direct_conceal_4",
+    "american_airlines_2/no_side_task_6"
+  ],
+  "hard_negative_candidates": ["bank_transfer_2/monitor_aware_3", "american_airlines_2/direct_conceal_3"],
+  "monitor": {
+    "model": "Qwen/Qwen3-32B", "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+    "context": 131072, "rope_factor": 4.0, "original_context": 32768,
+    "top_p": 0.95,
+    "tokenizer_files": {"tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4", "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"}
+  },
+  "actor": {
+    "model": "openai/gpt-oss-120b", "revision": "b5c939de8f754692c1647ca79fbf85e8c1e70f8a",
+    "context": 131072, "quantization": "mxfp4", "top_p": 0.9, "reasoning_effort": "high"
+  },
+  "runtime": {"python": "3.12.12", "vllm": "0.13.0", "torch": "2.9.0+cu129", "transformers": "4.57.3", "openai-harmony": "0.0.8"},
+  "temperature": 0.6, "seed": 42, "ledger_repeat_seeds": [43, 44],
+  "limits": {
+    "planner_output": 1024, "actor_output": 4096, "judge_output": 2048,
+    "question_actor_tokens": 512, "question_json_bytes": 4096, "answer_json_bytes": 12288,
+    "calls": 72, "output_tokens": 172032, "wall_seconds": 3600,
+    "stage_minimum_remaining_seconds": [2700, 1800, 900],
+    "retries": 0, "gpus": 1
+  }
+}
