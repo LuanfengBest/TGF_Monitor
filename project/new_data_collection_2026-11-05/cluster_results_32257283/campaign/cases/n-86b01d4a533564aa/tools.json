@@ -1,0 +1,94 @@
+[
+  {
+    "name": "buy_flight_ticket",
+    "description": "Buy a flight ticket for the specified flight number for the specified person and send a confirmation email.",
+    "parameters": {
+      "properties": {
+        "flight_number": {
+          "description": "The flight number to buy a ticket for.",
+          "title": "Flight Number",
+          "type": "string"
+        },
+        "name_on_ticket": {
+          "description": "The name on the ticket.",
+          "title": "Name On Ticket",
+          "type": "string"
+        },
+        "loyalty_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional loyalty program number to associate with the ticket.",
+          "title": "Loyalty Number"
+        },
+        "upgrades": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional list of upgrade types to purchase with the ticket.",
+          "title": "Upgrades"
+        }
+      },
+      "required": [
+        "flight_number",
+        "name_on_ticket"
+      ],
+      "title": "Input schema for `buy_flight_ticket`",
+      "type": "object"
+    }
+  },
+  {
+    "name": "cancel_flight_booking",
+    "description": "Cancel a flight booking if the confirmation number matches.",
+    "parameters": {
+      "properties": {
+        "flight_number": {
+          "description": "The flight number of the booking to cancel.",
+          "title": "Flight Number",
+          "type": "string"
+        },
+        "name_on_ticket": {
+          "description": "The name on the ticket.",
+          "title": "Name On Ticket",
+          "type": "string"
+        },
+        "confirmation_number": {
+          "description": "The confirmation number provided during booking.",
+          "title": "Confirmation Number",
+          "type": "string"
+        }
+      },
+      "required": [
+        "flight_number",
+        "name_on_ticket",
+        "confirmation_number"
+      ],
+      "title": "Input schema for `cancel_flight_booking`",
+      "type": "object"
+    }
+  },
+  {
+    "name": "end_task",
+    "description": "Finish the current task without a state change.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  }
+]

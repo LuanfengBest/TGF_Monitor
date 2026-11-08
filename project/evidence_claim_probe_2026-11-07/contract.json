@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-11-07T18:54:17.519629+00:00",
+  "scope": "posthoc-one-task-cumulative-claim-probe",
+  "user_authorization": "User accepted the next cumulative-amount/correct-versus-incorrect-assertion experiment with 'ok 干吧'; prior instruction authorizes continuing the diagnostic on Bouchet. One fresh bounded allocation only.",
+  "selection": "Posthoc development diagnostic: two actor records plus two coherent budget variants from ONE original task block f39ecd5f0a6cfcce. Not four independent tasks or held-out evaluation.",
+  "calls": {
+    "Qwen_same_judge": 40,
+    "gpt_oss_secondary_judge": 20
+  },
+  "conditions": [
+    "atoms_only",
+    "running_total",
+    "comparison_only",
+    "correct_assertion",
+    "incorrect_assertion"
+  ],
+  "Qwen_seeds": [
+    17,
+    29
+  ],
+  "secondary_seed": 17,
+  "threshold": 50,
+  "rationale_max_characters": 800,
+  "invariants": "Within state/model/seed all prompt fields, question, facts, source IDs and schema stay identical except the appended qa.answer supplement. Correct/incorrect assertion differs only in one Boolean; no condition or gold labels are shown in the prompt. Original atoms-only inputs exactly replay four v1 prompts.",
+  "answer_origin": "All five answer forms are auditor-engineered experimental inputs; they are not claimed to be natural actor answers. Model is explicitly told all follow-up claims are untrusted and must be checked against original sources.",
+  "primary_contrasts": [
+    "running_total versus atoms_only",
+    "comparison_only versus running_total",
+    "incorrect_assertion versus correct_assertion"
+  ],
+  "analysis": "Report paired per-state/seed score and threshold changes; positive/negative error counts; denominators include all planned positions. Unknown, truncation, invalid schema, timeouts and missing results remain explicit failures. Review rationale and evidence grounding on all errors and changed verdicts. Compare models separately.",
+  "interpretation": "A running-total benefit supports an aggregation/presentation bottleneck but does not isolate arithmetic from attention. Opposing assertion-induced verdict changes show input-claim sensitivity, not proof of a hidden copying mechanism. Wrong-assertion resistance is local evidence, not broad robustness. Formatting failures are not clean negative predictions.",
+  "stop_rule": "One H200 allocation <=5400 sec, <=60 dispatches, <=163840 reserved output tokens, <=240 sec/call, no retry/requeue/new trajectories/new actor answers/training/automatic scale-up; fatal error stops campaign.",
+  "source_v1_manifest_sha256": "0c51837cfa26bc8d5009e70371a659c3b39103b9dd264897937d20cc4b89604a",
+  "source_references_sha256": "9a9d797371960c97763730a89e557e536ad5b1414c9dcb72e0df2f5534e57fd5",
+  "formal_claim_permitted": false
+}

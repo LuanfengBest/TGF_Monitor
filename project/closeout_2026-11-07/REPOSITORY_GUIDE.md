@@ -23,6 +23,8 @@ These are bounded development comparisons and controlled diagnostic cases. The f
 
 ## Verify the existing results
 
+For all principal report cohorts, including the natural collection and earlier comparisons, start with [data, code and clean-checkout reproduction](DATA_AND_CODE.md). It provides a pinned CPU dependency file and one command that invokes the original analyses and checks the saved results. The final-validation-only command below remains available.
+
 From the repository root, with Python 3 and `jsonschema` available:
 
 ```sh
