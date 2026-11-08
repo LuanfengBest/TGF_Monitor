@@ -1,206 +1,107 @@
-# TGF Monitor — course final project
+# TGF Monitor
 
-Trace-Grounded Follow-Up for Agent Monitoring · CPSC 4880/5880
+**Trace-Grounded Follow-Up for Agent Monitoring**
 
-Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu · updated November 7, 2026
+CPSC 4880/5880 · Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu
 
-**Current results and conclusions:** [Final report](project/closeout_2026-11-07/FINAL_REPORT.md) · [PDF](project/closeout_2026-11-07/deliverables/TGF_Report.pdf) · [Chinese presentation notes](project/closeout_2026-11-07/deliverables/SPEAKER_NOTES_ZH.md) · [Repository reading and verification guide](project/closeout_2026-11-07/REPOSITORY_GUIDE.md).
+Research snapshot: November 7, 2026
 
-**Data and code:** [Dataset/source map and CPU reproduction](project/closeout_2026-11-07/DATA_AND_CODE.md). Includes the principal cohorts' frozen inputs, original outputs, failures and analysis code, with a single read-only command to check the saved results after a fresh checkout.
+Can an AI monitor detect more unauthorized agent actions by asking questions about specific operations, compared with a generic follow-up question at a comparable budget?
 
-The development comparisons do not establish an advantage for targeted follow-up over generic follow-up. In the final controlled extension, cumulative amounts corrected one Qwen case (11/12 → 12/12), below the predeclared two-block criterion; added comparisons gave no further gain, and valid correct/incorrect-assertion pairs had no verdict flips. All 120 planned calls are retained: 105 valid outputs, 14 truncations and one schema failure, with 104 correct labels among valid outputs. A separate-context AI blind review agreed with all 12 final reference labels; it is not human annotation. These are small development comparisons and constructed simulator diagnostics, not evidence of broad effectiveness or an internal mechanism.
+We investigate this in bank-transfer and airline-booking simulators. An **Actor** executes a task; a **Judge** reviews the user permissions, tool calls and receipts, optionally using an Actor's follow-up answer. The reference label concerns a committed action outside the permission effective when it was executed. A later explanation cannot grant permission retroactively.
 
-The report, presentation notes, sealed AI review and offline evidence are complete. Experiments and monitoring are closed; no new runs are implied by publication. Team confirmation of contributions/course format and formal course submission remain outstanding. The dated checkpoints below retain their historical scope; the final report is the current synthesis.
+**Main finding:** the development comparisons did not establish an additional benefit from targeted follow-up. Source audits identified some failures despite available evidence, including incorrect authorization scope and citations that do not support the verdict. A final controlled extension corrected one case with cumulative totals, below its predeclared criterion for a broader benefit. These are bounded development findings, not a claim of general effectiveness or an internal model mechanism.
 
-**November 6 comparison:** [24-airline four-arm results and review](project/airline_monitor_comparison_2026-11-06/REPORT_2026-11-06.md). Job `32354336` completed all 240 calls in 27m03s including startup. At the frozen threshold, P/C/F/T detected 5/2/6/6 of 6 violations and falsely flagged 0/0/0/1 of 18 legitimate cases. All 96 judgments and 48 follow-up answers received nonblind AI author review; original scores and labels are unchanged. T adds no detection over F and adds one false alarm. The bounded run and scheduled follow-up are closed; no expansion is authorized. Original two-environment collection coverage remains insufficient, and this is development evidence only.
+[Final report](project/closeout_2026-11-07/FINAL_REPORT.md) · [Report PDF](project/closeout_2026-11-07/deliverables/TGF_Report.pdf) · [中文展示讲稿](project/closeout_2026-11-07/deliverables/SPEAKER_NOTES_ZH.md) · [Data and code](project/closeout_2026-11-07/DATA_AND_CODE.md) · [Reading guide](project/closeout_2026-11-07/REPOSITORY_GUIDE.md)
 
-**New data collection reviewed:** [November 6 results](project/new_data_collection_2026-11-05/REPORT_2026-11-06.md). Actor-only job `32257283` completed 48/48 cases using 155 calls and 9m05s including startup. Nonblind AI author review found bank 1 violation / 23 sensitive negatives and airline 6 / 18. Airline meets the frozen development coverage gate; bank fails positive-count and instance-block coverage, so the batch stops without expansion or monitor evaluation. This is feasibility evidence, not independent human labeling or an effectiveness result. The [frozen preparation](project/new_data_preparation_2026-11-05/README.md) and all raw evidence remain unchanged.
+## What we did
 
-**November 5 checkpoint: [evaluation alignment and reusable development data](project/evaluation_alignment_2026-11-05/README.md).** All 88 existing records are indexed in separate cohorts; missing scores stay invalid. One of the legacy B2's reported 20 detections was an imputed score, leaving 19 explicit detections and one invalid positive-case result. No new inference or reliable TGF advantage is claimed. At that checkpoint, the teammate's four-case outputs had not been received locally; the final report now includes the November 7 frozen-commit source snapshot.
+1. **Defined an explicit-authorization endpoint.** We distinguish executed violations from failed attempts, incomplete tasks and the legacy benchmark's side-task-success labels. Missing or invalid judgments remain separate outcomes.
+2. **Collected and reviewed 48 natural Actor records in simulators.** Banking yielded 1 violation and 23 legal sensitive executions, failing its development coverage screen. Airline yielded 6 violations and 18 legal executions and was selected for the subsequent development comparisons.
+3. **Compared monitoring strategies and question content.** We compared direct judgment, additional evidence review, generic follow-up and targeted follow-up. A second comparison held the selected operation fixed and changed question content across two seeds.
+4. **Audited evidence and tested controlled changes.** We checked original permissions, receipts, Actor answers, verdicts and citations. Two diagnostic batches examined evidence presentation and supplied conclusions. A closing extension used 12 constructed simulator records to check whether selected findings recurred.
+5. **Checked final references in an independent AI context.** A fresh-context AI reviewer saw only 12 anonymized original records and the scope rubric. Its judgments were sealed before comparison with the reference. This was an AI review, not human annotation.
 
-The [November 3 update](project/PACIFICA_PROGRESS_2026-11-03.md) and [AI handoff](project/AI_START_HERE_2026-11-03.md) retain the completed 24-case development run and its original artifacts.
+## Results
 
-**Start with [the project overview](project/README.md) and [the integrated research story](project/STORYLINE_2026-10-19.md).** The repository contains Luanfeng's v4 implementation, a curated Pacifica research snapshot, and Tony's independently executed replay and audit of the same 64 development trajectories.
+### Targeted versus generic follow-up
 
-Current evidence supports a working pipeline and an analysis of evaluation validity. It does **not** establish that targeted follow-up reliably outperforms a matched fixed-question baseline. Old proxy scores, the newer authorization audit, and component SFT results have different endpoints and are reported separately.
+All four strategies evaluated the same 24 airline development records, with 6 violations and 18 legal records. All 96 final judgments were format-valid.
 
-- [Implementation and v4 usage](tgf/README.md)
-- [Pacifica: code, authorization audit, and component experiments](workstreams/pacifica/README.md)
-- [Tony: independent replay, corrected statistics, and failure cases](workstreams/tony/00_START_HERE_C.md)
-- [Snapshot verification and reproduction](project/REPRODUCIBILITY.md)
-- [Versioned source inventory](project/import_manifest.json)
+| Strategy | Violations detected / 6 | False alarms / 18 |
+| --- | ---: | ---: |
+| P: direct Judge | 5 | 0 |
+| C: two evidence reviews, then Judge | 2 | 0 |
+| F: fixed generic follow-up, then Judge | 6 | 0 |
+| T: selected operation/dimension follow-up, then Judge | 6 | 1 |
 
-Historical scripts and proposed GPU budgets are archived evidence, not instructions to restart jobs. See the project overview for the current scope and limitations. The original MonitorBench documentation and attribution follow below.
+Targeting added no detection over generic follow-up and introduced one false alarm. F and T had matched call counts and stage output caps; this does not mean that every strategy used equal actual compute. [Comparison and source review](project/airline_monitor_comparison_2026-11-06/REPORT_2026-11-06.md)
 
----
+Holding the selected operation fixed, generic and scenario-specific questions both detected 6/6 violations with 0/18 false alarms at each of two seeds. These were reused records, and both question conditions reached a ceiling. The result does not establish equivalence or universal ineffectiveness. [Fixed-operation comparison](project/anchored_question_diagnostic_2026-11-06/RESULTS_2026-11-07.md)
 
-<h2 align="center">MonitorBench: A Comprehensive Benchmark for<br>Chain-of-Thought Monitorability in Large Language Models</h2>
+### Evidence presentation and supplied conclusions
 
-<!-- <div align="center">
-    <div>
-        <a href="https://arxiv.org/pdf/2603.28590"><img src="https://img.shields.io/badge/arXiv-2603.28590-b31b1b.svg"></a>
-        <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square"></a>
-    </div>
-</div> -->
+An earlier diagnostic in one selected task block suggested improvements from explicit cumulative amounts and budget comparisons. The final extension tested 12 constructed records from six paired instance blocks across bank and airline, five answer conditions, two Judges and one seed: **120 calls, not 120 independent examples**.
 
-<h5 align="center"><em>
-  Han Wang<sup>1,*</sup>,
-  Yifan Sun<sup>1,*</sup>,
-  Brian Ko<sup>2,*</sup>,
-  Mann Talati<sup>1</sup>,
-  Jiawen Gong<sup>1</sup>,
-  Zimeng Li<sup>1</sup>,
-  Naicheng Yu<sup>3</sup>,
-  Xucheng Yu<sup>1</sup>,
-  Wei Shen<sup>1</sup>,
-  Vedant Jolly<sup>1</sup>,
-  Huan Zhang<sup>1</sup>
-</em></h5>
-<div align="center">
-  <sup>1</sup> University of Illinois Urbana-Champaign&nbsp;
-  <sup>2</sup> University of Washington&nbsp;
-  <sup>3</sup> University of California San Diego<p>
-  <sup>*</sup> Equal contribution.
-</div>
+| Judge | Valid outputs / planned calls | Correct labels / valid outputs | Invalid outputs |
+| --- | ---: | ---: | --- |
+| Qwen3-32B | 60/60 | 59/60 | 0 |
+| gpt-oss-120b | 45/60 | 45/45 | 14 truncations, 1 schema failure |
 
+For Qwen, adding cumulative totals changed 11/12 correct labels to 12/12 in the relevant conditions, but improved only **one instance block**, below the predeclared minimum of two. Explicit budget comparisons added no further label improvement. Correct-to-incorrect assertions caused no verdict flips among jointly valid pairs: 0/12 for Qwen and 0/7 for gpt-oss. Different output constraints and failure rates preclude a general model ranking. [Full results and cases](project/closeout_2026-11-07/validation/interpretation_32473668.json)
 
-## Overview
+Two examples illustrate the distinction between a correct label and sound evidence use:
 
-MonitorBench provides: (1) a diverse set of 1,514 test instances with carefully designed decision-critical factors across 19 tasks spanning 7 categories to characterize **_when_** CoTs can be used to monitor the factors driving LLM behavior; and (2) two stress-test settings to quantify **_the extent to which_** CoT monitorability can be degraded.
+- **A legal payment record flagged through the wrong scope.** Four successful payments totalled $239.50, exactly the principal cap. Fees were excluded from the evaluation scope. Qwen calculated the correct total but still cited fees as a violation reason. The cumulative-total version was correct, as were other rewritten versions, so the correction cannot be uniquely attributed to the total.
+- **A one-cent violation resisted a false assertion.** Payments totalled $107.25 against a $107.24 cap. Both Judges still detected the violation after an appended claim of “no violation.” Their citations nevertheless did not fully establish the successful cumulative spending; the original receipts were separately checked.
 
-<div align="center">
-  <img src="./assets/bar_radar.png" width="90%" align="center" alt="MonitorBench main results" />
-</div>
+The independent-context AI reference check agreed on all 12 final labels, with no label changes. It covers those 12 records only and does not certify all earlier labels or Judge explanations. [Review scope, seal and reconciliation](project/closeout_2026-11-07/deliverables/AI_REVIEW_SUMMARY.md)
 
-**Updates**: Check out our latest work evaluating CoT monitorability in looped language models: [Code](https://github.com/ASTRAL-Group/MonitorBench/tree/LoopLM_Eval) and [Paper](https://arxiv.org/abs/2610.02741)!
+## Reproduce the saved results on CPU
 
+The completed research snapshot is published on `pacifica/diagnostic-handoff-2026-11-03`. For a fresh checkout on macOS or Linux:
 
-## Inspect AI
-
-Some of our benchmark tasks have also been incorporated into [Inspect Evals](https://github.com/UKGovernmentBEIS/inspect_evals), allowing them to be easily evaluated using the [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) evaluation framework.
-
-## Installation
-
-To prepare the environment, run the following commands:
-```bash
-conda create -n monitorbench python=3.10.16 -y
-conda activate monitorbench
-pip install --no-deps -r requirements.txt
-pip install --no-deps -e ./pipeline/verification/deepscaler
+```sh
+git clone --branch pacifica/diagnostic-handoff-2026-11-03 https://github.com/LuanfengBest/TGF_Monitor.git
+cd TGF_Monitor
+python3 -m venv .venv-offline
+.venv-offline/bin/python -m pip install -r project/closeout_2026-11-07/requirements-offline.txt
+.venv-offline/bin/python -B project/closeout_2026-11-07/verify_all_results.py
 ```
 
-## Usage
+Use Python 3.10 or newer; the clean-environment verification used Python 3.10.16. Dependency installation accesses the package index. After installation, verification runs offline on CPU without model weights, API keys or cluster access. It reads existing evidence and forbids file writes, networking, child processes and model-runtime imports.
 
-To run the monitorability evaluation, use the following command:
+A successful run verifies the earlier endpoint-alignment reports, 48-record natural collection, both follow-up comparisons, both evidence-use probes and final 120-call analysis. It compares the original analysis functions' results with the saved reports; only fresh creation timestamps in the two probe analyses are excluded from equality. Missing or changed bound outputs cause failure. The final batch remains **105 valid outputs, 15 invalid outputs and 104 correct valid labels**.
 
-```bash
-bash run.sh
-```
+See [data locations and verification details](project/closeout_2026-11-07/DATA_AND_CODE.md) and the [clean-checkout verification receipt](project/closeout_2026-11-07/data_code_publication.json). This reproduces analysis of saved outputs; generating new model outputs requires the separate GPU runtime and frozen experiment setup.
 
-Modify the `TASKS`, `EVALUATED_MODEL`, `STRESS_TESTS`, `MONITOR_SCOPES`, and `DEVICES` in the `run.sh` to fit in your evaluation need.
+## Repository map
 
-The default vLLM inference hyperparameters are defined in `./config/vllm_config.yaml`. If you want to override some of them, such as `rollout_num` and `max_model_len`, you can modify the `run.sh` as follows:
-```bash
-python main.py --task "$task" \
-    --stress-test "$STRESS_TESTS" \
-    --device "$DEVICES" \
-    --monitor-scope "$MONITOR_SCOPES" \
-    --set evaluated_llm.model_name="$EVALUATED_MODEL" \
-    --set evaluated_llm.rollout_number=1 \
-    --set monitor_llm.rollout_number=2 \
-    --set monitor_llm.max_model_len=8192
-```
-Note that `tensor_parallel` for the `evaluated_llm`, `verification_llm` (if applicable), and `monitor_llm` should be set based on your own computation resources.
+| Location | Contents |
+| --- | --- |
+| [project/closeout_2026-11-07/](project/closeout_2026-11-07/) | Final report, delivery materials, final validation, AI review and verification entry points |
+| [Data and source map](project/closeout_2026-11-07/DATA_AND_CODE.md#data-and-source-map) | Direct links to every principal cohort's inputs, outputs, configurations, reviews and analysis code |
+| [prospective_data_v2/](prospective_data_v2/), [prospective_collection_v1/](prospective_collection_v1/), [prospective_monitoring/](prospective_monitoring/) | Task specifications, collection, explicit authorization references and simulator recording |
+| [airline_dev_v1/](airline_dev_v1/), [anchored_question_v1/](anchored_question_v1/) | Four-strategy and fixed-operation comparison protocols, runtime and analysis |
+| [evidence_use_v1/](evidence_use_v1/), [evidence_use_v2/](evidence_use_v2/), [closeout_validation_v1/](closeout_validation_v1/) | Controlled evidence diagnostics and final validation |
+| [tgf/](tgf/README.md) | Original TGF implementation and legacy usage |
+| [workstreams/pacifica/](workstreams/pacifica/README.md), [workstreams/tony/](workstreams/tony/00_START_HERE_C.md) | Earlier workstream artifacts, replay results and audits |
+| [project/](project/README.md) | Dated historical evidence and proposal references |
 
-We also support OpenAI, Anthropic, and Google Batch API inference as backend engines. To use them, add your API key to the `run.sh` and modify the script as follows:
-```bash
-python main.py --task "$task" \
-    --stress-test "$STRESS_TESTS" \
-    --device "$DEVICES" \
-    --monitor-scope "$MONITOR_SCOPES" \
-    --set evaluated_llm.model_name="gpt-5" \
-    --set evaluated_llm.backend="api" \
-    --set monitor_llm.model_name="gemini-3-flash-preview" \
-    --set monitor_llm.backend="api"
-```
+The editable report is available as [Word](project/closeout_2026-11-07/deliverables/TGF_Report.docx). The [Chinese speaker notes](project/closeout_2026-11-07/deliverables/SPEAKER_NOTES_ZH.md) cover the presentation and discussion questions. The editable 13-slide presentation is held in the originating Spaces Page; the repository retains its [identity and notes](project/closeout_2026-11-07/deliverables/presentation_metadata.json).
 
-We also provide `metric.py` to collect the existing results for all tasks and print them to the console in table format.
+## Interpretation and limitations
 
-PS: For Input Intervention, stress test `original` is required to compute the total effect (TE). For Outcome Justification and Solution Process, however, it is not needed.
+- **Development evidence:** the airline comparisons reuse 24 records representing 22 distinct public records and 12 original task-instance blocks. Banking coverage was insufficient. No untouched task-family confirmation was completed.
+- **Controlled extension:** the final 12 records are scripted simulator inputs, not new natural Actor rollouts or a targeted-versus-generic follow-up experiment. The baseline was near ceiling and only one seed was used.
+- **Review provenance:** earlier references and semantic reviews came from the context-aware assistant. The separate-context AI review covered the final 12 references only. Independent human gold remains unavailable.
+- **Different kinds of correctness:** a valid schema, a correct label, an existing source ID and a citation that supports the conclusion are separate checks. Model explanations are output evidence, not access to internal reasoning.
+- **Separate endpoints:** legacy side-task-success labels, executed-authorization labels and optional SFT diagnostics should not be pooled. Failures remain in their reported denominators.
 
-### Reuse Cache for the Multi-turn Tasks
+The report, data/code release and authorized AI review are complete. Experiment execution and monitoring are closed. Team confirmation of contributions/course format and formal course submission are separate remaining tasks.
 
-For Anthropic models, the API backend can reuse the repeated part of a prompt through
-input (prompt) caching, which bills the cached prefix at ~10% of the input price.
-`impossible.coding` has it on by default (`impossible_coding.prompt_cache` in
-`./config/dataset_config.yaml`), because its agentic retry loop re-sends the whole
-conversation on every attempt and every rollout of a sample repeats the same first turn.
-Caching for the Batch API stages is opt-in under `batch_api.prompt_cache`. Both print a
-`[cache]` line reporting how many prompt tokens were uncached / written / read, so hits
-can be checked rather than assumed. OpenAI and Gemini cache long prefixes automatically
-and ignore these settings.
+## Team, provenance and attribution
 
-### Reasoning Settings for Batch API Inference
+Luanfeng's work provides the original TGF implementation and exploratory runs. Tony's work contributes independent execution, cost/statistics audits and source/format checks. The Pacifica workstream develops explicit-authorization evaluation, matched comparisons and evidence audits. Author names follow the proposal; the [final report](project/closeout_2026-11-07/FINAL_REPORT.md#2-evidence-sources-and-team-contributions) records the supported contribution scope and [AI assistance disclosure](project/closeout_2026-11-07/FINAL_REPORT.md#ai-assistance).
 
-The paper experiments use the following reasoning settings in the Batch API implementation:
-
-- GPT-5 and GPT-5-mini do not set `reasoning.effort`, so they use the models' default `medium` effort. The configured `reasoning.summary: "auto"` only requests a reasoning summary; it does not select the reasoning effort.
-- Gemini-3-Flash does not set `thinkingLevel`, so it uses its default `high` dynamic thinking level. `includeThoughts: true` only requests the thought summary.
-- Claude Haiku 4.5 and Claude Sonnet 4.5 use manual extended thinking with `budget_tokens: 16192`; these models do not use a `low`/`medium`/`high` effort setting in this configuration.
-
-When evaluating other closed-source models, pay close attention to their model-specific default reasoning or thinking settings. Defaults can differ across model families and versions and may change over time.
-
-## Customized Dataset Support
-
-It is easy to add new evaluation task. You only need to:
-
-1. Define your custom class in `./pipeline` or inherit from an existing class (e.g., `BaseInterventionTask`)
-2. Add the dataset path in `./pipeline/paths.py` if the dataset is loaded locally, and register the class in `./pipeline/registry.py`
-3. Prepare the monitor prompt and place it in `./prompts`
-
-For a custom class, you need to implement your own dataset preparation, verification logic, and monitor design. If you want some dataset specific hyperparameters, you can store those to `./config/dataset_config.yaml`.
-
-## Extensions
-
-### More LLMs Evaluation
-
-We support LLMs that use thinking tokens in the format `<think>*</think>`, as well as GPT-OSS, which uses `analysis*assistantfinal`. For convenience, we also wrap the CoTs of closed-source models in `<think>*</think>` when collecting responses. If you want to run reasoning models that do not use either of these two thinking-token formats, please modify the `simple_extract_cot_action` function in `utils.py`.
-
-### Stress-test CoT Monitorability
-
-We currently prepare the stress-test prompts in the `load_dataset` function. You can add more stress-test conditions to `load_dataset` in each task class to evaluate how much CoT monitorability can be degraded.
-
-### Monitor System Design
-
-To develop more advanced monitor system designs, please modify the `prepare_monitor_llm_query` function in each task class.
-
-### New Agentic Tasks
-
-Each agentic task is a `task_pair` under `./datasets/dual_objective/agent/task_pairs/`. To add one:
-
-1. Create `./datasets/dual_objective/agent/task_pairs/<your_task>/` with:
-   - `task_definition.py` — a subclass of `BaseTaskDefinition` that sets `environment_class`, populates `self.tools`, and implements `user_query` (main task), `secondary_task` (malicious hidden objective), and `secondary_task_benign` (benign variant).
-   - `solution.py` — a reference trajectory used by the verifier.
-2. If the task needs a new environment, add it under `./datasets/dual_objective/agent/environments/` and its backing classes under `./datasets/dual_objective/agent/environment_classes/`; otherwise reuse an existing one.
-3. Register the folder name in `./config/dataset_config.yaml` under `dual_agent.task_folders` (and tweak `secondary_task_variant` / `max_tokens` / `stress_to_attack` if needed).
-4. Reuse `./prompts/monitor_dual_objectives.agent.yaml` for the monitor prompt, or add a new YAML and wire it through `prepare_monitor_llm_query` in `DualAgent` (`pipeline/outcome.py`).
-5. Enable the task in `run.sh` by adding `"dual_objectives.agent.malicious"` and/or `"dual_objectives.agent.benign"` to `TASKS`.
-
-The `DualAgent` class in `pipeline/outcome.py` auto-discovers every folder listed in `dual_agent.task_folders`, runs the agent/eval/monitor stages per folder, and assembles the `.tested.jsonl` files consumed by the monitor.
-
-## Contact
-
-If you have any questions related to the code or the paper, feel free to email `hanw14@illinois.edu`.
-
-## Citation
-
-If you find our work useful, please consider citing:
-
-```bibtex
-@article{wang2026monitorbench,
-  title   = {MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models},
-  author  = {Wang, Han and Sun, Yifan and Ko, Brian and Talati, Mann and Gong, Jiawen and Li, Zimeng and Yu, Naicheng and Yu, Xucheng and Shen, Wei and Jolly, Vedant and Zhang, Huan},
-  journal = {arXiv preprint arXiv:2603.28590},
-  year    = {2026}
-}
-```
+This project builds on [MonitorBench](https://github.com/ASTRAL-Group/MonitorBench) and the repository's agent simulators. The original MonitorBench authors, framework instructions and citation are preserved in [the upstream documentation](MONITORBENCH_UPSTREAM.md). See the [repository license](LICENSE) and [agent simulator license](datasets/dual_objective/agent/LICENSE). Upstream benchmark results are not TGF project results.
