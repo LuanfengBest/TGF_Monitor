@@ -2,9 +2,21 @@
 
 Trace-Grounded Follow-Up for Agent Monitoring · CPSC 4880/5880
 
-Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu · updated November 3, 2026
+Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu · updated November 7, 2026
 
-**Latest handoff: [Pacifica's short update](project/PACIFICA_PROGRESS_2026-11-03.md) and [AI start here](project/AI_START_HERE_2026-11-03.md).** The completed24-case development run and offline diagnosis are available with verified original artifacts. No reliable TGF advantage is established; the teammate's four-case comparison remains pending.
+**Current results and conclusions:** [Final report](project/closeout_2026-11-07/FINAL_REPORT.md) · [PDF](project/closeout_2026-11-07/deliverables/TGF_Report.pdf) · [Chinese presentation notes](project/closeout_2026-11-07/deliverables/SPEAKER_NOTES_ZH.md) · [Repository reading and verification guide](project/closeout_2026-11-07/REPOSITORY_GUIDE.md).
+
+The development comparisons do not establish an advantage for targeted follow-up over generic follow-up. In the final controlled extension, cumulative amounts corrected one Qwen case (11/12 → 12/12), below the predeclared two-block criterion; added comparisons gave no further gain, and valid correct/incorrect-assertion pairs had no verdict flips. All 120 planned calls are retained: 105 valid outputs, 14 truncations and one schema failure, with 104 correct labels among valid outputs. A separate-context AI blind review agreed with all 12 final reference labels; it is not human annotation. These are small development comparisons and constructed simulator diagnostics, not evidence of broad effectiveness or an internal mechanism.
+
+The report, presentation notes, sealed AI review and offline evidence are complete. Experiments and monitoring are closed; no new runs are implied by publication. Team confirmation of contributions/course format and formal course submission remain outstanding. The dated checkpoints below retain their historical scope; the final report is the current synthesis.
+
+**November 6 comparison:** [24-airline four-arm results and review](project/airline_monitor_comparison_2026-11-06/REPORT_2026-11-06.md). Job `32354336` completed all 240 calls in 27m03s including startup. At the frozen threshold, P/C/F/T detected 5/2/6/6 of 6 violations and falsely flagged 0/0/0/1 of 18 legitimate cases. All 96 judgments and 48 follow-up answers received nonblind AI author review; original scores and labels are unchanged. T adds no detection over F and adds one false alarm. The bounded run and scheduled follow-up are closed; no expansion is authorized. Original two-environment collection coverage remains insufficient, and this is development evidence only.
+
+**New data collection reviewed:** [November 6 results](project/new_data_collection_2026-11-05/REPORT_2026-11-06.md). Actor-only job `32257283` completed 48/48 cases using 155 calls and 9m05s including startup. Nonblind AI author review found bank 1 violation / 23 sensitive negatives and airline 6 / 18. Airline meets the frozen development coverage gate; bank fails positive-count and instance-block coverage, so the batch stops without expansion or monitor evaluation. This is feasibility evidence, not independent human labeling or an effectiveness result. The [frozen preparation](project/new_data_preparation_2026-11-05/README.md) and all raw evidence remain unchanged.
+
+**November 5 checkpoint: [evaluation alignment and reusable development data](project/evaluation_alignment_2026-11-05/README.md).** All 88 existing records are indexed in separate cohorts; missing scores stay invalid. One of the legacy B2's reported 20 detections was an imputed score, leaving 19 explicit detections and one invalid positive-case result. No new inference or reliable TGF advantage is claimed. At that checkpoint, the teammate's four-case outputs had not been received locally; the final report now includes the November 7 frozen-commit source snapshot.
+
+The [November 3 update](project/PACIFICA_PROGRESS_2026-11-03.md) and [AI handoff](project/AI_START_HERE_2026-11-03.md) retain the completed 24-case development run and its original artifacts.
 
 **Start with [the project overview](project/README.md) and [the integrated research story](project/STORYLINE_2026-10-19.md).** The repository contains Luanfeng's v4 implementation, a curated Pacifica research snapshot, and Tony's independently executed replay and audit of the same 64 development trajectories.
 

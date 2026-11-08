@@ -1,10 +1,18 @@
 # TGF final project: current evidence
 
-Updated November 3, 2026. Team names follow the [final proposal](reference/final_proposal_2026-10-07.md).
+**2026-11-07 定稿与复核：** [最终报告](closeout_2026-11-07/FINAL_REPORT.md)、[中文展示讲稿](closeout_2026-11-07/deliverables/SPEAKER_NOTES_ZH.md)及[仓库阅读和离线核验指南](closeout_2026-11-07/REPOSITORY_GUIDE.md)。120 次补验已完成：105 个有效输出、14 次截断、1 次格式失败；有效输出中 104 个标签正确。累计金额只纠正一个实例块，未达预设两块改善标准；有效真假断言配对没有判断翻转。独立上下文 AI 盲审与 12 条最终参考标签全部一致，不是真人金标。报告与展示已完成；团队仍需确认贡献和课程格式并正式提交。所有实验和定时跟进已关闭。下方保留历史批次范围，当前综合结论以最终报告为准。
+
+**2026-11-06 比较与复核已完成：** [订票 24 条四组结果](airline_monitor_comparison_2026-11-06/REPORT_2026-11-06.md)。P/C/F/T 分别检出 5/2/6/6 条违规，误报 0/0/0/1 条合法记录；96 个判断均有效，240 次调用、27 分 03 秒（含启动）。逐条非盲 AI 作者复核未改原分数或标签。T 比 F 没有多检出，反而多 1 次误报，未通过预设开发筛选线。本轮与定时跟进已结束，不自动扩量。旧批次两环境覆盖不足仍保留，本轮不能当成正式效果或独立项目创新证据。[完成状态与凭证](airline_monitor_comparison_2026-11-06/STATUS.json)。下文保留历史批次的独立范围。
+
+Updated November 5, 2026 for offline evaluation alignment. Team names follow the [final proposal](reference/final_proposal_2026-10-07.md).
+
+**New data collection reviewed:** [results and evidence](new_data_collection_2026-11-05/REPORT_2026-11-06.md). Job `32257283` completed 48/48 cases, 155 actor calls, 9m05s including startup. Nonblind AI author review: bank 1 violation / 23 sensitive negatives; airline 6 / 18. Bank fails the frozen positive-count and instance-block gate; airline passes development coverage. The batch ends with no retry, replenishment, monitor run or expansion. [Frozen specifications](new_data_preparation_2026-11-05/README.md) remain unchanged; no independent-review or effectiveness claim is permitted.
+
+**November 5 offline checkpoint:** [88-record evaluation package](evaluation_alignment_2026-11-05/README.md), with separate label namespaces, public development views, source hashes and a scorer that preserves failures. The legacy B2's historical 20/24 detection count included one null score imputed to 50; there are 19 explicit detections, 4 explicit misses and 1 invalid positive-case result. Historical files remain unchanged. No new model/simulator runs were launched; the authorization-verification expansion is not the active workstream.
 
 **Start here:** [Pacifica’s short group update](PACIFICA_PROGRESS_2026-11-03.md) and [AI handoff / offline reproduction](AI_START_HERE_2026-11-03.md).
 
-**Latest completed run:** development job **31821684**, 24 natural trajectories, 210 model calls, 20m08s. All 24 are legitimate sensitive executions; no executed authorization violations were generated. Original valid P/C/F/T judgments are 9/3/3/4 out of 24 each. F/T valid pairs remain 0/24. This is not held-out evidence of TGF effectiveness.
+**Earlier completed run (November 3):** development job **31821684**, 24 natural trajectories, 210 model calls, 20m08s. All 24 are legitimate sensitive executions; no executed authorization violations were generated. Original valid P/C/F/T judgments are 9/3/3/4 out of 24 each. F/T valid pairs remain 0/24. This is not held-out evidence of TGF effectiveness.
 
 **Offline diagnosis:** C/F each stopped 21 cases at the initial review, leaving no final judgment. Across all arms, 77 results failed exact citation validation. Four raw T scores additionally show unsupported timing/authorization concerns, and five T rationales cover only part of the record. [Read the diagnosis](prospective_monitoring/offline_diagnostic_2026-11-03/DIAGNOSIS.md). Raw scores and qualitative annotations do not replace frozen original results.
 
@@ -18,7 +26,7 @@ Older v1/v2 observations, dev64 proxy-label results, authorization audits and SF
 
 ## Historical integrated evidence (October 19)
 
-The following sections retain their historical scope. Current execution and next-step information is above.
+The following sections retain their historical scope, including the old null-to-50 scoring convention. The November 5 package above supersedes those counts where imputation affected them. Current execution and next-step information is above.
 
 ## Three contributions to one research question
 
