@@ -2,6 +2,8 @@
 
 For the current research overview and CPU reproduction steps, start with the [repository README](../README.md) and [data/code guide](closeout_2026-11-07/DATA_AND_CODE.md). This page preserves dated checkpoints; historical “current” or “pending” statements should be read at their stated date.
 
+**2026-11-12 后续执行更新：** 用户后来发出“那就开始推进吧”，现已生成并冻结 8 对时序/范围对照，Jev 接口检查 4/4 通过，但单次 H200 作业 `33137525` 在 Qwen 启动阶段超时停止，未发出 Qwen 请求。正式判定为 0/64，不能得出新的实验结论。已用 20 分 37 秒 H200，未重开作业。[当前执行记录](authorization_timing_jev_2026-11-12/RUN_STATUS.md)优先于下方准备阶段的“未执行”描述；原预算和不重试规则保持不变。
+
 **2026-11-12 当前共享进度：** [组员交接说明](research_update_2026-11-12/TEAM_HANDOFF.md)、[更新后的研究主线](research_update_2026-11-12/RESEARCH_DIRECTION.md)、[Jev 主实验报告](research_update_2026-11-12/reports/mainline.md)、[下一步盘点](research_update_2026-11-12/NEXT_STEPS.md)和[离线复核入口](research_update_2026-11-12/README.md)。新批次 192 个采集位置、189 条合格轨迹；同材料直接判断时，航空 Qwen/Jev 分别检出 8/26、21/26，均 0/67 误报。预定 Jev T−F 主对比未通过；完整回答子集中的 F/T 判定相同。新的叙事保留授权审计主线，区分 Judge 能力、证据使用和追问收益，不改写历史负结果。Qier 时序诊断与 Tony 证据审计已链接并标明完成范围。此次为仓库发布与离线核验，没有新模型调用、模拟器执行或集群作业；下方旧报告与展示仍属于各自历史批次。
 
 **同日方案准备更新：** [32 条 AI 来源复核及空白真人复核包](research_update_2026-11-12/source_review/README.md)已备好，非盲、非独立，真人完成数仍为 0。[时序扩展 v0.2](authorization_timing_jev_2026-11-12/PROTOCOL.md)现为 4 对基础＋2 对隔着无关消息＋2 对无关许可，共 6 对应变、2 对应保持；[评价指标](authorization_timing_jev_2026-11-12/METRICS.md)分别检查正确改判、正确保持、不当翻转和不可用。Jev/Qwen 与两种呈现不变，正式 64 次、总上限 72 次、API $0.10、H200 0.5 小时[预算](authorization_timing_jev_2026-11-12/BUDGET.md)不变；未生成新记录或启动实验。[研究意义](research_update_2026-11-12/IMPLICATIONS.md)。

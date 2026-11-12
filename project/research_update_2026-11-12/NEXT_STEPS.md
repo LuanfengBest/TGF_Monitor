@@ -1,34 +1,31 @@
-# Next-work inventory — preparation completed, execution on hold
+# Next-work inventory — timing startup failure archived
 
-Updated November 12 after the user selected the authorization-audit narrative and requested source review plus a prepared Qier timing diagnostic. The user explicitly requested **no new experiments**. No model calls, simulator execution, training, retries or cluster allocation occurred in this preparation update.
+The user subsequently instructed “那就开始推进吧”. The v0.2 eight-pair run was authorized, prepared and launched, then stopped during Qwen startup. Formal coverage is 0/64. The single-allocation permission is consumed. [Current execution status](../authorization_timing_jev_2026-11-12/RUN_STATUS.md) supersedes the earlier preparation-only restriction for this single run. It does not authorize another allocation, replacement data or automatic expansion.
 
 ## Completed preparation
 
-| Work | Concrete artifact | Interpretation |
+| Work | Artifact | Interpretation |
 | --- | --- | --- |
-| Revisit original authorization evidence | [32-case AI source review](source_review/README.md), source IDs and archive hashes | Existing author context, known labels/results, nonblind and not independent; no human review |
-| Separate strict labels from construction concerns | Five synthetic numeric-name warnings; original labels unchanged | Task realism needs attention, not silent relabeling |
-| Prepare human materials | 27 distinct full records, separate mapping and empty forms | Material ready; completed human reviews = 0 |
-| Specify Qier extension | [v0.2 protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md), [eight-pair blueprint](../authorization_timing_jev_2026-11-12/PAIR_SPEC.json), [metrics](../authorization_timing_jev_2026-11-12/METRICS.md) | Four basic / two intervening-message / two irrelevant-permission pairs; six expected changes and two correct invariances; original primary contrast retained |
-| Set resource limits | [Budget](../authorization_timing_jev_2026-11-12/BUDGET.md) | 64 formal / 72 total calls maximum, $0.10 API, 0.5 H200 hours; proposed, not spent |
-| Explain why the question matters | [Implications](IMPLICATIONS.md) | Better attribution and auditability are supported; real-world harm prevention remains untested |
+| Existing source review | [32-case AI review](source_review/README.md), 27 distinct records and empty human forms | Nonblind author-context AI work; human review = 0 |
+| Exact v0.2 design | [Protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md), [pair blueprint](../authorization_timing_jev_2026-11-12/PAIR_SPEC.json), [metrics](../authorization_timing_jev_2026-11-12/METRICS.md) | 4 basic + 2 intervening + 2 irrelevant-permission pairs; fixed eight-pair primary denominator |
+| Separate implementation | [Versioned code](../../authorization_timing_jev_v2/) | Public-only links, fixed prompts, failure accounting and one-use budget controls |
+| New data and execution references | [16 records](../authorization_timing_jev_2026-11-12/run_01/records.json), [private references](../authorization_timing_jev_2026-11-12/run_01/references_PRIVATE.json) | Exactly 16 genuine simulator bookings; 8 positive / 8 negative; only amendment order differs within a pair |
+| Offline checks and source inspection | [Checks](../authorization_timing_jev_2026-11-12/run_01/OFFLINE_CHECKS.json), [AI review](../authorization_timing_jev_2026-11-12/run_01/AI_SOURCE_REVIEW.json) | Reference and public-template checks agree; no claim of independent human gold |
+| Immutable run inputs | [Manifest](../authorization_timing_jev_2026-11-12/run_01/manifest.json), [operative config](../authorization_timing_jev_2026-11-12/run_01/config.json) | User authorization recorded; original API/GPU/call caps unchanged |
 
 ## Remaining work in order
 
-1. **Team reading and real human review.** Have actual people complete the blank review forms and record who saw earlier labels. Review strict-name construction, permission updates and receipt support. These are suggested review tasks, not accepted assignments. Do not report human validation until it exists.
-2. **Prepare the execution implementation when needed.** Keep Qier's original version intact; its original generator does not create v0.2 controls. Add a separate blueprint renderer, Jev/Qwen adapter, fixed-slot scorer, attempt ledger, disabled retries and budget stops. Verify that nearest-user links remain chronological in the intervening/irrelevant controls and that private design labels never enter inputs. Offline symbolic checks are complete; runtime checks and actual references are still pending.
-3. **Keep the current no-launch instruction in force.** Do not run Qier's `prepare`, generator or its simulator-backed tests now. Only after a later launch instruction, check live resources, produce exactly the eight blueprint pairs and disjoint interface fixtures, verify public texts and execution references independently of Jev, then freeze inputs and requests before inference. Whole-record labels remain 8 positive / 8 negative. Full preflight items are in [READINESS.json](../authorization_timing_jev_2026-11-12/READINESS.json).
-4. **If later executed, report every planned slot and stop at the caps.** Preserve missing/failed decisions; no automatic replenishment or expansion. Describe the full eight-pair table rather than claiming general effectiveness from 64 calls.
-5. **Integrate the final report and slides.** Keep original TGF negative findings, the post-hoc Judge comparison, this source review, Tony's evidence-capacity audit and any future timing diagnostic separate. Students should check the course's final-writing and AI-disclosure requirements; these planning notes are not the final student-written report.
+1. **Review the bounded recovery proposal.** The [failed attempt](../authorization_timing_jev_2026-11-12/RUN_REPORT.md) is archived with verified raw files, all 64 formal slots missing and no estimable effect. The [unexecuted proposal](../authorization_timing_jev_2026-11-12/RECOVERY_PLAN.md) preserves the data and prompts, moves asset verification ahead of GPU startup and investigates the existing matching compiled cache. A further allocation requires explicit amendment of the original one-allocation limit; no automatic retry is authorized. Implement and check any amendment before a future submission.
+2. **Actual human source review.** People can complete the supplied blank forms and record whether they saw prior labels. This is a proposed review task, not an accepted assignment. Do not describe AI review as human validation.
+3. **Integrate the final report and slides.** Keep the original TGF negative result, bounded post-hoc Judge comparison, source audit, Tony's citation-capacity audit and timing diagnostic as distinct evidence. The timing attempt currently contributes only a prepared dataset and a startup-failure record. There are no timing scores or null effects to report. If a separately authorized continuation succeeds, report both absolute scores and linked-minus-source contrasts.
+4. **Team review of the causal story and contribution labels.** Preserve Qier's timeline design, Tony's evidence work and the original implementation attribution. Check the course's final-writing and AI-disclosure requirements before submission. This repository update is not a submitted final manuscript.
+5. **Decide on any future experiment separately.** Base a proposal on a specific unresolved failure or external-validity question. Do not expand merely to find a positive result or combine different protocols into a single score.
 
 ## Keep these boundaries visible
 
-- Do not relabel or replace difficult cases inside the completed frozen batch and present the revised score as the original result.
-- Do not combine reused natural data, scripted diagnostics and the 189 eligible new trajectories into one accuracy number.
-- Do not treat the two F truncations as proof that targeted wording improves valid-answer content.
-- Do not infer malicious intent from every strict authorization violation, or treat model confidence as a correctness guarantee.
-- Do not use Jev both to supply the reference label and to demonstrate its own superiority.
-- Do not label AI work as human annotation; do not claim this plan establishes runtime safety, stability, calibration or production readiness.
-- Do not merge teammate branches without reviewing differences in endpoints, interfaces and output budgets.
-
-The current deliverable is a source review and a concrete, budgeted diagnostic plan. No teammate branch has been merged and no new run is underway.
+- Preserve frozen labels, inputs, hypotheses and full-denominator negative results.
+- Do not pool scripted diagnostic pairs and the 189 eligible Actor trajectories.
+- Do not treat F truncation differences as improvements in valid-answer content.
+- Do not equate stable labels, high confidence, semantic citation support and correctness.
+- Never use Jev to create the reference labels for its own comparison.
+- The task is post-execution authorization auditing; production prevention, human time savings, repeatability and calibration remain untested.
