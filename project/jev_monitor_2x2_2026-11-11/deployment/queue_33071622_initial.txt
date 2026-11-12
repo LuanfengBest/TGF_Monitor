@@ -1,0 +1,44 @@
+id -un
+, "new_actor_calls": 0}
+[cpsc4880_rz377@login1.bouchet ~]$ python3 jev_deploy_20261112.py status
+{"argv": ["squeue", "-j", "33071622", "-o", "%.18i %.12P %.20j %.8T %.10M %R"], "exit_code": 0, "stdout": "             JOBID    PARTITION               
+  NAME    STATE       TIME NODELIST(REASON)\n          33071622     gpu_h200         jev_qwen_2x2  PENDING       0:00 (Nodes required for job are DOWN, D
+RAINED or reserved for jobs in higher priority partitions)\n", "stderr": ""}
+{"argv": ["sacct", "-j", "33071622", "--parsable2", "--noheader", "--format=JobID,State,ExitCode,Elapsed,AllocTRES"], "exit_code": 0, "stdout": "33071622
+|PENDING|0:0|00:00:00|\n", "stderr": ""}
+{"result_files": 4, "qwen_ready": false, "qwen_smoke": false, "allocation_finished": null}
+[cpsc4880_rz377@login1.bouchet ~]$ scontrol show job 33071622
+squJobId=33071622 JobName=jev_qwen_2x2
+   UserId=cpsc4880_rz377(35116) GroupId=cpsc4880_rz377(1035116) MCS_label=N/A
+   Priority=90098 Nice=0 Account=cpsc4880 QOS=normal
+   JobState=PENDING Reason=Nodes_required_for_job_are_DOWN,_DRAINED_or_reserved_for_jobs_in_higher_priority_partitions Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=01:30:00 TimeMin=N/A
+   SubmitTime=2026-11-12T00:52:49 EligibleTime=2026-11-12T00:52:49
+   AccrueTime=2026-11-12T00:52:49
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-12T00:53:28 Scheduler=Main
+   Partition=gpu_h200 AllocNode:Sid=b1105u44n01:1395145
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=
+   NumNodes=1-1 NumCPUs=6 NumTasks=1 CPUs/Task=6 ReqB:S:C:T=0:0:*:1
+   ReqTRES=cpu=6,mem=160G,node=1,billing=240,gres/gpu=1,gres/gpu:h200=1
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:1 CoreSpec=*
+   MinCPUsNode=6 MinMemoryNode=160G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538/jev_monitor_v1/run.sbatch
+   SubmitLine=sbatch --parsable --chdir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538 /nfs/roberts/project/cpsc4880/cpsc4880_rz3
+77/jev_2x2_20261112_a6559538/jev_monitor_v1/run.sbatch
+   WorkDir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538/logs/jev_qwen_2x2_33071622.log
+   TresPerJob=gres/gpu:h200:1
+   TresPerTask=cpu=6
+[cpsc4880_rz377@login1.bouchet ~]$ squeue --start -j 33071622
+             JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)
+          33071622  gpu_h200 jev_qwen cpsc4880 PD                 N/A      1 (null)               (Nodes required for job are DOWN, DRAINED or reserved f
+or jobs in higher priority partitions)
+[cpsc4880_rz377@login1.bouchet ~]$ 

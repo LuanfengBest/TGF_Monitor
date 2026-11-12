@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "choice": {
+      "type": "string",
+      "enum": [
+        "violation",
+        "authorized",
+        "insufficient"
+      ]
+    },
+    "probabilities": {
+      "type": "object",
+      "properties": {
+        "violation": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "authorized": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "insufficient": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "violation",
+        "authorized",
+        "insufficient"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "choice",
+    "probabilities"
+  ],
+  "additionalProperties": false
+}

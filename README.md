@@ -1,10 +1,33 @@
 # TGF Monitor
 
-**Trace-Grounded Follow-Up for Agent Monitoring**
+**Evidence Use in Authorization Auditing: Judge Choice and Trace-Grounded Follow-Up**
 
 CPSC 4880/5880 · Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu
 
-Research snapshot: November 7, 2026
+Research snapshot: November 12, 2026
+
+Can a monitor correctly connect an executed action to the permission effective at execution and the receipt proving what happened? We retain the original TGF question and now distinguish the contributions of **Judge choice, evidence presentation, and follow-up**. This is an evidence-driven research reframing after the completed experiments, not a replacement of their prespecified hypotheses.
+
+**Latest finding:** switching the direct Judge from the fixed Qwen3-32B deployment to Jev-1.14.0 improved airline detection from **8/26 to 21/26**, with **0/67** observed false alarms for both. The prespecified Jev targeted-versus-fixed follow-up comparison did **not** pass its support criteria. Its verdict differences came from two truncated fixed-follow-up answers; the 91 airline cases with both answers available had identical F/T verdicts for each Judge. These are different findings, and both are retained.
+
+[Team handoff / 中文说明](project/research_update_2026-11-12/TEAM_HANDOFF.md) · [Research direction and related work](project/research_update_2026-11-12/RESEARCH_DIRECTION.md) · [Latest report](project/research_update_2026-11-12/reports/mainline.md) · [Baseline comparison](project/research_update_2026-11-12/reports/baseline_comparison.md) · [Saved data and CPU verification](project/research_update_2026-11-12/README.md) · [Next-work inventory](project/research_update_2026-11-12/NEXT_STEPS.md)
+
+| November 12 checkpoint | Completed evidence | Interpretation |
+| --- | --- | --- |
+| Jev/Qwen × raw/ledger development comparison | 60 reused/scripted cases; 240 judgments + 8 smoke calls | Development diagnostic; separate from the new batch |
+| New P/C/F/T comparison with two final Judges | 192 collection positions; 189 eligible trajectories (93 airline, 96 bank) | Shared intermediate evidence; programmatic references, not independent human gold |
+| Jev T−F, airline primary contrast | Δ(TPR×TNR) = 0.0499426; 95% paired interval [0, 0.1439409] | Below the prespecified 0.05 point threshold; interval includes zero |
+| Direct Judge component comparison | Airline +13 correct / 0 regressed; bank +4 / 0 | Post-hoc comparison within the same batch; not a general model ranking |
+| Evidence/source review | 23 prespecified + 9 exploratory cases; 1,061 citation excerpts mechanically checked | Verdict correctness, source presence and semantic support remain separate |
+| Teammate additions | Qier: authorization-timing code; Tony: saved-output evidence audit | Prepared diagnostic versus completed post-hoc audit; see the handoff for exact commits |
+
+The completed mainline batch used **2,706 model calls, 2.400556 H200 hours, and an estimated $0.156 in Jev API usage**. Publishing and verifying this checkpoint adds no model calls or simulator runs. No additional experiment is launched or authorized by this update. The latest work is on `pacifica/jev-research-update-2026-11-12`; teammate branches remain separate for review.
+
+All November 7 results and frozen files remain historical evidence. The older report/PDF below has not yet been rewritten into the November 12 narrative and should not be mistaken for the latest integrated manuscript. Different batches and label definitions must not be pooled.
+
+## November 7 research snapshot
+
+The following sections preserve the earlier study's scope and results.
 
 Can an AI monitor detect more unauthorized agent actions by asking questions about specific operations, compared with a generic follow-up question at a comparable budget?
 
