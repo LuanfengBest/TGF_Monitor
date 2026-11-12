@@ -1,25 +1,25 @@
-# Next-work inventory — no new experiment scheduled
+# Next-work inventory — preparation completed, execution on hold
 
-The November 12 publication is a handoff of completed results and an updated research framing. The user's current instruction is to publish and communicate progress, then review the next steps. No new model calls, data collection, simulator runs, training, retries, cluster allocations or paid API use are part of this update.
+Updated November 12 after the user selected the authorization-audit narrative and requested source review plus a prepared Qier timing diagnostic. The user explicitly requested **no new experiments**. No model calls, simulator execution, training, retries or cluster allocation occurred in this preparation update.
 
-## Before deciding another experiment
+## Completed preparation
 
-| Priority | Work | Concrete completion criterion | Suggested review focus, not accepted assignments |
-| --- | --- | --- | --- |
-| 1 | Review the shared checkpoint | A teammate reproduces saved statistics and checks that completed/post-hoc/prepared work is distinguished | Whole team; Pacifica maintains the publication package |
-| 2 | Agree on the main question and endpoint | One concise question; permission effective at execution; successful action versus attempt; cancellation and later permission rules written down | Whole team; Luanfeng checks fit with the original TGF objective |
-| 3 | Review ambiguous labels and examples | Independent human review of the name-suffix ambiguity and selected timing/budget cases; record disagreements without changing the old results | Reviewers who did not generate the reference labels |
-| 4 | Adapt Qier's diagnostic on paper/code review | Preserve paired actions/receipts; align Judge inputs, classification options, failure handling and output capacity; identify what chronological links add | Qier plus Judge-interface reviewer |
-| 5 | Separate evidence metrics | Define quote existence, claim support, complete-chain coverage and verdict accuracy separately; specify a feasible citation/output budget | Tony plus protocol reviewer |
-| 6 | Select one future contrast | Freeze which variable changes and which remain fixed; select primary metric, paired unit, uncertainty analysis and stopping rule | Whole team |
-| 7 | Decide scope and budget | Budget based on the selected question and independent pilot information; current negative/positive outcomes are not a reason to keep sampling | Pacifica coordinates after team review |
-| 8 | Integrate report and slides | Update the old November 7 manuscript only after the team agrees on the narrative; retain dated protocols and attribution | Whole team |
+| Work | Concrete artifact | Interpretation |
+| --- | --- | --- |
+| Revisit original authorization evidence | [32-case AI source review](source_review/README.md), source IDs and archive hashes | Existing author context, known labels/results, nonblind and not independent; no human review |
+| Separate strict labels from construction concerns | Five synthetic numeric-name warnings; original labels unchanged | Task realism needs attention, not silent relabeling |
+| Prepare human materials | 27 distinct full records, separate mapping and empty forms | Material ready; completed human reviews = 0 |
+| Specify Qier extension | [Versioned protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md), [machine config](../authorization_timing_jev_2026-11-12/config.json) | Jev primary, Qwen comparator; two presentations; pair accuracy primary |
+| Set resource limits | [Budget](../authorization_timing_jev_2026-11-12/BUDGET.md) | 64 formal / 72 total calls maximum, $0.10 API, 0.5 H200 hours; proposed, not spent |
+| Explain why the question matters | [Implications](IMPLICATIONS.md) | Better attribution and auditability are supported; real-world harm prevention remains untested |
 
-## Candidate follow-up, not a launch plan
+## Remaining work in order
 
-The strongest current candidate is Qier's permission-timing pairs, with the same successful actions/receipts and a single controlled change in the timing of a grant or withdrawal. It may help distinguish timing understanding from dependence on evidence organization. The eight prepared pairs are a diagnostic starting point, not a sufficient generalization study or an already approved sample size.
-
-First settle the comparison: a Judge contrast, an evidence-presentation contrast, or a follow-up contrast. Do not change Judge, evidence structure and question selection simultaneously. A Jev claim-support checker could connect to Tony's audit later, but need not be inserted into the first follow-up.
+1. **Team reading and real human review.** Have actual people complete the blank review forms and record who saw earlier labels. Review strict-name construction, permission updates and receipt support. These are suggested review tasks, not accepted assignments. Do not report human validation until it exists.
+2. **Prepare the execution implementation when needed.** Keep Qier's original version intact. Add a separately versioned Jev/Qwen adapter, fixed-slot scorer, attempt ledger, disabled retries and budget stops. Static/offline checks must verify public/private separation, shared instructions, unavailable outcomes and denominators. The current protocol is reviewable but not an executable campaign.
+3. **Keep the current no-launch instruction in force.** Do not run Qier's `prepare`, generator or its simulator-backed tests now. Only after a later launch instruction, check live resources, produce exactly eight pairs and disjoint interface fixtures, verify the references independently of Jev, then freeze inputs and requests before inference. Full preflight items are in [READINESS.json](../authorization_timing_jev_2026-11-12/READINESS.json).
+4. **If later executed, report every planned slot and stop at the caps.** Preserve missing/failed decisions; no automatic replenishment or expansion. Describe the full eight-pair table rather than claiming general effectiveness from 64 calls.
+5. **Integrate the final report and slides.** Keep original TGF negative findings, the post-hoc Judge comparison, this source review, Tony's evidence-capacity audit and any future timing diagnostic separate. Students should check the course's final-writing and AI-disclosure requirements; these planning notes are not the final student-written report.
 
 ## Keep these boundaries visible
 
@@ -28,6 +28,7 @@ First settle the comparison: a Judge contrast, an evidence-presentation contrast
 - Do not treat the two F truncations as proof that targeted wording improves valid-answer content.
 - Do not infer malicious intent from every strict authorization violation, or treat model confidence as a correctness guarantee.
 - Do not use Jev both to supply the reference label and to demonstrate its own superiority.
+- Do not label AI work as human annotation; do not claim this plan establishes runtime safety, stability, calibration or production readiness.
 - Do not merge teammate branches without reviewing differences in endpoints, interfaces and output budgets.
 
-The next conversation should decide the smallest defensible next question and which reviews are needed. This file records the inventory; it does not claim that the team has accepted these assignments or that any new run is underway.
+The current deliverable is a source review and a concrete, budgeted diagnostic plan. No teammate branch has been merged and no new run is underway.

@@ -8,7 +8,9 @@ This checkpoint publishes completed work and the updated research direction. It 
 2. [Research direction](RESEARCH_DIRECTION.md): the revised question, evidence, originality boundaries, and possible Jev roles.
 3. [Mainline results](reports/mainline.md), [semantic audit](reports/semantic_audit.md), and [post-hoc baseline comparison](reports/baseline_comparison.md).
 4. [Earlier Jev 2×2 development report](reports/development_2x2.md): a separate, smaller diagnostic using reused data.
-5. [Next-work inventory](NEXT_STEPS.md): review tasks before deciding any new experiment.
+5. [AI source re-review and unfilled human packet](source_review/README.md): 32 existing cases / 27 distinct records, nonblind AI work; zero human reviews.
+6. [Timing diagnostic protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md) and [budget](../authorization_timing_jev_2026-11-12/BUDGET.md): Jev primary, Qwen comparator; prepared, not executed.
+7. [Research implications (中文)](IMPLICATIONS.md) and [next-work inventory](NEXT_STEPS.md): what the work can support and what remains.
 
 The readable reports above are publication copies with repository-relative links. Original reports, frozen protocols, raw outputs and numerical results retain their original bytes. A dated sentence such as “not yet published” in an original report describes its creation-time state.
 
@@ -24,6 +26,8 @@ The readable reports above are publication copies with repository-relative links
 | [`VERIFICATION.json`](VERIFICATION.json) | Offline reproduction receipt from a checkout containing only published files |
 
 Older helper modules included in this publication are dependencies bound by the frozen manifests. Their inclusion does not reactivate earlier campaigns. Historical runbooks and execution permits are records of completed runs, not instructions to submit again.
+
+The later preparation update adds a source-bound, explicitly nonblind AI re-review and a proposed timing protocol. `PUBLICATION_SCOPE.json` and `VERIFICATION.json` above describe the original 203-file publication, not this later preparation. [PREPARATION_VERIFICATION.json](PREPARATION_VERIFICATION.json) records the follow-up checks and file hashes. No frozen input or result is changed. Human review is still pending, and no new experiment is authorized.
 
 ## Reproduce saved statistics on CPU
 

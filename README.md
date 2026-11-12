@@ -12,6 +12,8 @@ Can a monitor correctly connect an executed action to the permission effective a
 
 [Team handoff / 中文说明](project/research_update_2026-11-12/TEAM_HANDOFF.md) · [Research direction and related work](project/research_update_2026-11-12/RESEARCH_DIRECTION.md) · [Latest report](project/research_update_2026-11-12/reports/mainline.md) · [Baseline comparison](project/research_update_2026-11-12/reports/baseline_comparison.md) · [Saved data and CPU verification](project/research_update_2026-11-12/README.md) · [Next-work inventory](project/research_update_2026-11-12/NEXT_STEPS.md)
 
+**Preparation update, no new experiment:** [AI source re-review](project/research_update_2026-11-12/source_review/README.md) covers the same 32 audit cases (27 distinct records), with five synthetic-name construction warnings and no changed labels. It is nonblind AI work; **human reviews completed: 0**. The [Qier-based timing extension](project/authorization_timing_jev_2026-11-12/PROTOCOL.md) now specifies Jev as primary Judge, Qwen as comparator, 64 formal judgments, at most 72 total calls, $0.10 API and 0.5 H200-hour ceilings. Inputs/adapters are not launch-ready; execution remains paused by the user's instruction. [Why this research matters](project/research_update_2026-11-12/IMPLICATIONS.md).
+
 | November 12 checkpoint | Completed evidence | Interpretation |
 | --- | --- | --- |
 | Jev/Qwen × raw/ledger development comparison | 60 reused/scripted cases; 240 judgments + 8 smoke calls | Development diagnostic; separate from the new batch |

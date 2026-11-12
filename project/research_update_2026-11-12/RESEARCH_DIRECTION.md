@@ -20,6 +20,8 @@ The working title is **Evidence Use in Authorization Auditing: Judge Choice, Fol
 
 See the [main report](reports/mainline.md), [baseline comparison](reports/baseline_comparison.md), and [semantic audit](reports/semantic_audit.md). Different historical batches and endpoint definitions remain separate.
 
+The same-day preparation adds a [32-case nonblind AI source re-review](source_review/README.md), with 27 distinct original records, unchanged strict labels and five synthetic-name construction warnings. Human review remains at zero. The [timing extension protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md) selects Jev linked-versus-source pair accuracy as primary, with Qwen as comparator, 64 planned formal judgments and explicit failure/budget rules. It has not been run. [Research implications](IMPLICATIONS.md) distinguish present evidence from potential deployment benefits.
+
 ## Relationship to prior work
 
 This is a targeted literature check, not an exhaustive novelty review. Do not claim “first” from the absence of another paper in this list.
