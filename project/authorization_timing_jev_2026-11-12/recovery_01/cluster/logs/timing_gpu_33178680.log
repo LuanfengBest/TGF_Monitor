@@ -1,0 +1,146 @@
+INFO 11-12 16:41:31 [utils.py:253] non-default args: {'tokenizer': '/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137', 'seed': 17, 'max_model_len': 32768, 'max_num_seqs': 1, 'disable_log_stats': True, 'revision': '9216db5781bf21249d130ec9da846c4624c16137', 'hf_overrides': {'rope_parameters': {'rope_type': 'yarn', 'factor': 4.0, 'original_max_position_embeddings': 32768}}, 'tokenizer_revision': '9216db5781bf21249d130ec9da846c4624c16137', 'model': '/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137'}
+INFO 11-12 16:41:32 [model.py:514] Resolved architecture: Qwen3ForCausalLM
+INFO 11-12 16:41:32 [model.py:1661] Using max model len 32768
+INFO 11-12 16:41:32 [scheduler.py:230] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 11-12 16:41:33 [system_utils.py:136] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:41:42 [core.py:93] Initializing a V1 LLM engine (v0.13.0) with config: model='/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137', speculative_config=None, tokenizer='/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137', skip_tokenizer_init=False, tokenizer_mode=auto, revision=9216db5781bf21249d130ec9da846c4624c16137, tokenizer_revision=9216db5781bf21249d130ec9da846c4624c16137, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False), seed=17, served_model_name=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'compile_sizes': [], 'compile_ranges_split_points': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'eliminate_noops': True, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 2, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False}, 'local_cache_dir': None}
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:41:43 [parallel_state.py:1203] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.18.20.39:48985 backend=nccl
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:41:43 [parallel_state.py:1411] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:41:45 [gpu_model_runner.py:3562] Starting to load model /nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137...
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:41:46 [cuda.py:351] Using FLASH_ATTN attention backend out of potential backends: ('FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION')
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/17 [00:00<?, ?it/s]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:   6% Completed | 1/17 [00:01<00:26,  1.67s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  12% Completed | 2/17 [00:03<00:26,  1.77s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  18% Completed | 3/17 [00:05<00:25,  1.81s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  24% Completed | 4/17 [00:07<00:23,  1.78s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  29% Completed | 5/17 [00:09<00:22,  1.88s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  35% Completed | 6/17 [00:11<00:20,  1.90s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  41% Completed | 7/17 [00:13<00:19,  1.91s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  47% Completed | 8/17 [00:14<00:17,  1.92s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  53% Completed | 9/17 [00:17<00:16,  2.03s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  59% Completed | 10/17 [00:19<00:13,  1.99s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  65% Completed | 11/17 [00:20<00:11,  1.95s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  71% Completed | 12/17 [00:22<00:09,  1.95s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  76% Completed | 13/17 [00:24<00:07,  1.96s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  82% Completed | 14/17 [00:27<00:06,  2.01s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  88% Completed | 15/17 [00:28<00:03,  1.99s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards:  94% Completed | 16/17 [00:30<00:01,  1.99s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:32<00:00,  1.87s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Loading safetensors checkpoint shards: 100% Completed | 17/17 [00:32<00:00,  1.92s/it]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m 
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:18 [default_loader.py:308] Loading weights took 32.63 seconds
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:19 [gpu_model_runner.py:3659] Model loading took 61.0562 GiB memory and 33.414163 seconds
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:29 [backends.py:643] Using cache directory: /nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112/runtime_cache/vllm/torch_compile_cache/6a75c27718/rank_0_0/backbone for vLLM's torch.compile
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:29 [backends.py:703] Dynamo bytecode transform time: 9.50 s
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:39 [backends.py:226] Directly load the compiled graph(s) for compile range (1, 16384) from the cache, took 4.225 s
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:39 [monitor.py:34] torch.compile takes 13.73 s in total
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:41 [gpu_worker.py:375] Available KV cache memory: 61.69 GiB
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:41 [kv_cache_utils.py:1291] GPU KV cache size: 252,672 tokens
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:41 [kv_cache_utils.py:1296] Maximum concurrency for 32,768 tokens per request: 7.71x
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m 2026-11-12 16:42:41,558 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m 2026-11-12 16:42:41,576 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/2 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  50%|█████     | 1/2 [00:01<00:01,  1.09s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 2/2 [00:01<00:00,  1.74it/s]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/1 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 1/1 [00:00<00:00, 11.19it/s]
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:43 [gpu_model_runner.py:4587] Graph capturing finished in 2 secs, took -4.17 GiB
+[0;36m(EngineCore_DP0 pid=2386290)[0;0m INFO 11-12 16:42:43 [core.py:259] init engine (profile, create kv cache, warmup model) took 24.30 seconds
+INFO 11-12 16:42:44 [llm.py:360] Supported tasks: ['generate']
+qwen all: 1/36 interface-valid
+qwen all: 2/36 interface-valid
+qwen all: 3/36 interface-valid
+qwen all: 4/36 interface-valid
+qwen all: 5/36 interface-valid
+qwen all: 6/36 interface-valid
+qwen all: 7/36 interface-valid
+qwen all: 8/36 interface-valid
+qwen all: 9/36 interface-valid
+qwen all: 10/36 interface-valid
+qwen all: 11/36 interface-valid
+qwen all: 12/36 interface-valid
+qwen all: 13/36 interface-valid
+qwen all: 14/36 interface-valid
+qwen all: 15/36 interface-valid
+qwen all: 16/36 interface-valid
+qwen all: 17/36 interface-valid
+qwen all: 18/36 interface-valid
+qwen all: 19/36 interface-valid
+qwen all: 20/36 interface-valid
+qwen all: 21/36 interface-valid
+qwen all: 22/36 interface-valid
+qwen all: 23/36 interface-valid
+qwen all: 24/36 interface-valid
+qwen all: 25/36 interface-valid
+qwen all: 26/36 interface-valid
+qwen all: 27/36 interface-valid
+qwen all: 28/36 interface-valid
+qwen all: 29/36 interface-valid
+qwen all: 30/36 interface-valid
+qwen all: 31/36 interface-valid
+qwen all: 32/36 interface-valid
+qwen all: 33/36 interface-valid
+qwen all: 34/36 interface-valid
+qwen all: 35/36 interface-valid
+qwen all: 36/36 interface-valid
+[rank0]:[W1112 16:43:19.129753382 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+nanobind: leaked 2 instances!
+ - leaked instance 0x14e2bc11ffd8 of type "xgrammar.xgrammar_bindings.CompiledGrammar"
+ - leaked instance 0x14e2bc11fe88 of type "xgrammar.xgrammar_bindings.GrammarMatcher"
+nanobind: leaked 6 types!
+ - leaked type "xgrammar.xgrammar_bindings.CompiledGrammar"
+ - leaked type "xgrammar.xgrammar_bindings.TokenizerInfo"
+ - leaked type "xgrammar.xgrammar_bindings.Grammar"
+ - leaked type "xgrammar.xgrammar_bindings.GrammarMatcher"
+ - leaked type "xgrammar.xgrammar_bindings.BatchGrammarMatcher"
+ - leaked type "xgrammar.xgrammar_bindings.GrammarCompiler"
+nanobind: leaked 51 functions!
+ - leaked function ""
+ - leaked function "batch_accept_token"
+ - leaked function "_detect_metadata_from_hf"
+ - leaked function "compile_structural_tag"
+ - leaked function ""
+ - leaked function "is_terminated"
+ - leaked function "deserialize_json"
+ - leaked function "dump_metadata"
+ - leaked function "from_vocab_and_metadata"
+ - leaked function "from_json_schema"
+ - leaked function "__init__"
+ - leaked function "accept_token"
+ - leaked function "serialize_json"
+ - leaked function "compile_grammar"
+ - leaked function "concat"
+ - leaked function "to_string"
+ - leaked function "compile_json_schema"
+ - leaked function ""
+ - leaked function "serialize_json"
+ - leaked function "serialize_json"
+ - leaked function "__init__"
+ - leaked function "compile_builtin_json_grammar"
+ - leaked function ""
+ - leaked function "union"
+ - leaked function "fill_next_token_bitmask"
+ - leaked function ""
+ - leaked function "batch_fill_next_token_bitmask"
+ - leaked function ""
+ - leaked function "from_regex"
+ - leaked function "__init__"
+ - leaked function "clear_cache"
+ - leaked function ""
+ - leaked function "rollback"
+ - leaked function "batch_accept_string"
+ - leaked function "_debug_print_internal_state"
+ - leaked function "__init__"
+ - leaked function "find_jump_forward_string"
+ - leaked function "reset"
+ - leaked function ""
+ - leaked function "deserialize_json"
+ - leaked function "get_cache_size_bytes"
+ - leaked function "accept_string"
+ - leaked function ""
+ - leaked function ""
+ - leaked function "compile_regex"
+ - leaked function ""
+ - leaked function "from_structural_tag"
+ - leaked function ""
+ - leaked function "from_ebnf"
+ - leaked function "deserialize_json"
+ - leaked function "builtin_json_grammar"
+nanobind: this is likely caused by a reference counting issue in the binding code.

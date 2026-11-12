@@ -1,0 +1,96 @@
+{
+  "manifest_sha256": "2544df87691ef0c3db03b4244f8c7a40a4853956f7efa49f0710beceb534f460",
+  "archive_sha256": "b718c74bad9d5a8790b3522cd32d30b98ee1b07146f45d1b43b37c1895e77d84",
+  "queue": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-u",
+      "cpsc4880_rz377"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "prior_gpu": {
+    "job_id": "33137525",
+    "state": "FAILED",
+    "exit_code": "1:0",
+    "elapsed_seconds": 1237,
+    "tres": "billing=240,cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1",
+    "raw": {
+      "argv": [
+        "sacct",
+        "-j",
+        "33137525",
+        "--parsable2",
+        "--noheader",
+        "--format=JobID,State,ExitCode,ElapsedRaw,AllocTRES"
+      ],
+      "exit_code": 0,
+      "stdout": "33137525|FAILED|1:0|1237|billing=240,cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n33137525.batch|FAILED|1:0|1237|cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n33137525.extern|COMPLETED|0:0|1237|billing=240,cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n",
+      "stderr": ""
+    }
+  },
+  "runtime": {
+    "argv": [
+      "apptainer",
+      "exec",
+      "--cleanenv",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets:ro",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies:ro",
+      "--pwd",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "--env",
+      "PYTHONPATH=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies",
+      "--env",
+      "HF_HUB_OFFLINE=1",
+      "--env",
+      "TRANSFORMERS_OFFLINE=1",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/vllm_0.13.0.sif",
+      "/usr/bin/python3",
+      "-c",
+      "import json; from pathlib import Path; from prospective_monitoring.native_backend import runtime_check,snapshot_check; c=json.loads(Path('project/authorization_timing_jev_2026-11-12/run_01/config.json').read_text()); print(json.dumps({'runtime':runtime_check(c['qwen']),'snapshot':str(snapshot_check(c['qwen']['snapshot'],'monitor'))}))"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"runtime\": {\"python\": \"3.12.12\", \"openai-harmony\": \"0.0.8\", \"torch\": \"2.9.0+cu129\", \"transformers\": \"4.57.3\", \"vllm\": \"0.13.0\"}, \"snapshot\": \"/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137\"}\n",
+    "stderr": ""
+  },
+  "guard_import": {
+    "argv": [
+      "apptainer",
+      "exec",
+      "--cleanenv",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "--pwd",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "--env",
+      "PYTHONPATH=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112/authorization_timing_recovery_v1/guard_bootstrap:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies",
+      "--env",
+      "TIMING_REQUIRE_WARM_CACHE=1",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/vllm_0.13.0.sif",
+      "/usr/bin/python3",
+      "-c",
+      "from vllm.compilation.backends import CompilerManager; assert CompilerManager._timing_warm_only; print('warm_cache_guard_import_passed')"
+    ],
+    "exit_code": 0,
+    "stdout": "INFO 11-12 16:35:35 [importing.py:44] Triton is installed but 0 active driver(s) found (expected 1). Disabling Triton to prevent runtime errors.\nINFO 11-12 16:35:35 [importing.py:68] Triton not installed or not compatible; certain GPU-related functions will not be available.\nwarm_cache_guard_import_passed\n",
+    "stderr": ""
+  },
+  "cpu_admission": {
+    "argv": [
+      "sbatch",
+      "--test-only",
+      "--chdir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112/authorization_timing_recovery_v1/cpu.sbatch"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "sbatch: Job 33178453 to start at 2026-11-12T16:37:39 a using 4 processors on nodes c1104u05n02 in partition day\n"
+  }
+}

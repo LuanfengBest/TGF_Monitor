@@ -1,0 +1,42 @@
+{
+  "execution_authorized": true,
+  "authorization_quote": "那就修好启动流程，允许再申请一次 GPU，保持原来的 8 对数据和总预算，检查没问题后继续跑，最后汇总结果。",
+  "authorized_date": "2026-11-12",
+  "original_manifest_sha256": "5be987887c181dbab8e9b5fb0d48f2fc83efaf237ed1708ff63bacd808154c35",
+  "run_id": "authorization_timing_jev_v02_recovery01",
+  "prior_gpu_job": "33137525",
+  "prior_gpu_seconds": 1237,
+  "second_gpu_wall_seconds": 540,
+  "max_total_gpu_allocations": 2,
+  "max_additional_gpu_allocations": 1,
+  "cpu_preflight_wall_seconds": 840,
+  "cpu_preflight_cores": 4,
+  "cpu_preflight_memory_gib": 16,
+  "prior_cpu_preparation_seconds": 4.218349125003442,
+  "aggregate_caps": {
+    "all_attempts": 72,
+    "jev_attempts": 36,
+    "qwen_attempts": 36,
+    "formal_attempts": 64,
+    "simulator_bookings": 16,
+    "jev_usd": 0.1,
+    "qwen_output_tokens": 18432,
+    "retries": 0
+  },
+  "source_runtime_cache": "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538/runtime_cache",
+  "model_startup_seconds": 350,
+  "cpu_receipt_max_age_seconds": 7200,
+  "scientific_inputs": "unchanged original run_01 files; no generation or prompt changes",
+  "changes": [
+    "one additional nine-minute H200 allocation explicitly authorized",
+    "full asset hash checks moved to bounded CPU preflight, identity rechecked on GPU",
+    "verified copy of completed compilation cache; absolute artifact handles relocated",
+    "fail closed on any compilation-cache miss, no eager-mode fallback",
+    "aggregate original and continuation dispatch/cost ledgers"
+  ],
+  "run_order": [
+    "reuse four original Jev interface checks",
+    "Qwen four interface checks then 32 formal",
+    "Jev 32 formal only if Qwen completes"
+  ]
+}

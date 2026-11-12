@@ -1,4 +1,6 @@
-# Recovery proposal — not launched
+# Recovery proposal — historical preparation record
+
+**Subsequent authorization and execution:** the user approved one additional GPU allocation while retaining the eight pairs and aggregate budget. The separate [amendment](recovery_01/AMENDMENT.json), [continuation implementation](../../authorization_timing_recovery_v1/), and [current run status](RUN_STATUS.md) supersede the future-tense execution statements below. The original failed-run archive remains unchanged. This section preserves the proposal as it existed before that authorization.
 
 The original v0.2 run ended during Qwen startup. Its frozen files and STOP receipt must remain intact. This document is a concrete engineering proposal; no recovery run, cache reuse or new allocation has been executed, and a recovery adapter has not yet been implemented.
 

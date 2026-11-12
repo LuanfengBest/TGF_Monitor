@@ -1,6 +1,6 @@
 # TGF Monitor
 
-**Evidence Use in Authorization Auditing: Judge Choice and Trace-Grounded Follow-Up**
+**Evidence Use in Authorization Auditing: Judge Choice, Follow-Up, and Temporal Permission**
 
 CPSC 4880/5880 · Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu
 
@@ -12,7 +12,7 @@ Can a monitor correctly connect an executed action to the permission effective a
 
 [Team handoff / 中文说明](project/research_update_2026-11-12/TEAM_HANDOFF.md) · [Research direction and related work](project/research_update_2026-11-12/RESEARCH_DIRECTION.md) · [Latest report](project/research_update_2026-11-12/reports/mainline.md) · [Baseline comparison](project/research_update_2026-11-12/reports/baseline_comparison.md) · [Saved data and CPU verification](project/research_update_2026-11-12/README.md) · [Next-work inventory](project/research_update_2026-11-12/NEXT_STEPS.md)
 
-**Timing execution update:** the user subsequently authorized the fixed v0.2 run. Eight pairs (four basic timing, two intervening-message, two irrelevant-permission controls) have been materialized and frozen, with 8 violation and 8 authorized records. **Jev interface smoke passed 4/4, but Qwen job `33137525` stopped at its startup timeout with zero requests. Formal coverage is 0/64; no timing result is available.** [Current status and exact run authorization](project/authorization_timing_jev_2026-11-12/RUN_STATUS.md). The original plan records remain preserved as preparation-time snapshots. Limits remain 64 formal / 72 total calls, $0.10 API and 0.5 H200 hours. [Source review](project/research_update_2026-11-12/source_review/README.md) is nonblind AI work; **human reviews completed: 0**. [Why this research matters](project/research_update_2026-11-12/IMPLICATIONS.md).
+**Completed timing diagnostic:** all 64 formal judgments on the original eight pairs are valid. Jev is correct on **8/8 pairs with either presentation**; Qwen is correct on **4/8 source-card and 5/8 linked-card pairs**. The primary Jev linked-minus-source contrast is **zero**; the secondary Qwen improvement is one pair. An irrelevant-permission control exposes an unwanted Qwen verdict flip. These are bounded constructed-case findings, not repeated-stability or general model-ranking evidence. [Full timing results](project/authorization_timing_jev_2026-11-12/RESULTS.md) · [Current status and authorization](project/authorization_timing_jev_2026-11-12/RUN_STATUS.md). The startup repair used one explicitly authorized additional H200 allocation; both allocations total **22:53 / 30:00**, with **72/72 attempts** and estimated Jev cost **$0.001716 / $0.10**. The initial failure and all frozen inputs remain intact. [Source review](project/research_update_2026-11-12/source_review/README.md) is nonblind AI work; **human reviews completed: 0**. [Why this research matters](project/research_update_2026-11-12/IMPLICATIONS.md).
 
 | November 12 checkpoint | Completed evidence | Interpretation |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ Can a monitor correctly connect an executed action to the permission effective a
 | Direct Judge component comparison | Airline +13 correct / 0 regressed; bank +4 / 0 | Post-hoc comparison within the same batch; not a general model ranking |
 | Evidence/source review | 23 prespecified + 9 exploratory cases; 1,061 citation excerpts mechanically checked | Verdict correctness, source presence and semantic support remain separate |
 | Teammate additions | Qier: authorization-timing code; Tony: saved-output evidence audit | Original source branches remain separate; see the handoff for exact commits |
-| Timing v0.2 attempt | Eight pairs frozen; Jev interface smoke 4/4; Qwen startup failed | Formal coverage 0/64; 0.343611 H200 hours; no scientific conclusion |
+| Timing v0.2 diagnostic | Eight pairs; 64/64 valid formal outputs; Jev 8→8, Qwen 4→5 correct pairs | No observed linked-card gain for Jev; one Qwen improvement and an invariant-control failure; 0.381389 H200 hours including startup failure |
 
 The completed mainline batch used **2,706 model calls, 2.400556 H200 hours, and an estimated $0.156 in Jev API usage**. The later timing run is a separate constructed diagnostic with its own frozen inputs and budget; it is not pooled with this mainline batch. The latest work is on `pacifica/jev-research-update-2026-11-12`; teammate branches remain separate for review.
 
