@@ -57,6 +57,6 @@ Luanfeng 的原始 TGF 和模拟环境、Pacifica 的显式授权评估/对照/�
 
 当前协议已在运行前更新为 v0.2：**4 对基础时序＋2 对隔着无关消息＋2 对无关许可**。共 6 对应改变标签、2 对应保持；合法保持对撤回他人许可，违规保持对给予他人许可，避免把对象范围检查做成无效对照。最近消息索引始终按公开顺序生成，不偷换成有效许可答案。[逐对蓝图](../authorization_timing_jev_2026-11-12/PAIR_SPEC.json)和[指标](../authorization_timing_jev_2026-11-12/METRICS.md)已写明正确改判 /6、正确保持 /2、不当翻转 /2 及可用率；两次都错但相同不得分。
 
-总规模保持 8 对、16 条、两种呈现、两 Judge；64 次正式和 8 次接口检查已经完成，总调用 72/72。Jev 估算用量 $0.001716372 / $0.10；两次 H200 分配累计 1,373 / 1,800 秒，其中第一次失败 1,237 秒，授权续跑 136 秒。CPU 先校验资产并验证缓存副本，GPU 再核对身份和缓存命中；科学输入、提示词、标签与顺序均未修改。[恢复提案](../authorization_timing_jev_2026-11-12/RECOVERY_PLAN.md)保留为历史文档，实际授权见[修正记录](../authorization_timing_jev_2026-11-12/recovery_01/AMENDMENT.json)。真人复核仍为 0。下一步是实际真人复核、整合最终报告和团队审阅，见[盘点](NEXT_STEPS.md)。不为得到正结果自动扩量，不把 Jev 同时放入多个组件造成混淆。
+总规模保持 8 对、16 条、两种呈现、两 Judge；64 次正式和 8 次接口检查已经完成，总调用 72/72。Jev 估算用量 $0.001716372 / $0.10；两次 H200 分配累计 1,373 / 1,800 秒，其中第一次失败 1,237 秒，授权续跑 136 秒。CPU 先校验资产并验证缓存副本，GPU 再核对身份和缓存命中；科学输入、提示词、标签与顺序均未修改。[恢复提案](../authorization_timing_jev_2026-11-12/RECOVERY_PLAN.md)保留为历史文档，实际授权见[修正记录](../authorization_timing_jev_2026-11-12/recovery_01/AMENDMENT.json)。真人复核仍为 0。综合报告和展示已完成；下一步是实际真人复核、团队审阅和展示排练，见[盘点](NEXT_STEPS.md)。不为得到正结果自动扩量，不把 Jev 同时放入多个组件造成混淆。
 
-[最新报告](reports/mainline.md) · [基线比较](reports/baseline_comparison.md) · [保存数据与离线验证](README.md)
+[综合最终报告](../final_report_2026-11-13/FINAL_REPORT.md) · [主实验报告](reports/mainline.md) · [基线比较](reports/baseline_comparison.md) · [保存数据与离线验证](README.md)
