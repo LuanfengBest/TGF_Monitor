@@ -69,6 +69,19 @@ def states(record, include_sources=False):
     return arms
 
 
+def split_timing_state(record):
+    state = states(record)["agv"]
+    ledger = state["fact_ledger"]
+    orders = {op["call_source"]: op["order"] for op in ledger["operations"]}
+    for card in state["authorization_checks"]["booking_checks"]:
+        card["permission_effective_at_call"] = card.pop("scoped_permission", None)
+        card["user_messages_after_call_not_retroactive"] = [
+            {"source_id": user["source_id"], "text": user["text"]}
+            for user in ledger["user_messages"] if user["order"] > orders[card["call"]]
+        ]
+    return state
+
+
 def public_cases():
     with tarfile.open(ARCHIVE) as archive:
         for member in archive:
@@ -98,9 +111,12 @@ def main():
     parser.add_argument("--judge", choices=("jev", "qwen"), default="jev")
     parser.add_argument("--live-output", type=Path, help="Explicit opt-in to live inference with the selected judge")
     parser.add_argument("--include-sources", action="store_true", help="Add booking source links without rule conclusions")
+    parser.add_argument("--split-timing", action="store_true", help="Run only the split presentation of AGV")
     parser.add_argument("--dataset", choices=("mainline", "timing"), default="mainline")
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
+    if args.split_timing and (args.dataset != "timing" or args.include_sources):
+        parser.error("--split-timing requires timing data and runs one arm only")
     cases = dict(public_cases() if args.dataset == "mainline" else timing_cases())
     expected = 189 if args.dataset == "mainline" else 16
     if len(cases) != expected:
@@ -122,7 +138,10 @@ def main():
                 backend = start_qwen()
                 stack.callback(backend.close)
         for cid in ids[:args.limit]:
-            arms = list(states(cases[cid], args.include_sources).items())
+            if args.split_timing:
+                arms = [("agv_split", split_timing_state(cases[cid]))]
+            else:
+                arms = list(states(cases[cid], args.include_sources).items())
             rng.shuffle(arms)
             for arm, state in arms:
                 body = request_for(args.judge, state)
