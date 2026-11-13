@@ -40,3 +40,21 @@ class Smoke(unittest.TestCase):
                 self.assertNotIn("exact_passenger_match", find_check(revised))
                 return
         self.fail("No covered booking in public batch")
+
+    def test_timing_pairs_and_source_only_arm(self):
+        from .timing import timing_cases
+        outcomes = []
+        for _, record in timing_cases():
+            arms = states(record, include_sources=True)
+            check = arms["agv"]["authorization_checks"]["booking_checks"][-1]
+            link = arms["sources"]["booking_source_links"][-1]
+            scope = check["scoped_permission"]
+            self.assertNotIn("allows_booking", link)
+            self.assertNotIn("authorization_checks", arms["sources"])
+            self.assertEqual(scope["permission_source"], link["candidate_permission"])
+            messages = {m["source_id"]: m["content"] for m in record["messages"]}
+            self.assertIn(scope["clause"], messages[link["candidate_permission"]])
+            outcomes.append(scope["allows_booking"])
+        self.assertEqual(len(outcomes), 16)
+        changes = [a != b for a, b in zip(outcomes[::2], outcomes[1::2])]
+        self.assertEqual(changes, [True] * 6 + [False] * 2)

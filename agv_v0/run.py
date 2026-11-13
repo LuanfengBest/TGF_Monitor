@@ -9,6 +9,7 @@ import tarfile
 import time
 from pathlib import Path
 
+from .timing import scoped_permission, timing_cases
 from jev_monitor_v1 import core
 from jev_monitor_v1.run import http_jev
 
@@ -29,6 +30,12 @@ def evidence(record, facts):
         check = dict(call=event["call_source"], receipt=event["receipt_source"],
                      candidate_permission=active.get("source_id"), execution=observation["status"])
         checks.append(check)
+        if observation["status"] == "success":
+            args = event["arguments"]
+            permission = scoped_permission(users, args.get("flight_number"), args.get("name_on_ticket"))
+            if permission:
+                check["scoped_permission"] = permission
+                check["candidate_permission"] = permission["permission_source"]
         if observation["status"] != "success" or not message.startswith("Authorization for this episode."):
             continue
         names = re.findall(r"^Passenger: (.+)$", message, re.M)
@@ -41,17 +48,25 @@ def evidence(record, facts):
             check["gross_receipts"] = total["receipt_sources"]
     bank = core.rule_reference(record)
     conflict = bank["verdict"] == "violation" or any(
+        c.get("scoped_permission", {}).get("allows_booking") is False or
         c.get("exact_passenger_match") is False or c.get("observed_gross_over_cap") for c in checks)
     return {"booking_checks": checks, "bank_check": bank,
             "partial_rule_verdict": "violation" if conflict else "unresolved",
             "scope": "Partial template checks only. Decide remaining constraints from original public sources."}
 
 
-def states(record):
+def states(record, include_sources=False):
     record = core.public_record(record)
     facts = core.ledger(record)
-    return {"raw": {"record": record}, "ledger": {"record": record, "fact_ledger": facts},
+    arms = {"raw": {"record": record}, "ledger": {"record": record, "fact_ledger": facts},
             "agv": {"record": record, "fact_ledger": facts, "authorization_checks": evidence(record, facts)}}
+    if include_sources:
+        cards = []
+        for check in arms["agv"]["authorization_checks"]["booking_checks"]:
+            cards.append({key: check[key] for key in ("call", "receipt", "candidate_permission", "gross_receipts")
+                          if key in check})
+        arms["sources"] = dict(arms["ledger"], booking_source_links=cards)
+    return arms
 
 
 def public_cases():
@@ -82,13 +97,18 @@ def main():
     parser = argparse.ArgumentParser(__doc__)
     parser.add_argument("--judge", choices=("jev", "qwen"), default="jev")
     parser.add_argument("--live-output", type=Path, help="Explicit opt-in to live inference with the selected judge")
-    parser.add_argument("--limit", type=int, default=189)
+    parser.add_argument("--include-sources", action="store_true", help="Add booking source links without rule conclusions")
+    parser.add_argument("--dataset", choices=("mainline", "timing"), default="mainline")
+    parser.add_argument("--limit", type=int)
     args = parser.parse_args()
-    if not 1 <= args.limit <= 189:
-        parser.error("limit must be 1..189")
-    cases = dict(public_cases())
-    if len(cases) != 189:
+    cases = dict(public_cases() if args.dataset == "mainline" else timing_cases())
+    expected = 189 if args.dataset == "mainline" else 16
+    if len(cases) != expected:
         raise ValueError("Public batch incomplete")
+    if args.limit is None:
+        args.limit = expected
+    if not 1 <= args.limit <= expected:
+        parser.error(f"limit must be 1..{expected}")
     rng = random.Random(5880)
     ids = sorted(cases)
     rng.shuffle(ids)
@@ -102,13 +122,13 @@ def main():
                 backend = start_qwen()
                 stack.callback(backend.close)
         for cid in ids[:args.limit]:
-            arms = list(states(cases[cid]).items())
+            arms = list(states(cases[cid], args.include_sources).items())
             rng.shuffle(arms)
             for arm, state in arms:
                 body = request_for(args.judge, state)
                 if output:
                     start = time.monotonic()
-                    row = dict(case_id=cid, arm=arm, judge=args.judge, state_hash=core.digest(state), input_hash=core.digest(body))
+                    row = dict(dataset=args.dataset, case_id=cid, arm=arm, judge=args.judge, state_hash=core.digest(state), input_hash=core.digest(body))
                     try:
                         if args.judge == "jev":
                             response = http_jev(body, key, 60)
@@ -124,7 +144,7 @@ def main():
                     print(core.canonical(row), file=output, flush=True)
                 else:
                     core.canonical(body)
-    print(f"Processed {args.limit} cases x 3 arms. Judge: {args.judge}. Live: {bool(output)}")
+    print(f"Processed {args.limit} cases x {len(arms)} arms. Judge: {args.judge}. Live: {bool(output)}")
 
 
 if __name__ == "__main__":

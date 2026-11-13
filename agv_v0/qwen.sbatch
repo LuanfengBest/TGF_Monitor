@@ -22,4 +22,4 @@ exec apptainer exec --nv --cleanenv --pwd "$PWD" \
   --env VLLM_CACHE_ROOT=/agv-output/cache/vllm --env TRITON_CACHE_DIR=/agv-output/cache/triton \
   --env VLLM_DISABLE_SINKS=1 --env VLLM_USE_TRITON_FLASH_ATTN=0 \
   "$assets/vllm_0.13.0.sif" /usr/bin/python3 -B -m agv_v0.run \
-  --judge qwen --limit "${2:-1}" --live-output /agv-output/qwen.jsonl
+  --judge qwen --dataset "${3:-mainline}" --limit "${2:-1}" --live-output /agv-output/qwen.jsonl
