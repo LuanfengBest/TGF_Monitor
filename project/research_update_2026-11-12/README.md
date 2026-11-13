@@ -1,6 +1,6 @@
 # November 12 research checkpoint
 
-This checkpoint publishes completed work and the updated research direction. The separately frozen timing v0.2 diagnostic is now complete after an explicitly authorized bounded startup recovery: all 64 formal outputs are valid, with Jev 8→8 and Qwen 4→5 correct pairs under source→linked presentation. The primary Jev contrast is zero. [Timing results](../authorization_timing_jev_2026-11-12/RESULTS.md) and [current execution status](../authorization_timing_jev_2026-11-12/RUN_STATUS.md) supersede preparation-time no-launch and initial-failure-only statements. The previous November 7 report remains intact and is not yet an integrated final manuscript for this checkpoint.
+This checkpoint publishes completed work and the updated research direction. The separately frozen timing v0.2 diagnostic is now complete after an explicitly authorized bounded startup recovery: all 64 formal outputs are valid, with Jev 8→8 and Qwen 4→5 correct pairs under source→linked presentation. The primary Jev contrast is zero. [Timing results](../authorization_timing_jev_2026-11-12/RESULTS.md) and [current execution status](../authorization_timing_jev_2026-11-12/RUN_STATUS.md) supersede preparation-time no-launch and initial-failure-only statements. The previous November 7 report remains intact; the [November 13 package](../final_report_2026-11-13/README.md) is now the integrated manuscript and presentation.
 
 ## Read in this order
 
@@ -11,6 +11,8 @@ This checkpoint publishes completed work and the updated research direction. The
 5. [AI source re-review and unfilled human packet](source_review/README.md): 32 existing cases / 27 distinct records, nonblind AI work; zero human reviews.
 6. [Completed timing results](../authorization_timing_jev_2026-11-12/RESULTS.md), [frozen protocol](../authorization_timing_jev_2026-11-12/PROTOCOL.md), [eight-pair blueprint](../authorization_timing_jev_2026-11-12/PAIR_SPEC.json) and [metrics](../authorization_timing_jev_2026-11-12/METRICS.md): four basic / two intervening-message / two irrelevant-permission pairs. All 64 formal decisions are valid; report absolute correctness, correct changes/invariance and unwanted flips alongside the null Jev primary contrast. The [initial failure](../authorization_timing_jev_2026-11-12/RUN_REPORT.md) and [authorized amendment](../authorization_timing_jev_2026-11-12/recovery_01/AMENDMENT.json) remain separately documented within the original aggregate budget.
 7. [Research implications (中文)](IMPLICATIONS.md) and [next-work inventory](NEXT_STEPS.md): what the work can support and what remains.
+
+The [November 13 integrated final report and presentation](../final_report_2026-11-13/README.md) now combine these completed findings with the earlier negative results and timing diagnostic. The November 7 manuscript remains unchanged as history; its existing live presentation Page has been updated in place. No new experiment or expansion accompanied integration.
 
 The readable reports above are publication copies with repository-relative links. Original reports, frozen protocols, raw outputs and numerical results retain their original bytes. A dated sentence such as “not yet published” in an original report describes its creation-time state.
 

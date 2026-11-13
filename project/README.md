@@ -2,6 +2,8 @@
 
 For the current research overview and CPU reproduction steps, start with the [repository README](../README.md) and [data/code guide](closeout_2026-11-07/DATA_AND_CODE.md). This page preserves dated checkpoints; historical “current” or “pending” statements should be read at their stated date.
 
+**2026-11-13 综合报告与展示：** [最终综合报告](final_report_2026-11-13/FINAL_REPORT.md)、[PDF](final_report_2026-11-13/deliverables/Authorization_Auditing_Report.pdf)、[可编辑 Word](final_report_2026-11-13/deliverables/Authorization_Auditing_Report.docx)、[更新后的展示](https://chatgpt.com/space/page_6f15e7205f9c81918f8762765794d4af)及[中文讲稿](final_report_2026-11-13/SPEAKER_NOTES_ZH.md)已整合本次 8 对结果和整个项目主线。Jev 是主要最终 Judge，研究问题仍是执行时授权；保留定向追问、Jev 时间索引及早期实验的负结果。9 页报告、12 页主讲＋5 页附录；原始数据和旧报告保持不变，原在线展示已原位更新。此次没有新增实验或扩量，真人复核仍为 0；[交付与复核说明](final_report_2026-11-13/README.md)。
+
 **2026-11-12 最新完成结果：** 原来的 8 对时序/范围案例已完成 64/64 次有效正式判定。Jev 原文、索引均为 8/8 对正确；Qwen 分别为 4/8、5/8。主要对比 Jev 索引减原文为 0；Qwen 的次要改善仅一对，无关许可对照仍有不当翻转。[完整结果](authorization_timing_jev_2026-11-12/RESULTS.md)。第一次启动失败后，用户明确批准一次额外 GPU 分配；修复后的作业 `33178680` 用时 2:16，连同第一次失败累计 22:53，未超过 30 分钟。总调用 72/72，Jev 估算 $0.001716，未重采样、未重复判定。[当前执行记录](authorization_timing_jev_2026-11-12/RUN_STATUS.md)优先于历史准备状态。
 
 **2026-11-12 当前共享进度：** [组员交接说明](research_update_2026-11-12/TEAM_HANDOFF.md)、[更新后的研究主线](research_update_2026-11-12/RESEARCH_DIRECTION.md)、[Jev 主实验报告](research_update_2026-11-12/reports/mainline.md)、[下一步盘点](research_update_2026-11-12/NEXT_STEPS.md)和[离线复核入口](research_update_2026-11-12/README.md)。主线批次 192 个采集位置、189 条合格轨迹；同材料直接判断时，航空 Qwen/Jev 分别检出 8/26、21/26，均 0/67 误报。预定 Jev T−F 主对比未通过；完整回答子集中的 F/T 判定相同。新的叙事保留授权审计主线，区分 Judge 能力、证据使用和追问收益，不改写历史负结果。Qier 时序诊断与 Tony 证据审计已链接并标明完成范围。新增 8 对构造诊断单独报告；下方旧报告与展示仍属于各自历史批次。

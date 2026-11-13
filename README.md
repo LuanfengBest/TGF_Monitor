@@ -1,10 +1,14 @@
 # TGF Monitor
 
-**Evidence Use in Authorization Auditing: Judge Choice, Follow-Up, and Temporal Permission**
+**Authorization Auditing with Jev as Final Judge**
 
 CPSC 4880/5880 · Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu
 
-Research snapshot: November 12, 2026
+Integrated report and presentation: November 13, 2026
+
+[Integrated final report](project/final_report_2026-11-13/FINAL_REPORT.md) · [PDF](project/final_report_2026-11-13/deliverables/Authorization_Auditing_Report.pdf) · [Editable Word report](project/final_report_2026-11-13/deliverables/Authorization_Auditing_Report.docx) · [Updated native presentation](https://chatgpt.com/space/page_6f15e7205f9c81918f8762765794d4af) · [Portable slides](project/final_report_2026-11-13/SLIDES.md) · [中文讲稿](project/final_report_2026-11-13/SPEAKER_NOTES_ZH.md)
+
+The integrated package uses **Jev as the primary final Judge** to study execution-time authorization. It retains the original targeted-follow-up negative result, the null Jev indexing contrast, earlier development negatives, source-audit limitations and failed startup accounting. The same-input Judge comparison remains explicitly post hoc. Human review of the new studies is still zero. No experiments or sample expansion were started for this update; team review and course submission remain separate.
 
 Can a monitor correctly connect an executed action to the permission effective at execution and the receipt proving what happened? We retain the original TGF question and now distinguish the contributions of **Judge choice, evidence presentation, and follow-up**. This is an evidence-driven research reframing after the completed experiments, not a replacement of their prespecified hypotheses.
 
@@ -26,7 +30,7 @@ Can a monitor correctly connect an executed action to the permission effective a
 
 The completed mainline batch used **2,706 model calls, 2.400556 H200 hours, and an estimated $0.156 in Jev API usage**. The later timing run is a separate constructed diagnostic with its own frozen inputs and budget; it is not pooled with this mainline batch. The latest work is on `pacifica/jev-research-update-2026-11-12`; teammate branches remain separate for review.
 
-All November 7 results and frozen files remain historical evidence. The older report/PDF below has not yet been rewritten into the November 12 narrative and should not be mistaken for the latest integrated manuscript. Different batches and label definitions must not be pooled.
+All November 7 results and frozen files remain historical evidence. The [November 13 integrated package](project/final_report_2026-11-13/README.md) is the current manuscript and presentation. The older report/PDF below remains unchanged; the existing live presentation Page has been updated in place. Different batches and label definitions must not be pooled.
 
 ## November 7 research snapshot
 
