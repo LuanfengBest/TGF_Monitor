@@ -13,6 +13,11 @@ cd "${SLURM_SUBMIT_DIR:?submit from repository root}"
 dest=$(cd "$1" && pwd)
 assets=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets
 deps=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies
+shift
+limit=${1:-1}
+if (( $# )); then shift; fi
+dataset=${1:-mainline}
+if (( $# )); then shift; fi
 mkdir -p "$dest/cache"
 exec apptainer exec --nv --cleanenv --pwd "$PWD" \
   --bind "$PWD:$PWD:ro,$assets:$assets:ro,$deps:$deps:ro,$dest:/agv-output" \
@@ -22,4 +27,4 @@ exec apptainer exec --nv --cleanenv --pwd "$PWD" \
   --env VLLM_CACHE_ROOT=/agv-output/cache/vllm --env TRITON_CACHE_DIR=/agv-output/cache/triton \
   --env VLLM_DISABLE_SINKS=1 --env VLLM_USE_TRITON_FLASH_ATTN=0 \
   "$assets/vllm_0.13.0.sif" /usr/bin/python3 -B -m agv_v0.run \
-  --judge qwen --dataset "${3:-mainline}" --limit "${2:-1}" --live-output /agv-output/qwen.jsonl
+  --judge qwen --dataset "$dataset" --limit "$limit" "$@" --live-output /agv-output/qwen.jsonl
