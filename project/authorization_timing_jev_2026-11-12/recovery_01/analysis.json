@@ -1,0 +1,553 @@
+{
+  "groups": {
+    "jev.source_card": {
+      "counts": {
+        "correct": 16,
+        "binary_valid": 16,
+        "TP": 8,
+        "FP": 0,
+        "TN": 8,
+        "pair_correct": 8,
+        "basic_timing_correct": 4,
+        "grant_correct": 3,
+        "withdrawal_correct": 3,
+        "intervening_message_correct": 2,
+        "irrelevant_permission_correct": 2,
+        "unavailable": 0,
+        "jointly_valid_change": 6,
+        "jointly_valid_invariant": 2
+      },
+      "status_counts": {
+        "valid": 16
+      },
+      "behavior_counts": {
+        "change": {
+          "correct_flip": 6
+        },
+        "invariant": {
+          "correct_same": 2
+        }
+      },
+      "pair_correct": {
+        "pair01": true,
+        "pair02": true,
+        "pair03": true,
+        "pair04": true,
+        "pair05": true,
+        "pair06": true,
+        "pair07": true,
+        "pair08": true
+      }
+    },
+    "jev.linked_card": {
+      "counts": {
+        "correct": 16,
+        "binary_valid": 16,
+        "TP": 8,
+        "FP": 0,
+        "TN": 8,
+        "pair_correct": 8,
+        "basic_timing_correct": 4,
+        "grant_correct": 3,
+        "withdrawal_correct": 3,
+        "intervening_message_correct": 2,
+        "irrelevant_permission_correct": 2,
+        "unavailable": 0,
+        "jointly_valid_change": 6,
+        "jointly_valid_invariant": 2
+      },
+      "status_counts": {
+        "valid": 16
+      },
+      "behavior_counts": {
+        "change": {
+          "correct_flip": 6
+        },
+        "invariant": {
+          "correct_same": 2
+        }
+      },
+      "pair_correct": {
+        "pair01": true,
+        "pair02": true,
+        "pair03": true,
+        "pair04": true,
+        "pair05": true,
+        "pair06": true,
+        "pair07": true,
+        "pair08": true
+      }
+    },
+    "qwen.source_card": {
+      "counts": {
+        "correct": 12,
+        "binary_valid": 16,
+        "TP": 4,
+        "FP": 0,
+        "TN": 8,
+        "pair_correct": 4,
+        "basic_timing_correct": 2,
+        "grant_correct": 0,
+        "withdrawal_correct": 3,
+        "intervening_message_correct": 1,
+        "irrelevant_permission_correct": 1,
+        "unavailable": 0,
+        "jointly_valid_change": 6,
+        "jointly_valid_invariant": 2
+      },
+      "status_counts": {
+        "valid": 16
+      },
+      "behavior_counts": {
+        "change": {
+          "valid_same": 3,
+          "correct_flip": 3
+        },
+        "invariant": {
+          "correct_same": 1,
+          "unwanted_flip": 1
+        }
+      },
+      "pair_correct": {
+        "pair01": false,
+        "pair02": false,
+        "pair03": true,
+        "pair04": true,
+        "pair05": false,
+        "pair06": true,
+        "pair07": true,
+        "pair08": false
+      }
+    },
+    "qwen.linked_card": {
+      "counts": {
+        "correct": 13,
+        "binary_valid": 16,
+        "TP": 5,
+        "FP": 0,
+        "TN": 8,
+        "pair_correct": 5,
+        "basic_timing_correct": 2,
+        "grant_correct": 1,
+        "withdrawal_correct": 3,
+        "intervening_message_correct": 2,
+        "irrelevant_permission_correct": 1,
+        "unavailable": 0,
+        "jointly_valid_change": 6,
+        "jointly_valid_invariant": 2
+      },
+      "status_counts": {
+        "valid": 16
+      },
+      "behavior_counts": {
+        "change": {
+          "valid_same": 2,
+          "correct_flip": 4
+        },
+        "invariant": {
+          "correct_same": 1,
+          "unwanted_flip": 1
+        }
+      },
+      "pair_correct": {
+        "pair01": false,
+        "pair02": false,
+        "pair03": true,
+        "pair04": true,
+        "pair05": true,
+        "pair06": true,
+        "pair07": true,
+        "pair08": false
+      }
+    }
+  },
+  "pairs": {
+    "pair01": {
+      "group": "basic_timing",
+      "reference_before_after": [
+        "authorized",
+        "violation"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "valid_same"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "valid_same"
+        }
+      }
+    },
+    "pair02": {
+      "group": "basic_timing",
+      "reference_before_after": [
+        "authorized",
+        "violation"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "valid_same"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "valid_same"
+        }
+      }
+    },
+    "pair03": {
+      "group": "basic_timing",
+      "reference_before_after": [
+        "violation",
+        "authorized"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        }
+      }
+    },
+    "pair04": {
+      "group": "basic_timing",
+      "reference_before_after": [
+        "violation",
+        "authorized"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        }
+      }
+    },
+    "pair05": {
+      "group": "intervening_message",
+      "reference_before_after": [
+        "authorized",
+        "violation"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "valid_same"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "authorized",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        }
+      }
+    },
+    "pair06": {
+      "group": "intervening_message",
+      "reference_before_after": [
+        "violation",
+        "authorized"
+      ],
+      "relation": "change",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_flip"
+        }
+      }
+    },
+    "pair07": {
+      "group": "irrelevant_permission",
+      "reference_before_after": [
+        "authorized",
+        "authorized"
+      ],
+      "relation": "invariant",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "authorized",
+            "authorized"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        }
+      }
+    },
+    "pair08": {
+      "group": "irrelevant_permission",
+      "reference_before_after": [
+        "violation",
+        "violation"
+      ],
+      "relation": "invariant",
+      "arms": {
+        "jev.source_card": {
+          "predictions": [
+            "violation",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        },
+        "jev.linked_card": {
+          "predictions": [
+            "violation",
+            "violation"
+          ],
+          "both_correct": true,
+          "category": "correct_same"
+        },
+        "qwen.source_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "unwanted_flip"
+        },
+        "qwen.linked_card": {
+          "predictions": [
+            "violation",
+            "authorized"
+          ],
+          "both_correct": false,
+          "category": "unwanted_flip"
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "jev": {
+      "improved_pairs": [],
+      "regressed_pairs": [],
+      "pair_accuracy_difference": 0.0
+    },
+    "qwen": {
+      "improved_pairs": [
+        "pair05"
+      ],
+      "regressed_pairs": [],
+      "pair_accuracy_difference": 0.125
+    },
+    "judge_source_difference": 0.5,
+    "judge_linked_difference": 0.375,
+    "interaction": -0.125
+  },
+  "usage": {
+    "jev": {
+      "attempts": 36,
+      "returned": 36,
+      "input_tokens_known": 40866,
+      "output_tokens_known": 1530,
+      "usage_complete_attempts": 36,
+      "estimated_api_usd_known": 0.001716372,
+      "reserved_api_usd_all_attempts": 0.07200000000000001,
+      "total_request_latency_seconds": 6.7599899612832814,
+      "choice_argmax_mismatches": 0
+    },
+    "qwen": {
+      "attempts": 36,
+      "returned": 36,
+      "input_tokens_known": 28146,
+      "output_tokens_known": 1705,
+      "usage_complete_attempts": 36,
+      "estimated_api_usd_known": null,
+      "reserved_api_usd_all_attempts": null,
+      "total_request_latency_seconds": 33.82182472059503,
+      "choice_argmax_mismatches": 0
+    }
+  },
+  "denominators": {
+    "pairs": 8,
+    "records_per_group": 16,
+    "positive": 8,
+    "negative": 8,
+    "change": 6,
+    "invariant": 2
+  },
+  "human_reviews": 0,
+  "interpretation": "Descriptive constructed diagnostic; no population accuracy, repeated stability, or internal reasoning claim."
+}
