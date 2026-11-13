@@ -1,4 +1,5 @@
-"""Public-only, receipt-bound authorization checks and matched Jev arms."""
+"""Public-only, receipt-bound authorization checks and matched Jev or Qwen arms."""
+from contextlib import ExitStack
 import argparse
 import json
 import os
@@ -61,9 +62,26 @@ def public_cases():
                 yield Path(member.name).stem, wrapper["record"]
 
 
+def request_for(judge, state):
+    if judge == "jev":
+        return core.jev_body(state)
+    return {"prompt": core.qwen_prompt(state), "schema": core.schema(),
+            "max_output_tokens": 2048, "seed": 17}
+
+
+def start_qwen():
+    from jev_monitor_v1.qwen_native import native, worker
+    config_path = ARCHIVE.parents[1] / "jev_monitor_2x2_2026-11-11/config.json"
+    cfg = json.loads(config_path.read_text())["qwen"]
+    backend = native.ProcessStageBackend("monitor", cfg, cfg["snapshot"], permit_live=True,
+                                         startup_timeout_seconds=1200, _worker_target=worker)
+    return backend.start()
+
+
 def main():
     parser = argparse.ArgumentParser(__doc__)
-    parser.add_argument("--live-output", type=Path, help="Explicit opt-in to fresh paid Jev calls")
+    parser.add_argument("--judge", choices=("jev", "qwen"), default="jev")
+    parser.add_argument("--live-output", type=Path, help="Explicit opt-in to live inference with the selected judge")
     parser.add_argument("--limit", type=int, default=189)
     args = parser.parse_args()
     if not 1 <= args.limit <= 189:
@@ -74,33 +92,39 @@ def main():
     rng = random.Random(5880)
     ids = sorted(cases)
     rng.shuffle(ids)
-    output = None
-    if args.live_output:
-        key = os.environ["TYPESAFE_API_KEY"]
-        output = args.live_output.open("x")
-    try:
+    with ExitStack() as stack:
+        output = None
+        if args.live_output:
+            if args.judge == "jev":
+                key = os.environ["TYPESAFE_API_KEY"]
+            output = stack.enter_context(args.live_output.open("x"))
+            if args.judge == "qwen":
+                backend = start_qwen()
+                stack.callback(backend.close)
         for cid in ids[:args.limit]:
             arms = list(states(cases[cid]).items())
             rng.shuffle(arms)
             for arm, state in arms:
-                body = core.jev_body(state)
+                body = request_for(args.judge, state)
                 if output:
                     start = time.monotonic()
-                    row = dict(case_id=cid, arm=arm, input_hash=core.digest(body))
+                    row = dict(case_id=cid, arm=arm, judge=args.judge, state_hash=core.digest(state), input_hash=core.digest(body))
                     try:
-                        response = http_jev(body, key, 60)
-                        raw = response["body"]
-                        row.update(core.parse_response("jev", raw), usage=raw.get("usage"))
+                        if args.judge == "jev":
+                            response = http_jev(body, key, 60)
+                            raw = response["body"]
+                            usage = raw.get("usage")
+                        else:
+                            raw = backend.generate(body, 240)
+                            usage = {"input_tokens": raw["prompt_tokens"], "output_tokens": raw["completion_tokens"]}
+                        row.update(core.parse_response(args.judge, raw), usage=usage)
                     except Exception as error:
                         row.update(status="error", error_type=type(error).__name__)
                     row["seconds"] = time.monotonic() - start
                     print(core.canonical(row), file=output, flush=True)
                 else:
                     core.canonical(body)
-    finally:
-        if output:
-            output.close()
-    print(f"Processed {args.limit} cases x 3 arms. Live Jev: {bool(output)}")
+    print(f"Processed {args.limit} cases x 3 arms. Judge: {args.judge}. Live: {bool(output)}")
 
 
 if __name__ == "__main__":
