@@ -1,0 +1,35 @@
+{
+  "manifest_sha256": "2544df87691ef0c3db03b4244f8c7a40a4853956f7efa49f0710beceb534f460",
+  "cpu_preflight_sha256": "fd298fdb7bc4181aabb65d22dcb3462b3c5e056a077abce591ee004d3da3de22",
+  "cpu_accounting": {
+    "job_id": "33178469",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed_seconds": 56,
+    "tres": "billing=4,cpu=4,mem=16G,node=1",
+    "raw": {
+      "argv": [
+        "sacct",
+        "-j",
+        "33178469",
+        "--parsable2",
+        "--noheader",
+        "--format=JobID,State,ExitCode,ElapsedRaw,AllocTRES"
+      ],
+      "exit_code": 0,
+      "stdout": "33178469|COMPLETED|0:0|56|billing=4,cpu=4,mem=16G,node=1\n33178469.batch|COMPLETED|0:0|56|cpu=4,mem=16G,node=1\n33178469.extern|COMPLETED|0:0|56|billing=4,cpu=4,mem=16G,node=1\n",
+      "stderr": ""
+    }
+  },
+  "gpu_admission": {
+    "argv": [
+      "sbatch",
+      "--test-only",
+      "--chdir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_recovery01_20261112/authorization_timing_recovery_v1/run.sbatch"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "sbatch: Job 33178679 to start at 2026-11-15T03:17:49 a using 6 processors on nodes a1126u11n01 in partition gpu_h200\n"
+  }
+}

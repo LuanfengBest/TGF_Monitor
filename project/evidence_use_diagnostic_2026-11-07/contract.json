@@ -1,0 +1,65 @@
+{
+  "created_at_utc": "2026-11-07T15:58:54.040975+00:00",
+  "scope": "post-audit-evidence-use-diagnostic-v1",
+  "selection": "8 audited development records: first complete pair from each of three families, plus the second revision pair covering the other observed A failure. Posthoc selection, four original task blocks.",
+  "main_conditions": [
+    "record",
+    "question_only",
+    "actual_B",
+    "fact_repair_B",
+    "source_card"
+  ],
+  "threshold": 50,
+  "seeds": [
+    17,
+    29
+  ],
+  "calls": {
+    "Qwen_same_judge": 114,
+    "gpt_oss_secondary_judge": 22
+  },
+  "critical_controls": "6 coherent changes to a budget cap or initial requested/permitted date; all executed actions and later permissions fixed; labels must flip.",
+  "irrelevant_controls": "8 consistent opaque receipt-ID renamings; labels must remain unchanged.",
+  "fact_repair_limit": "Auditor removes verdicts and unsupported additions and repairs source binding; combines presentation, selection and correction. Not a pure typography intervention, token-matched comparison, independent gold, or natural actor output.",
+  "secondary_model_limit": "gpt-oss previously generated answers but acts here as a fresh tool-disabled Judge. Cross-model check, not independent human gold. Different native output decoding, report failures explicitly.",
+  "failure_metrics": "All scheduled positions remain denominators. Null, truncation, invalid schema, timeout and undispatched each reported; never converted to clean negative.",
+  "interpretation": {
+    "question_only_matches_actual": "Question/extra prompt structure may suffice; cannot credit answer evidence uniquely.",
+    "repair_or_card_recovers_actual_error": "Presentation/correction helps this Judge, conditional on same record and case.",
+    "card_fails_but_secondary_succeeds": "Model-specific interpretation/read-out bottleneck candidate, not proof of internal mechanism.",
+    "critical_change_ignored": "Output not sensitive to a label-determining public fact in this diagnostic.",
+    "irrelevant_change_flips": "Instability under a semantically irrelevant identifier change.",
+    "all_conditions_ceiling": "Existing cases do not identify the bottleneck; no broad effectiveness or causal-use claim."
+  },
+  "stop_rule": "One allocation, <=7200 sec; <=136 dispatches; <=323584 reserved output tokens; 240 sec per call; no retries, no new trajectories, no training, no automatic scale-up. Fatal worker/asset/budget error ends campaign.",
+  "audit_freeze": {
+    "created_at_utc": "2026-11-07T15:52:33.368338+00:00",
+    "reference_sha256": "9a9d797371960c97763730a89e557e536ad5b1414c9dcb72e0df2f5534e57fd5",
+    "answers_sha256": "3eee1a22e8589bf0eafd7a7668c4e755fa42f10b5af8e0c82af08c33fa1315f5",
+    "reference_count": 24,
+    "answer_count": 96,
+    "source_files_unchanged": 194,
+    "answer_issue_excerpt_checks": 38,
+    "before_current_judge_outcome_read": true,
+    "reviewer": "single context-aware assistant, not independent human gold",
+    "masking_limit": "Arm/seed hidden in response-reading batches; prior two cases and historical aggregate results already known; metadata available in workspace. Not a fully blinded independent study."
+  },
+  "authorization": {
+    "date": "2026-11-07",
+    "user_authorization": "OK 那就第一步你来负责 然后一直推进下去 另外bouchet的登陆只需要你点signin就行 他会自动鉴权的",
+    "scope": "Complete existing-data evidence-content audit and autonomously progress to a bounded controlled diagnostic of evidence provision versus Judge use. User authorizes ordinary Bouchet sign-in.",
+    "operating_choices": {
+      "new_environment_rollouts": 0,
+      "new_actor_calls": 0,
+      "maximum_new_gpu_jobs": 1,
+      "maximum_allocation_seconds": 7200,
+      "new_paid_api_services": false,
+      "modify_old_results": false,
+      "new_background_automation": false
+    },
+    "submission_status": "not_prepared_or_submitted",
+    "pre_submission_requirement": "Finish source audit; freeze specific diagnostic contrasts, labels, input scope, call/token bounds, and stop rules; pass offline tests and cluster asset admission. Earlier stopped jobs and consumed permits are not reused.",
+    "review_limit": "Single context-aware AI audit, not independent human gold."
+  },
+  "formal_claim_permitted": false
+}

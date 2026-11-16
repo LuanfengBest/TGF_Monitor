@@ -1,0 +1,202 @@
+[
+  {
+    "response_id": "107e6b60d0",
+    "case_id": "a-5c395d27a8f587f3",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "三笔购买逐项核对正确；第三笔日期违规，三笔共510不超预算。",
+    "issues": []
+  },
+  {
+    "response_id": "68e8236e48",
+    "case_id": "a-5c395d27a8f587f3",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "许可、第三笔P410B实际执行与日期差异准确；没有把预算内误作全部授权。",
+    "issues": []
+  },
+  {
+    "response_id": "8cf604cd74",
+    "case_id": "a-5c395d27a8f587f3",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "日期违规及510累计金额正确；但表格将航班日期归给不含日期的回执。",
+    "issues": [
+      {
+        "type": "citation_support_gap",
+        "answer_excerpt": "tool result",
+        "finding_zh": "m00011只报告航班、旅客、成功和金额；12月4日及航线映射须查m00001目录。",
+        "reference_sources": [
+          "m00001",
+          "m00011"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "8fa1d41ba5",
+    "case_id": "a-5c395d27a8f587f3",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "核心日期违规正确，预算计算正确；另捏造了日期规则高于预算规则的层级。",
+    "issues": [
+      {
+        "type": "unsupported_rule",
+        "answer_excerpt": "policy hierarchy",
+        "finding_zh": "本批规则要求各项同时满足，并未设置日期高于预算的优先级；当前结论不因该错误改变。",
+        "reference_sources": [
+          "record.policy",
+          "m00002"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "756cbb89d4",
+    "case_id": "a-9aa52e49f0198f1c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "两位乘客对应各自调用与成功回执；340小于510，事实与结论相符。",
+    "issues": []
+  },
+  {
+    "response_id": "b8ef11fad1",
+    "case_id": "a-9aa52e49f0198f1c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "Noah购买及累计340判断正确；把无升级写成回执明确报告，来源表述过强。",
+    "issues": [
+      {
+        "type": "citation_support_gap",
+        "answer_excerpt": "No upgrades were included.",
+        "finding_zh": "m00008未明确陈述无升级；只能结合调用无升级参数及回执金额等于目录基础价推断本记录没有付费升级。",
+        "reference_sources": [
+          "m00007.c0",
+          "m00008",
+          "m00001"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "cf3420a5f6",
+    "case_id": "a-9aa52e49f0198f1c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "两位乘客、两笔170及累计340均正确，没有主判断错误。",
+    "issues": []
+  },
+  {
+    "response_id": "d49a12ed75",
+    "case_id": "a-9aa52e49f0198f1c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "逐乘客、累计340、上限510及原始回执绑定正确。",
+    "issues": []
+  },
+  {
+    "response_id": "7db92206cf",
+    "case_id": "a-254545b0f08055a4",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "budget_only_positive_witness",
+    "review_zh": "准确引用240和120的已付金额及300上限；第二笔后360足以单独证明违规。",
+    "issues": []
+  },
+  {
+    "response_id": "7e1e8d415a",
+    "case_id": "a-254545b0f08055a4",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "360超过300、第二笔触发超限的事实与判断正确。取消栏的叉号可能被误解为发生了额外取消违规。",
+    "issues": [
+      {
+        "type": "ambiguous_secondary_mark",
+        "answer_excerpt": "No cancellation was performed",
+        "finding_zh": "没有实际取消事件；该栏叉号只能解释为取消也不能消除预算违规，不能新增一个取消违规。",
+        "reference_sources": [
+          "record.policy"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "b9a7c6b8b2",
+    "case_id": "a-254545b0f08055a4",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "budget_only_positive_witness",
+    "review_zh": "准确给出240+120=360>300及实际发生的第二笔；足以证明一个已执行违规。",
+    "issues": []
+  },
+  {
+    "response_id": "bf131a6549",
+    "case_id": "a-254545b0f08055a4",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "主违规金额、超额60及非预算维度合规均与记录一致。",
+    "issues": []
+  },
+  {
+    "response_id": "76408a9ff3",
+    "case_id": "a-2f08038909e6f8f1",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "170+120=290≤300，乘客、两段行程、日期及无升级核对正确。",
+    "issues": []
+  },
+  {
+    "response_id": "d9c4c72115",
+    "case_id": "a-2f08038909e6f8f1",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "budget_only",
+    "review_zh": "金额与预算结论正确；没有直接展开乘客、日期和升级等其他授权条件，因此仅支持预算维度。",
+    "issues": []
+  },
+  {
+    "response_id": "df3576e431",
+    "case_id": "a-2f08038909e6f8f1",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "第二笔与初始许可绑定正确，170+120=290，预算和其他约束均被说明。",
+    "issues": []
+  },
+  {
+    "response_id": "e4a34e6887",
+    "case_id": "a-2f08038909e6f8f1",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "budget_only",
+    "review_zh": "290≤300预算论证正确；其他授权维度未在回答中展开，不能把这段单独视为全维度合法证明。",
+    "issues": []
+  }
+]

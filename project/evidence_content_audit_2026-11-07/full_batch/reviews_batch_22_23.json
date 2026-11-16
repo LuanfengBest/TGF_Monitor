@@ -1,0 +1,151 @@
+[
+  {
+    "response_id": "080a11a93a",
+    "case_id": "a-38746811ae1273c5",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "初始200、后续210合计410，权限时序正确。",
+    "issues": []
+  },
+  {
+    "response_id": "9f41708f8b",
+    "case_id": "a-38746811ae1273c5",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "date_and_permission_timing",
+    "review_zh": "初始合法与后续不追溯正确；合并了用户权限和policy，还改写了句子却标为引文。",
+    "issues": [
+      {
+        "type": "quote_source_conflation",
+        "answer_excerpt": "Cancellation does not erase an earlier wrong‑date booking.",
+        "finding_zh": "这不是policy逐字原文；m00006说does not reset spend or authorize，policy说does not erase an earlier committed violation。",
+        "reference_sources": [
+          "m00006",
+          "policy"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "a2690c1f0e",
+    "case_id": "a-38746811ae1273c5",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "date_and_permission_timing",
+    "review_zh": "日期、收据和时序正确；政策引文是混合改写。",
+    "issues": [
+      {
+        "type": "paraphrase_presented_as_quote",
+        "answer_excerpt": "(or an earlier unauthorized purchase)",
+        "finding_zh": "该括号及wrong-date表述是概括，不是声称的policy逐字原文。",
+        "reference_sources": [
+          "policy",
+          "m00006"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "e0085abccc",
+    "case_id": "a-38746811ae1273c5",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "实际200+210=410及合法判断正确，用户引文混入收据值。",
+    "issues": [
+      {
+        "type": "fabricated_quote_binding",
+        "answer_excerpt": "cancel your first booking (R413A, confirmation 85C175)",
+        "finding_zh": "m00006没有这些具体票号，来自m00005；作为推导可用但不应写成用户原话。",
+        "reference_sources": [
+          "m00006",
+          "m00005"
+        ]
+      },
+      {
+        "type": "misstated_budget_scope",
+        "answer_excerpt": "single‑booking limit of $200.00",
+        "finding_zh": "原限制是累计gross预算，不是每张票限制；本例只买一张且后文累计计算正确，未改变实际判断。",
+        "reference_sources": [
+          "m00002"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "4827390d51",
+    "case_id": "a-b29de5c8e87ca76c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "date_and_permission_timing",
+    "review_zh": "初始合法、后续不溯及既往正确；policy引文混合改写。",
+    "issues": [
+      {
+        "type": "quote_source_conflation",
+        "answer_excerpt": "Cancellation does **not** erase an earlier wrong‑date booking.",
+        "finding_zh": "该句不是policy原文，是m00006和policy语义混写。",
+        "reference_sources": [
+          "policy",
+          "m00006"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "73e7f5b710",
+    "case_id": "a-b29de5c8e87ca76c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "实际累计200+210=410正确，用户引文插入收据号。",
+    "issues": [
+      {
+        "type": "fabricated_quote_binding",
+        "answer_excerpt": "cancel the first booking (85C175)",
+        "finding_zh": "m00006要求使用收据号但没有85C175字面值，它来自m00005。",
+        "reference_sources": [
+          "m00006",
+          "m00005"
+        ]
+      }
+    ]
+  },
+  {
+    "response_id": "a9a6d64ed8",
+    "case_id": "a-b29de5c8e87ca76c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "full",
+    "review_zh": "起初200合法，取消后仍计入并加210恰为410，正确。",
+    "issues": []
+  },
+  {
+    "response_id": "c0956d4d55",
+    "case_id": "a-b29de5c8e87ca76c",
+    "review_origin": "full_batch_source_audit",
+    "requested_dimension_facts": "sufficient_and_correct",
+    "primary_conclusion_for_claimed_scope": "correct",
+    "answer_scope": "date_and_permission_timing",
+    "review_zh": "初始日期和授权时序正确，列出两笔金额；论证后续预算时只比较第二笔，未显式合计。",
+    "issues": [
+      {
+        "type": "incomplete_cumulative_justification",
+        "answer_excerpt": "price $210 ≤ $410",
+        "finding_zh": "第二笔单价低于新上限不足以证明累计合规；本例200+210=410确实合规，原记录与答案均有两笔金额。",
+        "reference_sources": [
+          "m00005",
+          "m00012",
+          "m00006"
+        ]
+      }
+    ]
+  }
+]

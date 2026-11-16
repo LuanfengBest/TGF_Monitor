@@ -1,0 +1,68 @@
+{
+  "schema_version": "jev-monitor-2x2-v1",
+  "model_ids": {
+    "jev": "jev-1.14.0",
+    "qwen": "Qwen/Qwen3-32B"
+  },
+  "jev_endpoint": "https://api.typesafe.ai/v1/systemone",
+  "jev_key_env": "TYPESAFE_API_KEY",
+  "jev_price_per_million_input_tokens_usd": 0.042,
+  "jev_per_question_context": 32000,
+  "jev_input_budget_tokens": 3968000,
+  "api_usd_cap": 0.2,
+  "jev_tokenizer_status": "unavailable; enforce per-question cap, reserve full 32000 tokens per attempted request; inspect provider usage",
+  "qwen": {
+    "models": {
+      "monitor": "Qwen/Qwen3-32B"
+    },
+    "revisions": {
+      "monitor": "9216db5781bf21249d130ec9da846c4624c16137"
+    },
+    "runtime": {
+      "python": "3.12.12",
+      "vllm": "0.13.0",
+      "torch": "2.9.0+cu129",
+      "transformers": "4.57.3",
+      "openai-harmony": "0.0.8"
+    },
+    "snapshot": "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137",
+    "temperature": 0,
+    "seed": 17,
+    "enable_thinking": false,
+    "native": {
+      "monitor": {
+        "context": 32768
+      }
+    },
+    "structured_decoding": "xgrammar JSON; disable_fallback=True"
+  },
+  "limits": {
+    "total_actual_requests": 248,
+    "jev_actual_requests": 124,
+    "qwen_actual_requests": 124,
+    "attempts_per_request": 1,
+    "client_concurrency": 1,
+    "call_timeout_seconds": 240,
+    "qwen_max_output_tokens": 2048,
+    "qwen_total_output_token_reserve": 253952,
+    "wall_seconds": 5400,
+    "model_startup_seconds": 1200,
+    "gpu_jobs": 1
+  },
+  "gpu": {
+    "account": "cpsc4880",
+    "partition": "gpu_h200",
+    "type": "h200",
+    "count": 1,
+    "walltime": "01:30:00",
+    "requeue": false
+  },
+  "actor_calls": 0,
+  "new_trajectories": 0,
+  "retry": false,
+  "automatic_expansion": false,
+  "authorization_basis": "Current user requested assessment and starting one experiment if feasible. Resource defaults are proposed here; no old permit is reused.",
+  "phase_status": "offline_preparation; live resources not verified",
+  "run_order": "One random order (seed 2026111102), filtered by model. Smoke precedes development. AB/CD interleaved within each model; deployments run separately.",
+  "circuit_breaker": "stop after three consecutive request/parse failures or immediately on HTTP 400/401/403/413/422; never refill remaining positions"
+}

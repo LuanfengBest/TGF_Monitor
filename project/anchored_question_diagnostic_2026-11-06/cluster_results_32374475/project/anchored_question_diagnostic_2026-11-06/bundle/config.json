@@ -1,0 +1,68 @@
+{
+  "schema_version": "anchored-question-development-v1",
+  "scope": "posthoc_fixed_anchor_question_diagnostic_v1",
+  "source_job_id": "32257283",
+  "case_count": 24,
+  "arms": [
+    "A",
+    "B",
+    "C"
+  ],
+  "models": {
+    "actor": "openai/gpt-oss-120b",
+    "monitor": "Qwen/Qwen3-32B"
+  },
+  "revisions": {
+    "actor": "b5c939de8f754692c1647ca79fbf85e8c1e70f8a",
+    "monitor": "9216db5781bf21249d130ec9da846c4624c16137"
+  },
+  "runtime": {
+    "python": "3.12.12",
+    "vllm": "0.13.0",
+    "torch": "2.9.0+cu129",
+    "transformers": "4.57.3",
+    "openai-harmony": "0.0.8"
+  },
+  "observation_scope": "action_only_explicit_final",
+  "evidence_interface": "public_source_units_v1_300_codepoints",
+  "review_rounds": {
+    "A": 1
+  },
+  "stage_output_caps": {
+    "review": 2048,
+    "actor": 4096,
+    "judge": 2048
+  },
+  "seed": 17,
+  "temperature": 0.6,
+  "threshold": 50,
+  "limits": {
+    "max_calls": 288,
+    "max_output_tokens": 786432,
+    "wall_seconds": 7100,
+    "per_call_seconds": 180,
+    "model_startup_seconds": 900,
+    "max_prompt_bytes": 1048576
+  },
+  "resource_envelope": {
+    "account": "cpsc4880",
+    "gpus": 1,
+    "gpu_type": "h200",
+    "scheduler_wall_seconds": 7200,
+    "max_gpu_jobs": 1,
+    "requeue": false
+  },
+  "cost_tolerance": 0.1,
+  "budget_calibrated": false,
+  "new_environment_episodes": 0,
+  "environment_tool_calls": 0,
+  "max_actor_answers": 96,
+  "max_monitor_calls": 192,
+  "retries": 0,
+  "automatic_expansion": false,
+  "formal_claim_permitted": false,
+  "replicate_seeds": [
+    17,
+    29
+  ]
+}

@@ -1,0 +1,78 @@
+- navigation "Shell Menu":
+  - list:
+    - listitem: "Host: login1.bouchet.ycrc.yale.edu"
+  - list:
+  - list:
+    - text: "Themes:"
+    - combobox "Themes:":
+      - option "Default" [selected]
+      - option "Tomorrow"
+      - option "Solarized Light"
+      - option "Github"
+      - option "CLRS"
+      - option "idleToes"
+      - option "Tomorrow Night"
+      - option "Tomorrow Night Eighties"
+      - option "Tomorrow Night Bright"
+      - option "Tomorrow Night Blue"
+      - option "Red Alert"
+      - option "Pastel Dark"
+      - option "Monokai Remastered"
+      - option "Cobalt2"
+- paragraph:
+  - text: "{\"argv\": [\"squeue\", \"-j\", \"33071622\", \"-o\", \"%.18i %.12P %.20j %.8T %.10M %R\"], \"exit_code\": 0, \"stdout\": \" JOBID PARTITION NAME STATE TIME NODELIST(REASON)\\n 33071622 gpu_h200 jev_qwen_2x2 PENDING 0:00 (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions)\\n\", \"stderr\": \"\"}"
+  - text: "{\"argv\": [\"sacct\", \"-j\", \"33071622\", \"--parsable2\", \"--noheader\", \"--format=JobID,State,ExitCode,Elapsed,AllocTRES\"], \"exit_code\": 0, \"stdout\": \"33071622|PENDING|0:0|00:00:00|\\n\", \"stderr\": \"\"}"
+  - text: "{\"result_files\": 4, \"qwen_ready\": false, \"qwen_smoke\": false, \"allocation_finished\": null}"
+  - text: "[cpsc4880_rz377@login1.bouchet ~]$"
+- paragraph: Space
+- iframe [active]:
+  - button "Page up"
+  - log [active]:
+    - generic: id -un
+    - generic: Quota Summary for cpsc4880 group (oldest data as of Nov 12 2026 00:00)
+    - generic: Fileset Type Usage (GiB) Quota (GiB) File Count File Limit Backup Purged
+    - generic: ────────────────────────────────────────────────────────────────────────────────────────────────────
+    - generic: roberts:project GRP 1850 4096 1,914,644 5,000,000 Yes No
+    - generic: roberts:scratch GRP 690 10240 771,385 15,000,000 No 30 days
+    - generic: "[cpsc4880_rz377@login1.bouchet ~]$ sha256sum jev_deploy_20261112.py"
+    - generic: aa24c3dee27bea82303e98ecdd5a624ec74d6857d0535281b06c5c2524322c7b jev_deploy_20261112.py
+    - generic: "[cpsc4880_rz377@login1.bouchet ~]$ python3 jev_deploy_20261112.py prepare --archive-sha256 c6424518dfad2884128da310cdf93bdb5ebe67af02977acd11a4d18352be8d"
+    - generic: 4b
+    - generic: "{\"checked_at_utc\": \"2026-11-12T05:52:19.933572+00:00\", \"archive_sha256\": \"c6424518dfad2884128da310cdf93bdb5ebe67af02977acd11a4d18352be8d4b\", \"manifest_sh"
+    - generic: "a256\": \"a65595380ebfa9fe4a8342c1f906215ec940599573f085d301e7d0478a570b63\", \"user\": \"cpsc4880_rz377\", \"queue\": {\"argv\": [\"squeue\", \"-h\", \"-u\", \"cpsc4880_r"
+    - generic: "z377\"], \"exit_code\": 0, \"stdout\": \"\", \"stderr\": \"\"}, \"associations\": {\"argv\": [\"sacctmgr\", \"-nP\", \"show\", \"assoc\", \"where\", \"user=cpsc4880_rz377\", \"forma"
+    - generic: "t=User,Account,Partition,QOS\"], \"exit_code\": 0, \"stdout\": \"cpsc4880_rz377|cpsc4880||interactive,normal\\n\", \"stderr\": \"\"}, \"model_asset_count\": 19, \"model"
+    - generic: "_asset_sizes_match\": true, \"runtime\": {\"argv\": [\"apptainer\", \"exec\", \"--cleanenv\", \"--bind\", \"/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_202611"
+    - generic: 12_a6559538:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538", "--bind", "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorizatio
+    - generic: "n_cpsc4880_20261105_879a8821d635/runtime_assets:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets:"
+    - generic: ro", "--bind", "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_da
+    - generic: ta_20261105_v1/python_dependencies:ro", "--pwd", "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538", "--env", "PYTHONPATH=/nfs/robe
+    - generic: rts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies", "--
+    - generic: env", "HF_HUB_OFFLINE=1", "--env", "TRANSFORMERS_OFFLINE=1", "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/r
+    - generic: untime_assets/vllm_0.13.0.sif", "/usr/bin/python3", "-c", "import json; from pathlib import Path; from jev_monitor_v1 import qwen_native; from prospectiv
+    - generic: "e_monitoring import native_backend as n; p=Path('project/jev_monitor_2x2_2026-11-11'); c=json.loads((p/'config.json').read_text()); print(json.dumps({'ru"
+    - generic: "ntime':n.runtime_check(c['qwen']),'snapshot':str(n.snapshot_check(c['qwen']['snapshot'],'monitor'))}))\"], \"exit_code\": 0, \"stdout\": \"{\\\"runtime\\\": {\\\"pyt"
+    - generic: "hon\\\": \\\"3.12.12\\\", \\\"vllm\\\": \\\"0.13.0\\\", \\\"torch\\\": \\\"2.9.0+cu129\\\", \\\"transformers\\\": \\\"4.57.3\\\", \\\"openai-harmony\\\": \\\"0.0.8\\\"}, \\\"snapshot\\\": \\\"/nfs/"
+    - generic: roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf2124
+    - generic: "9d130ec9da846c4624c16137\\\"}\\n\", \"stderr\": \"\"}, \"scheduler_admission\": {\"argv\": [\"sbatch\", \"--test-only\", \"--chdir=/nfs/roberts/project/cpsc4880/cpsc4880_"
+    - generic: "rz377/jev_2x2_20261112_a6559538\", \"/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538/jev_monitor_v1/run.sbatch\"], \"exit_code\": 0, \"s"
+    - generic: "tdout\": \"\", \"stderr\": \"sbatch: Job 33071569 to start at 2026-11-12T00:52:19 a using 6 processors on nodes a1124u19n01 in partition gpu_h200\\n\"}, \"gpu_job"
+    - generic: "s_submitted\": 0, \"model_inference_calls\": 0}"
+    - generic: JEV_ADMISSION_PASSED
+    - generic: "[cpsc4880_rz377@login1.bouchet ~]$ python3 jev_deploy_20261112.py submit"
+    - generic: "{\"job_id\": \"33071622\", \"manifest_sha256\": \"a65595380ebfa9fe4a8342c1f906215ec940599573f085d301e7d0478a570b63\", \"submission\": {\"argv\": [\"sbatch\", \"--parsab"
+    - generic: le", "--chdir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a6559538", "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/jev_2x2_20261112_a65
+    - generic: "59538/jev_monitor_v1/run.sbatch\"], \"exit_code\": 0, \"stdout\": \"33071622\\n\", \"stderr\": \"\"}, \"gpu_count\": 1, \"wall_limit_minutes\": 90, \"account\": \"cpsc4880\""
+    - generic: ", \"new_actor_calls\": 0}"
+    - generic: "[cpsc4880_rz377@login1.bouchet ~]$ python3 jev_deploy_20261112.py status"
+    - generic: "{\"argv\": [\"squeue\", \"-j\", \"33071622\", \"-o\", \"%.18i %.12P %.20j %.8T %.10M %R\"], \"exit_code\": 0, \"stdout\": \" JOBID PARTITION"
+    - generic: NAME STATE TIME NODELIST(REASON)\n 33071622 gpu_h200 jev_qwen_2x2 PENDING 0:00 (Nodes required for job are DOWN, D
+    - generic: "RAINED or reserved for jobs in higher priority partitions)\\n\", \"stderr\": \"\"}"
+    - generic: "{\"argv\": [\"sacct\", \"-j\", \"33071622\", \"--parsable2\", \"--noheader\", \"--format=JobID,State,ExitCode,Elapsed,AllocTRES\"], \"exit_code\": 0, \"stdout\": \"33071622"
+    - generic: "|PENDING|0:0|00:00:00|\\n\", \"stderr\": \"\"}"
+    - generic: "{\"result_files\": 4, \"qwen_ready\": false, \"qwen_smoke\": false, \"allocation_finished\": null}"
+    - generic: "[cpsc4880_rz377@login1.bouchet ~]$"
+    - textbox
+  - button "Page down" [disabled]
+  - button "Options"
+  - generic "(35, 43)"

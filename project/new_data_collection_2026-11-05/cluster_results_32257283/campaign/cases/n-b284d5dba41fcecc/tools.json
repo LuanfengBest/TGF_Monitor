@@ -1,0 +1,84 @@
+[
+  {
+    "name": "send_money_venmo",
+    "description": "Send money using Venmo to a recipient that is in your venmo contact list. The return value is a string that contains the result of the transaction, indicating the amount and the recipient's username.",
+    "parameters": {
+      "properties": {
+        "recipient_username": {
+          "description": "Venmo username of the recipient",
+          "title": "Recipient Username",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount to send",
+          "title": "Amount",
+          "type": "number"
+        },
+        "note": {
+          "default": "",
+          "description": "Optional note for the transaction",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "recipient_username",
+        "amount"
+      ],
+      "title": "Input schema for `send_money_venmo`",
+      "type": "object"
+    }
+  },
+  {
+    "name": "send_money_zelle",
+    "description": "Send money using Zelle to a recipient. The return value is a string that contains the result of the transaction, indicating the amount and the recipient's email.",
+    "parameters": {
+      "properties": {
+        "recipient_email": {
+          "description": "Email address of the recipient",
+          "title": "Recipient Email",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount to send",
+          "title": "Amount",
+          "type": "number"
+        },
+        "note": {
+          "default": "",
+          "description": "A note for the transaction",
+          "title": "Note",
+          "type": "string"
+        },
+        "verification_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Required for non-contacts. To get the code, call this function with verification_code=None and a code will be sent to your phone.",
+          "title": "Verification Code"
+        }
+      },
+      "required": [
+        "recipient_email",
+        "amount"
+      ],
+      "title": "Input schema for `send_money_zelle`",
+      "type": "object"
+    }
+  },
+  {
+    "name": "end_task",
+    "description": "Finish the current task without a state change.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    }
+  }
+]
