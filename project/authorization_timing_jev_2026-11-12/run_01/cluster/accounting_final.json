@@ -1,0 +1,39 @@
+{
+  "queue": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-j",
+      "33137525",
+      "-o",
+      "%.18i %.12P %.20j %.8T %.10M %R"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "accounting": {
+    "argv": [
+      "sacct",
+      "-j",
+      "33137525",
+      "--parsable2",
+      "--noheader",
+      "--format=JobID,State,ExitCode,Elapsed,AllocTRES"
+    ],
+    "exit_code": 0,
+    "stdout": "33137525|FAILED|1:0|00:20:37|billing=240,cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n33137525.batch|FAILED|1:0|00:20:37|cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n33137525.extern|COMPLETED|0:0|00:20:37|billing=240,cpu=6,gres/gpu:h200=1,gres/gpu=1,mem=160G,node=1\n",
+    "stderr": ""
+  },
+  "qwen_results": 0,
+  "qwen_ready": false,
+  "qwen_finished": false,
+  "stop": {
+    "completed_slots": 0,
+    "elapsed_seconds": 1204.256997874938,
+    "error_type": "NativeTimeout",
+    "model": "qwen",
+    "no_retry": true,
+    "phase": "all"
+  }
+}

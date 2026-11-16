@@ -1,0 +1,71 @@
+{
+  "checked_at_utc": "2026-11-12T17:55:13.091467+00:00",
+  "manifest_sha256": "5be987887c181dbab8e9b5fb0d48f2fc83efaf237ed1708ff63bacd808154c35",
+  "archive_sha256": "705239a43eac4debb4ff84f23287774695fd4a9f8d8584c9c98ec84e95385157",
+  "queue": {
+    "argv": [
+      "squeue",
+      "-h",
+      "-u",
+      "cpsc4880_rz377"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "associations": {
+    "argv": [
+      "sacctmgr",
+      "-nP",
+      "show",
+      "assoc",
+      "where",
+      "user=cpsc4880_rz377",
+      "format=User,Account,Partition,QOS"
+    ],
+    "exit_code": 0,
+    "stdout": "cpsc4880_rz377|cpsc4880||interactive,normal\n",
+    "stderr": ""
+  },
+  "runtime": {
+    "argv": [
+      "apptainer",
+      "exec",
+      "--cleanenv",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets:ro",
+      "--bind",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies:ro",
+      "--pwd",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112",
+      "--env",
+      "PYTHONPATH=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112:/nfs/roberts/project/cpsc4880/cpsc4880_rz377/new_data_20261105_v1/python_dependencies",
+      "--env",
+      "HF_HUB_OFFLINE=1",
+      "--env",
+      "TRANSFORMERS_OFFLINE=1",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/vllm_0.13.0.sif",
+      "/usr/bin/python3",
+      "-c",
+      "import json; from pathlib import Path; from prospective_monitoring import native_backend as n; p=Path('project/authorization_timing_jev_2026-11-12/run_01'); c=json.loads((p/'config.json').read_text()); print(json.dumps({'runtime':n.runtime_check(c['qwen']),'snapshot':str(n.snapshot_check(c['qwen']['snapshot'],'monitor'))}))"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"runtime\": {\"python\": \"3.12.12\", \"openai-harmony\": \"0.0.8\", \"torch\": \"2.9.0+cu129\", \"transformers\": \"4.57.3\", \"vllm\": \"0.13.0\"}, \"snapshot\": \"/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_cpsc4880_20261105_879a8821d635/runtime_assets/hf/models--Qwen--Qwen3-32B/snapshots/9216db5781bf21249d130ec9da846c4624c16137\"}\n",
+    "stderr": ""
+  },
+  "asset_sizes_match": true,
+  "scheduler_admission": {
+    "argv": [
+      "sbatch",
+      "--test-only",
+      "--chdir=/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112",
+      "/nfs/roberts/project/cpsc4880/cpsc4880_rz377/authorization_timing_jev_v02_run01_20261112/authorization_timing_jev_v2/run.sbatch"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "sbatch: Job 33137491 to start at 2026-11-12T12:55:13 a using 6 processors on nodes a1122u11n01 in partition gpu_h200\n"
+  },
+  "new_allocations": 0
+}

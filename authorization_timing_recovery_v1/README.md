@@ -1,0 +1,13 @@
+# Authorization timing: bounded infrastructure continuation
+
+The user explicitly authorized one additional GPU allocation while keeping the original eight pairs and total resource budget. This implementation leaves every original frozen file and failure receipt intact. The operative amendment is [AMENDMENT.json](../project/authorization_timing_jev_2026-11-12/recovery_01/AMENDMENT.json).
+
+The second H200 allocation has a nine-minute hard limit. Together with the failed 1,237-second allocation, maximum GPU time is 1,777 seconds, below 0.5 hours. A separate CPU preflight uses at most four cores, 16 GiB and 14 minutes; it hashes all model assets, records identity metadata, and copies the completed development cache. Original cache files remain untouched. All 65 compiled-artifact handles are relocated to the copied files with source/destination hashes recorded.
+
+The model, prompts, token sequences, schema, seed, temperature, request order and reference labels come directly from the frozen original run. Four existing Jev smoke responses remain counted; no repeated smoke or simulator generation. The only remaining requests are Qwen 4 smoke + 32 formal, then Jev 32 formal. Both run ledgers enforce the original 72-attempt, 36-per-Judge, $0.10 Jev and 18,432 Qwen output-token limits. No request retries or third GPU allocation are authorized.
+
+Before Qwen startup, the CPU receipt must be fresh, bound to the submission, and match asset/cache identities. A lazy import hook in each worker makes vLLM fail on a compile-cache miss. It does not alter inference settings or allow an eager fallback. Readiness requires all 65 cached subgraphs to have loaded. A 350-second engine-start allowance and an allocation-wide deadline leave time for inference and cleanup inside the nine-minute scheduler cap.
+
+The cache relocation follows the pinned vLLM 0.13.0 implementation: its [compiler interface](https://github.com/vllm-project/vllm/blob/v0.13.0/vllm/compilation/compiler_interface.py) stores absolute artifact paths; its [backend](https://github.com/vllm-project/vllm/blob/v0.13.0/vllm/compilation/backends.py) first loads a cache entry and otherwise compiles. The hook rejects that missing-entry path. These are engineering controls, not new model conditions.
+
+[Offline checks](../project/authorization_timing_jev_2026-11-12/recovery_01/OFFLINE_CHECKS.json) cover authorization, aggregate budgets, expired/changed assets, source-preserving cache copies, relocation, cache-miss rejection, repeated dispatch, native startup timeout, HTTP failure and fresh-process hook installation. Test responses are synthetic and incur no external calls. The runtime entrypoints are single-use; they are not offline reproduction commands.

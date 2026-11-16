@@ -1,10 +1,40 @@
 # TGF Monitor
 
-**Trace-Grounded Follow-Up for Agent Monitoring**
+**Authorization Auditing with Jev as Final Judge**
 
 CPSC 4880/5880 · Pacifica Zhang, Luanfeng Wei, Qier An, Tony Zhu
 
-Research snapshot: November 7, 2026
+Integrated report and presentation: November 13, 2026
+
+[Integrated final report](project/final_report_2026-11-13/FINAL_REPORT.md) · [PDF](project/final_report_2026-11-13/deliverables/Authorization_Auditing_Report.pdf) · [Editable Word report](project/final_report_2026-11-13/deliverables/Authorization_Auditing_Report.docx) · [Updated native presentation](https://chatgpt.com/space/page_6f15e7205f9c81918f8762765794d4af) · [Portable slides](project/final_report_2026-11-13/SLIDES.md) · [中文讲稿](project/final_report_2026-11-13/SPEAKER_NOTES_ZH.md)
+
+The integrated package uses **Jev as the primary final Judge** to study execution-time authorization. It retains the original targeted-follow-up negative result, the null Jev indexing contrast, earlier development negatives, source-audit limitations and failed startup accounting. The same-input Judge comparison remains explicitly post hoc. Human review of the new studies is still zero. No experiments or sample expansion were started for this update; team review and course submission remain separate.
+
+Can a monitor correctly connect an executed action to the permission effective at execution and the receipt proving what happened? We retain the original TGF question and now distinguish the contributions of **Judge choice, evidence presentation, and follow-up**. This is an evidence-driven research reframing after the completed experiments, not a replacement of their prespecified hypotheses.
+
+**Latest finding:** switching the direct Judge from the fixed Qwen3-32B deployment to Jev-1.14.0 improved airline detection from **8/26 to 21/26**, with **0/67** observed false alarms for both. The prespecified Jev targeted-versus-fixed follow-up comparison did **not** pass its support criteria. Its verdict differences came from two truncated fixed-follow-up answers; the 91 airline cases with both answers available had identical F/T verdicts for each Judge. These are different findings, and both are retained.
+
+[Team handoff / 中文说明](project/research_update_2026-11-12/TEAM_HANDOFF.md) · [Research direction and related work](project/research_update_2026-11-12/RESEARCH_DIRECTION.md) · [Latest report](project/research_update_2026-11-12/reports/mainline.md) · [Baseline comparison](project/research_update_2026-11-12/reports/baseline_comparison.md) · [Saved data and CPU verification](project/research_update_2026-11-12/README.md) · [Next-work inventory](project/research_update_2026-11-12/NEXT_STEPS.md)
+
+**Completed timing diagnostic:** all 64 formal judgments on the original eight pairs are valid. Jev is correct on **8/8 pairs with either presentation**; Qwen is correct on **4/8 source-card and 5/8 linked-card pairs**. The primary Jev linked-minus-source contrast is **zero**; the secondary Qwen improvement is one pair. An irrelevant-permission control exposes an unwanted Qwen verdict flip. These are bounded constructed-case findings, not repeated-stability or general model-ranking evidence. [Full timing results](project/authorization_timing_jev_2026-11-12/RESULTS.md) · [Current status and authorization](project/authorization_timing_jev_2026-11-12/RUN_STATUS.md). The startup repair used one explicitly authorized additional H200 allocation; both allocations total **22:53 / 30:00**, with **72/72 attempts** and estimated Jev cost **$0.001716 / $0.10**. The initial failure and all frozen inputs remain intact. [Source review](project/research_update_2026-11-12/source_review/README.md) is nonblind AI work; **human reviews completed: 0**. [Why this research matters](project/research_update_2026-11-12/IMPLICATIONS.md).
+
+| November 12 checkpoint | Completed evidence | Interpretation |
+| --- | --- | --- |
+| Jev/Qwen × raw/ledger development comparison | 60 reused/scripted cases; 240 judgments + 8 smoke calls | Development diagnostic; separate from the new batch |
+| New P/C/F/T comparison with two final Judges | 192 collection positions; 189 eligible trajectories (93 airline, 96 bank) | Shared intermediate evidence; programmatic references, not independent human gold |
+| Jev T−F, airline primary contrast | Δ(TPR×TNR) = 0.0499426; 95% paired interval [0, 0.1439409] | Below the prespecified 0.05 point threshold; interval includes zero |
+| Direct Judge component comparison | Airline +13 correct / 0 regressed; bank +4 / 0 | Post-hoc comparison within the same batch; not a general model ranking |
+| Evidence/source review | 23 prespecified + 9 exploratory cases; 1,061 citation excerpts mechanically checked | Verdict correctness, source presence and semantic support remain separate |
+| Teammate additions | Qier: authorization-timing code; Tony: saved-output evidence audit | Original source branches remain separate; see the handoff for exact commits |
+| Timing v0.2 diagnostic | Eight pairs; 64/64 valid formal outputs; Jev 8→8, Qwen 4→5 correct pairs | No observed linked-card gain for Jev; one Qwen improvement and an invariant-control failure; 0.381389 H200 hours including startup failure |
+
+The completed mainline batch used **2,706 model calls, 2.400556 H200 hours, and an estimated $0.156 in Jev API usage**. The later timing run is a separate constructed diagnostic with its own frozen inputs and budget; it is not pooled with this mainline batch. The latest work is on `pacifica/jev-research-update-2026-11-12`; teammate branches remain separate for review.
+
+All November 7 results and frozen files remain historical evidence. The [November 13 integrated package](project/final_report_2026-11-13/README.md) is the current manuscript and presentation. The older report/PDF below remains unchanged; the existing live presentation Page has been updated in place. Different batches and label definitions must not be pooled.
+
+## November 7 research snapshot
+
+The following sections preserve the earlier study's scope and results.
 
 Can an AI monitor detect more unauthorized agent actions by asking questions about specific operations, compared with a generic follow-up question at a comparable budget?
 
