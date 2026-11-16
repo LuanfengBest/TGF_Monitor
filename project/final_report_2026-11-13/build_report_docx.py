@@ -47,7 +47,7 @@ def inline(p, text):
             target = link[2].strip('<>')
             if not target.startswith(('http://', 'https://')):
                 rel = (HERE / target).resolve().relative_to(HERE.parents[1])
-                target = 'https://github.com/LuanfengBest/TGF_Monitor/blob/pacifica/jev-research-update-2026-11-12/' + rel.as_posix()
+                target = 'https://github.com/LuanfengBest/TGF_Monitor/blob/main/' + rel.as_posix()
             h = OxmlElement('w:hyperlink'); h.set(qn('r:id'), p.part.relate_to(target, RT.HYPERLINK, is_external=True))
             run = OxmlElement('w:r'); pr = OxmlElement('w:rPr')
             color = OxmlElement('w:color'); color.set(qn('w:val'), '244F72'); pr.append(color)

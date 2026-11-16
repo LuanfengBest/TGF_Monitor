@@ -6,6 +6,8 @@ Pacifica Zhang · Luanfeng Wei · Qier An · Tony Zhu
 
 CPSC 4880/5880 · Integrated course report · November 13, 2026
 
+Documentation revision November 16, 2026. Completed results unchanged; optional AGV ablation discussed as future work.
+
 ## Abstract
 
 An agent can finish a task while performing an action that the user did not authorize. We study whether a monitor can identify such actions from public permissions, tool calls and execution receipts. The project began with trace-grounded follow-up (TGF): asking an Actor about a selected operation. Its current organizing question is whether a stronger final Judge already extracts the relevant evidence, and what additional value comes from questions or evidence indexing. We use Jev-1.14.0 as the primary final Judge and Qwen3-32B as a comparator, while keeping reference labels external to both models.
@@ -173,6 +175,14 @@ A plausible future system would combine deterministic checks for amounts and ide
 **Causal attribution.** The direct Judge comparison changes the deployed model and interface, not only an isolated reasoning component. Ledgers change several presentation properties. Fixed targeting rules can select a dimension that is not the actual failure. Outputs do not reveal internal reasoning, and the timing study has no explanation endpoint.
 
 **Reliability and selection.** One call per timing cell cannot establish repeatability. An identical-input Jev disagreement already exists in the mainline. Zero observed false alarms is not a certified low population false-alarm rate. The broader narrative is an explicitly disclosed synthesis after results; the original primary hypotheses, thresholds and full-denominator failures remain unchanged. Deduplication sensitivity does not replace the primary analysis.
+
+### Optional AGV ablation for future work
+
+AGV adds partial deterministic authorization checks and source bindings to a public record. It is an optional extension, not another Judge evaluating our final Judge. The reviewed [AGV implementation](https://github.com/LuanfengBest/TGF_Monitor/tree/76013e4aa57290eddaeee98b02f33623c3f76099/agv_v0) and [holdout builder](https://github.com/LuanfengBest/TGF_Monitor/blob/76013e4aa57290eddaeee98b02f33623c3f76099/agv_holdout/design.py) contain code and scripted records; we found no committed model outputs, formal scores or actual-cost ledger for that extension. Its new 16 records are written by the builder, including action receipts, and are not new simulator executions. They are separate from the completed eight-pair timing diagnostic.
+
+AGV is suitable for a prospective component ablation only if the component is isolated: keep the cases, final Judge, full public record, ledger, source bindings and decision protocol fixed; add rule conclusions in one condition and remove them in the other. A raw-record versus full-AGV comparison mixes rule assistance with evidence formatting and selection. A rule-only baseline should separately report coverage, errors and unresolved cases; unresolved is not authorized. Score Judge errors, false alarms, pair behavior, unavailable outputs and costs on the full denominator, and check that gains exceed what the rule alone already supplies. Reference labels must be assessed independently of the rule implementation.
+
+The current partial checks returned unresolved on all 16 proposed holdout records in an offline inspection. This is a coverage observation, not a model result. The paired contrast and rule-only baseline above are proposed controls, not a completed runner or experiment. No AGV ablation result enters our tables or contribution claims, and no new run or budget is authorized here. The [optional-extension note](../../extensions/README.md) records its scope and prerequisites.
 
 ## 7 Relation to prior work and team contributions
 

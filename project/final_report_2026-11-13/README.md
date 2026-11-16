@@ -1,6 +1,8 @@
 # Integrated report and presentation
 
-November 13, 2026. **Authorization Auditing with Jev as Final Judge** integrates the completed project without changing any frozen experiment or starting a new one.
+Completed evidence November 13; documentation revised November 16, 2026. **Authorization Auditing with Jev as Final Judge** integrates the completed project without changing any frozen experiment or starting a new one.
+
+Current narrative: [repository entry](../../README.md). Next-session work: [stage-report handoff](../SESSION_HANDOFF.md). AGV is discussed only as a [proposed optional ablation](../../extensions/README.md), with no new model results.
 
 ## Read and present
 
@@ -30,7 +32,7 @@ The report answers whether a monitor correctly relates successful actions to per
 | Early complete report | [November 7 historical report](../closeout_2026-11-07/FINAL_REPORT.md) |
 | Source audits and teammate provenance | [Team handoff](../research_update_2026-11-12/TEAM_HANDOFF.md) |
 
-From the repository root, the following commands read saved files only:
+The [unified CPU entry](../../REPRODUCE.md) runs all four saved-result verifiers. For a focused check, the following commands read saved files only:
 
 ```sh
 python3 -B project/final_report_2026-11-13/verify_integration.py
@@ -39,7 +41,7 @@ python3 -B project/authorization_timing_jev_2026-11-12/verify_completed_recovery
 
 The integration check compares report/slide tables with saved analysis values, checks local links, and checks the DOCX contents. It uses only the standard library and does not run simulations, contact models or submit jobs. For complete earlier statistical reproduction and archive limitations, see the [November 12 reproduction guide](../research_update_2026-11-12/README.md) and [November 7 guide](../closeout_2026-11-07/DATA_AND_CODE.md). The shared mainline archive omits repeated full simulator-state dumps; it reproduces saved analyses, not every part of the original state audit.
 
-`build_report_docx.py` uses python-docx. `update_presentation.mjs` is a callback for the existing viewer-bound artifact session and requires an explicit current slide-count guard; it is not an experiment launcher. All nine rendered report pages and all 17 final slides were visually inspected. Intermediate page images stay local in ignored `qa/`.
+`build_report_docx.py` uses python-docx. `update_presentation.mjs` is a callback for the existing viewer-bound artifact session and requires an explicit current slide-count guard; it is not an experiment launcher. All ten rendered report pages were visually inspected after the November 16 AGV documentation update. All 17 slides were inspected on November 13; their contents are unchanged in this revision. The deck has not yet been adapted for the next stage report. Intermediate page images stay local in ignored `qa/`.
 
 ## Version and remaining scope
 
